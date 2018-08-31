@@ -1,5 +1,22 @@
+body, html {
+    margin: 0;
+    height: 100%;
+}
 
+body {
+   
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    background-image: url("blackbg.jpg");
+    color: whitesmoke;
+    /* background: radial-gradient(circle, #8AB1AA 40%, #5EACC2, #1F81AF); */
+    /* background: radial-gradient(circle, rgb(36, 16, 13) 40%,rgba(0,0,0,.6) , rgba(0,0,0,.6)); */
+    font-family: Oxygen, sans-serif;
+  }
 
+/* Game Events are sent here */
 .gameBox {
     margin: auto;
     width: 500px;
@@ -7,19 +24,27 @@
     overflow-y: scroll;
     background: rgba(245, 245, 245, 0.829);
     background:rgba(0,0,0,.6);
-   overflow: scroll;
+    overflow: scroll;
+   
     
 }
 
 .gameLog {
     width: 90%;
     height: 100%;
+    /* position: fixed; */
     /* overflow: scroll;  */
     /* height: calc(100% - 200px); */
     /* overflow: scroll; */
    
 }
 
+.gameEvent {
+    position: relative;
+   bottom: 0%;
+}
+
+/* Buttons  */
 .startButton {
 
         font-size: 14px;
@@ -41,6 +66,7 @@
         user-select: none;
 }
 
+
 .startButton:focus {
     outline:0;
 }
@@ -50,33 +76,92 @@
     background-color: #e60000;
 }
 
+
+.slowButton,
+.normalButton,
+.fastButton {
+    height: 20px;
+    font-size: .8em;
+    /* position: relative; */
+    /* margin-bottom: 1%; */
+    user-select: none;
+    cursor: pointer;
+    border-radius: 100%;
+    opacity: .8;
+    /* display: none; */
+    color: black;
+}
+.slowButton {
+    background-color: red;
+    /* height: 15px; */
+    /* position: relative;
+    left: -5%;
+    top: 0%; */
+    margin-top: 1%;
+}
+
+.slowButton:hover {
+     background-color: #e60000;
+     opacity: 1;
+}
+
+.normalButton:hover {
+    background-color: #ffff33;
+    opacity: 1;
+}
+
+.fastButton:hover {
+    background-color: #00cc00;
+    opacity: 1;
+}
+
+.normalButton {
+    background-color: yellow;
+    /* height: 15px; */
+    /* top:  -2.5%; */
+}
+
+.fastButton {
+    background-color: green;
+    margin-bottom: 1%;
+    /* height: 15px; */
+    /* left: 5%;
+    top: -5%; */
+}
+
+/* Logo  */
 #ball {
-    margin: auto;
+    /* margin: auto; */
     /* position: relative;
     top: -3vh; */
-}
-.gameEvent {
-    /* padding-left: 3%; */
-}
-
-body, html {
-    margin: 0;
-    height: 100%;
+    float: left;
+    flex-direction: row;
+    /* display: inline-flex; */
 }
 
-body {
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-image: url("blackbg.jpg");
-    color: whitesmoke;
-    /* background: radial-gradient(circle, #8AB1AA 40%, #5EACC2, #1F81AF); */
-    /* background: radial-gradient(circle, rgb(36, 16, 13) 40%,rgba(0,0,0,.6) , rgba(0,0,0,.6)); */
-    font-family: Oxygen, sans-serif;
-  }
-  
+.player,
+.player1,
+.player2,
+.player3,
+.player4 {
+    height: 10vh;
+    width: 10vh;
+    flex-direction: row;
+    /* display: inline-flex; */
+    opacity: .85;
+    background-color: purple;
+    border-radius: 50%;
+    background-position: center;
+    float: left;
+    /* background-color: #eee;
+    margin-left: auto;
+    margin-right: auto; */
+    z-index: 20
+
+}
+
+ 
+  /* Scoreboard  */
   .scoreboard {
     width: 350px;
     height: 150px;
