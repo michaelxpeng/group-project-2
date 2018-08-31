@@ -63,6 +63,7 @@ module.exports = function(sequelize, DataTypes) {
 //    OTPTS: DataTypes.INTEGER
 
     });
+    Stats.sync();
     return Stats;
     // return teamStats;
   
