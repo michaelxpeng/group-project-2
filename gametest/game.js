@@ -74,56 +74,23 @@
 //3rd Dapo
 
 
-var player = {
-    name: "Kyrie Irving",
-    year: "2017-2018",
-    PER: 25.0,
-    TSpct: .610,
-    ThreePAr: .374,
-    ThreePct: .408,
-    FTr: .240,
-    FTpct: .889, 
-    ORBpct: 1.9,
-    DRBpct: 10.8, 
-    TRBpct: 6.4,
-    ASTpct: 30.7,
-    STLpct: 1.7,
-    BLKpct: 0.7,
-    TOVpct: 10.4, 
-    USGpct: 31.0,
-    FGM:0,
-    FGA:0,
-    ThreePA:0,
-    ThreePM:0,
-    FTM:0,
-    FTA:0,
-    PTS:0,
-    REB:0,
-    OREB:0,
-    AST:0,
-    STL:0,
-    TOV:0,
-    BLK:0,     
-    FLS:0
-};
-
 // var player = {
-//     name: "Stephen Curry",
-//     year: "2015-16",
-//     PER: 31.5,
-//     TSpct: .669 ,
-//     ThreePAr: .554,
-//     ThreePct: .454,
-//     FTr: .250,
-//     FTpct: .908,
-//     ORBpct: 2.9 ,
-//     DRBpct: 13.6, 
-//     TRBpct: 8.6 ,
-//     ASTpct: 33.7 ,
-//     STLpct: 3.0,
-//     BLKpct: .4,
-//     TOVpct: 12.9, 
-//     USGpct: 32.6,
+//     name: "Kyrie Irving",
+//     year: "2017-2018",
+//     PER: 25.0,
+//     TSpct: .610,
+//     ThreePAr: .374,
+//     ThreePct: .408,
+//     FTr: .240,
+//     FTpct: .889, 
+//     ORBpct: 1.9,
+//     DRBpct: 10.8, 
+//     TRBpct: 6.4,
+//     ASTpct: 30.7,
+//     STLpct: 1.7,
+//     BLKpct: 0.7,
+//     TOVpct: 10.4, 
+//     USGpct: 31.0,
 //     FGM:0,
 //     FGA:0,
 //     ThreePA:0,
@@ -138,27 +105,25 @@ var player = {
 //     TOV:0,
 //     BLK:0,     
 //     FLS:0
-
 // };
 
-
-var player1 = {
-    name: "Kyle Korver",
-    year: "2014-2015",
-    PER: 14.8,
-    TSpct: .699,
-    ThreePAr: .748,
-    ThreePct: .492,
-    FTr: .197,
-    FTpct: .898,
-    ORBpct: .7,
-    DRBpct: 13.3, 
-    TRBpct: 7.2,
-    ASTpct: 12.1,
-    STLpct: 1.1,
-    BLKpct: 1.5,
-    TOVpct: 14.1, 
-    USGpct: 14.4,
+var player = {
+    name: "Stephen Curry",
+    year: "2015-16",
+    PER: 31.5,
+    TSpct: .669 ,
+    ThreePAr: .554,
+    ThreePct: .454,
+    FTr: .250,
+    FTpct: .908,
+    ORBpct: 2.9 ,
+    DRBpct: 13.6, 
+    TRBpct: 8.6 ,
+    ASTpct: 33.7 ,
+    STLpct: 3.0,
+    BLKpct: .4,
+    TOVpct: 12.9, 
+    USGpct: 32.6,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -175,24 +140,25 @@ var player1 = {
     FLS:0
 
 };
+
 
 // var player1 = {
-//     name: "Dwyane Wade",
-//     year: "2008-09",
-//     PER: 30.4,
-//     TSpct: .574 ,
-//     ThreePAr: .160,
-//     ThreePct: .300,
-//     FTr: .250,
-//     FTpct: .761,
-//     ORBpct: 3.5 ,
-//     DRBpct: 12.2, 
-//     TRBpct: 7.8 ,
-//     ASTpct: 40.3 ,
-//     STLpct: 3.0,
-//     BLKpct: 2.8,
-//     TOVpct: 11.6, 
-//     USGpct: 36.2,
+//     name: "Kyle Korver",
+//     year: "2014-2015",
+//     PER: 14.8,
+//     TSpct: .699,
+//     ThreePAr: .748,
+//     ThreePct: .492,
+//     FTr: .197,
+//     FTpct: .898,
+//     ORBpct: .7,
+//     DRBpct: 13.3, 
+//     TRBpct: 7.2,
+//     ASTpct: 12.1,
+//     STLpct: 1.1,
+//     BLKpct: 1.5,
+//     TOVpct: 14.1, 
+//     USGpct: 14.4,
 //     FGM:0,
 //     FGA:0,
 //     ThreePA:0,
@@ -210,24 +176,23 @@ var player1 = {
 
 // };
 
-
-var player2 = {
-    name: "LeBron James",
-    year: "2017-2018",
-    PER: 28.6,
-    TSpct: .621,
-    ThreePAr: .257,
-    ThreePct: .367,
-    FTr: .336,
-    FTpct: .731, 
-    ORBpct: 3.7,
-    DRBpct: 22.3, 
-    TRBpct: 13.1,
-    ASTpct: 44.4,
-    STLpct: 1.9,
-    BLKpct: 2.0,
-    TOVpct: 16.1, 
-    USGpct: 31.6,
+var player1 = {
+    name: "Dwyane Wade",
+    year: "2008-09",
+    PER: 30.4,
+    TSpct: .574 ,
+    ThreePAr: .160,
+    ThreePct: .300,
+    FTr: .250,
+    FTpct: .761,
+    ORBpct: 3.5 ,
+    DRBpct: 12.2, 
+    TRBpct: 7.8 ,
+    ASTpct: 40.3 ,
+    STLpct: 3.0,
+    BLKpct: 2.8,
+    TOVpct: 11.6, 
+    USGpct: 36.2,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -244,6 +209,41 @@ var player2 = {
     FLS:0
 
 };
+
+
+// var player2 = {
+//     name: "LeBron James",
+//     year: "2017-2018",
+//     PER: 28.6,
+//     TSpct: .621,
+//     ThreePAr: .257,
+//     ThreePct: .367,
+//     FTr: .336,
+//     FTpct: .731, 
+//     ORBpct: 3.7,
+//     DRBpct: 22.3, 
+//     TRBpct: 13.1,
+//     ASTpct: 44.4,
+//     STLpct: 1.9,
+//     BLKpct: 2.0,
+//     TOVpct: 16.1, 
+//     USGpct: 31.6,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0
+
+// };
 
 
 // 16 Curry
@@ -252,57 +252,23 @@ var player2 = {
 // 08 Dirk
 // 06 Camby
 
-// var player2 = {
-//     name: "Andre Iguodala",
-//     year: "2007-2008",
-//     PER: 19.0 ,
-//     TSpct: .543 ,
-//     ThreePAr: .240 ,
-//     ThreePct: .307 ,
-//     FTr: .396 ,
-//     FTpct: .724 ,
-//     ORBpct: 3.1 ,
-//     DRBpct: 13.4 , 
-//     TRBpct: 8.2 ,
-//     ASTpct: 20.3 ,
-//     STLpct: 2.8 ,
-//     BLKpct: 1.2,
-//     TOVpct: 12.5, 
-//     USGpct: 23.8,
-//     FGM:0,
-//     FGA:0,
-//     ThreePA:0,
-//     ThreePM:0,
-//     FTM:0,
-//     FTA:0,
-//     PTS:0,
-//     REB:0,
-//     OREB:0,
-//     AST:0,
-//     STL:0,
-//     TOV:0,
-//     BLK:0,     
-//     FLS:0
-
-// };
-
-var player3 = {
-    name: "Kevin Love",
-    year: "2017-2018",
-    PER: 22.4,
-    TSpct: .614,
-    ThreePAr: .453,
-    ThreePct: .415,
-    FTr: .365,
-    FTpct: .880,
-    ORBpct: 7.0,
-    DRBpct: 29.8, 
-    TRBpct: 18.6,
-    ASTpct: 9.8,
-    STLpct: 1.3,
+var player2 = {
+    name: "Andre Iguodala",
+    year: "2007-2008",
+    PER: 19.0 ,
+    TSpct: .543 ,
+    ThreePAr: .240 ,
+    ThreePct: .307 ,
+    FTr: .396 ,
+    FTpct: .724 ,
+    ORBpct: 3.1 ,
+    DRBpct: 13.4 , 
+    TRBpct: 8.2 ,
+    ASTpct: 20.3 ,
+    STLpct: 2.8 ,
     BLKpct: 1.2,
-    TOVpct: 10.9, 
-    USGpct: 25.1,
+    TOVpct: 12.5, 
+    USGpct: 23.8,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -321,22 +287,22 @@ var player3 = {
 };
 
 // var player3 = {
-//     name: "Dirk Nowitzki",
-//     year:  "2007-08",
-//     PER: 24.6,
-//     TSpct: .585,
-//     ThreePAr: .167,
-//     ThreePct: .359 ,
-//     FTr: .414 ,
-//     FTpct: .879 ,
-//     ORBpct: 4.1,
-//     DRBpct: 22.8, 
-//     TRBpct: 13.8,
-//     ASTpct: 17.8,
-//     STLpct: 1.0,
-//     BLKpct: 1.9,
-//     TOVpct: 9.3, 
-//     USGpct: 28.8,
+//     name: "Kevin Love",
+//     year: "2017-2018",
+//     PER: 22.4,
+//     TSpct: .614,
+//     ThreePAr: .453,
+//     ThreePct: .415,
+//     FTr: .365,
+//     FTpct: .880,
+//     ORBpct: 7.0,
+//     DRBpct: 29.8, 
+//     TRBpct: 18.6,
+//     ASTpct: 9.8,
+//     STLpct: 1.3,
+//     BLKpct: 1.2,
+//     TOVpct: 10.9, 
+//     USGpct: 25.1,
 //     FGM:0,
 //     FGA:0,
 //     ThreePA:0,
@@ -354,25 +320,23 @@ var player3 = {
 
 // };
 
-
-
-var player4 = {
-    name: "Kevin Garnett",
-    year: "2009-2010",
-    PER: 19.4,
-    TSpct: .569,
-    ThreePAr: .006,
-    ThreePct: .200,
-    FTr: .286,
-    FTpct: .837,
-    ORBpct: 4.8,
-    DRBpct: 24.8, 
-    TRBpct: 16.6,
-    ASTpct: 14.7,
-    STLpct: 1.7,
-    BLKpct: 2.2,
-    TOVpct: 10.1, 
-    USGpct: 22.1,
+var player3 = {
+    name: "Dirk Nowitzki",
+    year:  "2007-08",
+    PER: 24.6,
+    TSpct: .585,
+    ThreePAr: .167,
+    ThreePct: .359 ,
+    FTr: .414 ,
+    FTpct: .879 ,
+    ORBpct: 4.1,
+    DRBpct: 22.8, 
+    TRBpct: 13.8,
+    ASTpct: 17.8,
+    STLpct: 1.0,
+    BLKpct: 1.9,
+    TOVpct: 9.3, 
+    USGpct: 28.8,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -389,24 +353,25 @@ var player4 = {
     FLS:0
 
 };
+
+
 
 // var player4 = {
-//     name: "Marcus Camby" ,
-//     year: "2005-06",
-//     PER: 19.9,
-//     TSpct: .499,
-//     ThreePAr: .017,
-//     ThreePct: .091,
-//     FTr: .240,
-//     FTpct: .712,
-//     ORBpct: 8.4,
-//     DRBpct: 33.3, 
-//     TRBpct: 21.0,
-//     ASTpct: 10.2,
-//     STLpct: 2.2,
-//     BLKpct: 7.5,
-//     TOVpct: 11.4, 
-//     USGpct: 19.5,
+//     name: "Ben Wallace",
+//     year: "2003-04",
+//     PER: 17.2,
+//     TSpct: .486,
+//     ThreePAr: .014,
+//     FTr: .432, 
+//     FTpct: .490,
+//     ORBpct: 11.9,
+//     DRBpct: 34.9, 
+//     TRBpct: 23.2,
+//     ASTpct: 6.9,
+//     STLpct: 2.0,
+//     BLKpct: 5.9,
+//     TOVpct: 14.5, 
+//     USGpct: 10.2,
 //     FGM:0,
 //     FGA:0,
 //     ThreePA:0,
@@ -424,25 +389,23 @@ var player4 = {
 
 // };
 
-
-
-var player5 = {
-    name: "Dion Waiters",
-    year: "2013-2014",
-    PER: 14.0,
-    TSpct: .508,
-    ThreePAr: .252,
-    ThreePct: .302,
-    FTr: .237,
-    FTpct: .832,
-    ORBpct: 1.7,
-    DRBpct: 9.0, 
-    TRBpct: 5.3,
-    ASTpct: 18.2,
-    STLpct: 1.6,
-    BLKpct: 0.7,
-    TOVpct: 12.3, 
-    USGpct: 26.9,
+var player4 = {
+    name: "Marcus Camby" ,
+    year: "2005-06",
+    PER: 19.9,
+    TSpct: .499,
+    ThreePAr: .017,
+    ThreePct: .091,
+    FTr: .240,
+    FTpct: .712,
+    ORBpct: 8.4,
+    DRBpct: 33.3, 
+    TRBpct: 21.0,
+    ASTpct: 10.2,
+    STLpct: 2.2,
+    BLKpct: 7.5,
+    TOVpct: 11.4, 
+    USGpct: 19.5,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -459,6 +422,42 @@ var player5 = {
     FLS:0
 
 };
+
+
+
+// var player5 = {
+//     name: "Dion Waiters",
+//     year: "2013-2014",
+//     PER: 14.0,
+//     TSpct: .508,
+//     ThreePAr: .252,
+//     ThreePct: .302,
+//     FTr: .237,
+//     FTpct: .832,
+//     ORBpct: 1.7,
+//     DRBpct: 9.0, 
+//     TRBpct: 5.3,
+//     ASTpct: 18.2,
+//     STLpct: 1.6,
+//     BLKpct: 0.7,
+//     TOVpct: 12.3, 
+//     USGpct: 26.9,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0
+
+// };
 
 // var player5 = {
 //     name: "Chris Paul",
@@ -494,38 +493,72 @@ var player5 = {
 
 // };
 
-var player6 = {
-    name: "Lance Stephenson",
-    year: "2013-2014",
-    PER: 14.7,
-    TSpct: .564,
-    ThreePAr: .280,
-    ThreePct: .352,
-    FTr: .226,
-    FTpct: .711, 
-    ORBpct: 2.7,
-    DRBpct: 18.1, 
-    TRBpct: 11.4,
-    ASTpct: 22.1,
-    STLpct: 1.0,
-    BLKpct: 0.2,
-    TOVpct: 18.0, 
-    USGpct: 19.4,
-    FGM:0,
-    FGA:0,
-    ThreePA:0,
-    ThreePM:0,
-    FTM:0,
-    FTA:0,
-    PTS:0,
-    REB:0,
-    OREB:0,
-    AST:0,
-    STL:0,
-    TOV:0,
-    BLK:0,     
-    FLS:0
-};
+var player5 = {
+        name: "Russell Westbrook",
+        year: "2016-2017",
+        PER: 30.6,
+        TSpct: .554,
+        ThreePAr: .300,
+        ThreePct: .343,
+        FTr: .433,
+        FTpct: .845,
+        ORBpct: 5.4,
+        DRBpct: 28.8, 
+        TRBpct: 17.1,
+        ASTpct: 57.3,
+        STLpct: 2.3,
+        BLKpct: .9,
+        TOVpct: 15.9, 
+        USGpct: 41.7,
+        FGM:0,
+        FGA:0,
+        ThreePA:0,
+        ThreePM:0,
+        FTM:0,
+        FTA:0,
+        PTS:0,
+        REB:0,
+        OREB:0,
+        AST:0,
+        STL:0,
+        TOV:0,
+        BLK:0,     
+        FLS:0
+    
+    };
+
+// var player6 = {
+//     name: "Lance Stephenson",
+//     year: "2013-2014",
+//     PER: 14.7,
+//     TSpct: .564,
+//     ThreePAr: .280,
+//     ThreePct: .352,
+//     FTr: .226,
+//     FTpct: .711, 
+//     ORBpct: 2.7,
+//     DRBpct: 18.1, 
+//     TRBpct: 11.4,
+//     ASTpct: 22.1,
+//     STLpct: 1.0,
+//     BLKpct: 0.2,
+//     TOVpct: 18.0, 
+//     USGpct: 19.4,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0
+// };
 
 // var player6 = {
 //     name: "J.J Redick" ,
@@ -561,23 +594,23 @@ var player6 = {
 
 // };
 
-var player7 = {
-    name: "Michael Beasley",
-    year: "2017-2018",
-    PER: 17.8,
-    TSpct: .556,
-    ThreePAr: .107,
-    ThreePct: .395,
-    FTr: .197, 
-    FTpct: .780,
-    ORBpct: 6.5,
-    DRBpct: 21.2, 
-    TRBpct: 13.9,
-    ASTpct: 12.5,
-    STLpct: 1.1,
-    BLKpct: 2.3,
-    TOVpct: 14.0, 
-    USGpct: 26.9,
+var player6 = {
+    name: "Klay Thompson",
+    year: "2014-2015",
+    PER: 20.8,
+    TSpct: .591,
+    ThreePAr: .420,
+    ThreePct: .439,
+    FTr: .197,
+    FTpct: .879, 
+    ORBpct: 1.2,
+    DRBpct: 9.4, 
+    TRBpct: 5.4,
+    ASTpct: 14.6,
+    STLpct: 1.7,
+    BLKpct: 1.8,
+    TOVpct: 9.5, 
+    USGpct: 27.6,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -592,8 +625,41 @@ var player7 = {
     TOV:0,
     BLK:0,     
     FLS:0
-
 };
+
+// var player7 = {
+//     name: "Michael Beasley",
+//     year: "2017-2018",
+//     PER: 17.8,
+//     TSpct: .556,
+//     ThreePAr: .107,
+//     ThreePct: .395,
+//     FTr: .197, 
+//     FTpct: .780,
+//     ORBpct: 6.5,
+//     DRBpct: 21.2, 
+//     TRBpct: 13.9,
+//     ASTpct: 12.5,
+//     STLpct: 1.1,
+//     BLKpct: 2.3,
+//     TOVpct: 14.0, 
+//     USGpct: 26.9,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0
+
+// };
 
 // var player7 = {
 // name: "Kevin Durant",
@@ -629,39 +695,73 @@ var player7 = {
 
 // };
 
-var player8 = {
-    name: "Anthony Bennett",
-    year: "2014-2015",
-    PER: 11.4,
-    TSpct: .458,
-    ThreePAr: .077,
-    ThreePct: .304,
-    FTr: .215, 
-    FTpct: .641,
-    ORBpct: 6.5,
-    DRBpct: 21.6, 
-    TRBpct: 13.8,
-    ASTpct: 8.7,
-    STLpct: 1.5,
-    BLKpct: 1.4,
-    TOVpct: 10.0, 
-    USGpct: 17.8,
-    FGM:0,
-    FGA:0,
-    ThreePA:0,
-    ThreePM:0,
-    FTM:0,
-    FTA:0,
-    PTS:0,
-    REB:0,
-    OREB:0,
-    AST:0,
-    STL:0,
-    TOV:0,
-    BLK:0,     
-    FLS:0
+var player7 = {
+    name: "Carmelo Anthony",
+        year: "2012-13",
+        PER: 24.8,
+        TSpct: .560,
+        ThreePAr: .278,
+        ThreePct: .379,
+        FTr: .344,
+        FTpct: .830,
+        ORBpct: 6.1,
+        DRBpct: 15.9, 
+        TRBpct: 10.8,
+        ASTpct: 14.1,
+        STLpct: 1.1,
+        BLKpct: 1.1,
+        TOVpct: 9.3, 
+        USGpct: 35.6,
+        FGM:0,
+        FGA:0,
+        ThreePA:0,
+        ThreePM:0,
+        FTM:0,
+        FTA:0,
+        PTS:0,
+        REB:0,
+        OREB:0,
+        AST:0,
+        STL:0,
+        TOV:0,
+        BLK:0,     
+        FLS:0
+    
+    };
 
-};
+// var player8 = {
+//     name: "Anthony Bennett",
+//     year: "2014-2015",
+//     PER: 11.4,
+//     TSpct: .458,
+//     ThreePAr: .077,
+//     ThreePct: .304,
+//     FTr: .215, 
+//     FTpct: .641,
+//     ORBpct: 6.5,
+//     DRBpct: 21.6, 
+//     TRBpct: 13.8,
+//     ASTpct: 8.7,
+//     STLpct: 1.5,
+//     BLKpct: 1.4,
+//     TOVpct: 10.0, 
+//     USGpct: 17.8,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0
+
+// };
 
 // var player8 = {
 //     name: "Draymond Green",
@@ -699,23 +799,24 @@ var player8 = {
 
 
 
-var player9 = {
-    name: "Kwame Brown",
-    year: "2003-2004",
-    PER: 15.7,
-    TSpct: .547,
-    ThreePAr: .003,
-    ThreePct: .500,
-    FTr: .567, 
-    FTpct: .683,
-    ORBpct: 8.7,
-    DRBpct: 19.2, 
-    TRBpct: 13.8,
-    ASTpct: 8.8,
-    STLpct: 1.5,
-    BLKpct: 1.7,
-    TOVpct: 16.0, 
-    USGpct: 17.3,
+
+var player8 = {
+    name: "Al Horford",
+    year: "2016-2017",
+    PER: 17.7,
+    TSpct: .553,
+    ThreePAr: .302,
+    ThreePct: .355,
+    FTr: .169,
+    FTpct: .800, 
+    ORBpct: 6.3,
+    DRBpct: 18.6, 
+    TRBpct: 11.8,
+    ASTpct: 24.4,
+    STLpct: 1.2,
+    BLKpct: 3.2,
+    TOVpct: 11.8, 
+    USGpct: 19.7,
     FGM:0,
     FGA:0,
     ThreePA:0,
@@ -730,8 +831,40 @@ var player9 = {
     TOV:0,
     BLK:0,     
     FLS:0
-
 };
+// var player9 = {
+//     name: "Kwame Brown",
+//     year: "2003-2004",
+//     PER: 15.7,
+//     TSpct: .547,
+//     ThreePAr: .003,
+//     ThreePct: .500,
+//     FTr: .567, 
+//     FTpct: .683,
+//     ORBpct: 8.7,
+//     DRBpct: 19.2, 
+//     TRBpct: 13.8,
+//     ASTpct: 8.8,
+//     STLpct: 1.5,
+//     BLKpct: 1.7,
+//     TOVpct: 16.0, 
+//     USGpct: 17.3,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0
+
+// };
 
 // var player9 = {
 //     name: "Anthony Davis",
@@ -766,6 +899,41 @@ var player9 = {
 //     FLS:0
 
 // };
+
+var player9 = {
+    name: "Steven Adams",
+    year: "2016-2017",
+    PER: 16.5,
+    TSpct: .589,
+    ThreePAr: .002,
+    ThreePct: .000,
+    FTr: .392,
+    FTpct: .611,
+    ORBpct: 13.0,
+    DRBpct: 15.4, 
+    TRBpct: 14.2,
+    ASTpct: 5.4,
+    STLpct: 1.8,
+    BLKpct: 2.6,
+    TOVpct: 16.0, 
+    USGpct: 16.2,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
 
 //Rommel's Test Team
 var teamA = {
@@ -825,42 +993,13 @@ var teamA = {
 //     OTPTS:0
 // }
 //Dummy Team
-var teamB = {
-    name:"Philly Motherlovers",
-    tag: "PHI",
-    players: [player5, player6,player7, player8, player9],
-    possession: false,
-    wonTipOff: false,
-    defense: 91,
-    offense: 90,
-    FGM:0,
-    FGA:0,
-    ThreePA:0,
-    ThreePM:0,
-    FTM:0,
-    FTA:0,
-    PTS:0,
-    REB:0,
-    OREB:0,
-    AST:0,
-    STL:0,
-    TOV:0,
-    BLK:0,     
-    FLS:0,
-    Q1PTS:0,
-    Q2PTS:0,
-    Q3PTS:0,
-    Q4PTS:0,
-    OTPTS:0
-}
-//Dapo Team
 // var teamB = {
-//     name:"Tel-Aviv Silk Pajamas",
-//     tag: "SPJ",
+//     name:"Philly Motherlovers",
+//     tag: "PHI",
 //     players: [player5, player6,player7, player8, player9],
 //     possession: false,
 //     wonTipOff: false,
-//     defense: 92,
+//     defense: 91,
 //     offense: 90,
 //     FGM:0,
 //     FGA:0,
@@ -882,6 +1021,35 @@ var teamB = {
 //     Q4PTS:0,
 //     OTPTS:0
 // }
+//Dapo Team
+var teamB = {
+    name:"Tel-Aviv Silk Pajamas",
+    tag: "SPJ",
+    players: [player5, player6,player7, player8, player9],
+    possession: false,
+    wonTipOff: false,
+    defense: 92,
+    offense: 90,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0,
+    Q1PTS:0,
+    Q2PTS:0,
+    Q3PTS:0,
+    Q4PTS:0,
+    OTPTS:0
+}
 
 //Game Properties 
 //Teams
@@ -901,8 +1069,8 @@ this.selectedPlayerDREB = "";
 this.selectedPlayerOREB = "";
 
 //Team scoring arrays for scoreboard updates
-this.gameLogA = [];
-this.gameLogB = [];
+this.gameLogA = [0];
+this.gameLogB = [0];
 this.gameLogAQ1 = [];
 this.gameLogAQ2= [];
 this.gameLogAQ3 = [];
@@ -938,8 +1106,13 @@ this.overtimes = 0; // Number of overtime periods that have taken place
 
 //Default sim speed
 // var simSpeed; 
-var slide = $(".simSliderValue");
 var userSimSpeed = 1;
+
+//User selects these speeds with the buttons
+var textSpeed 
+var logSpeed
+var appendSpeed
+var scrollSpeed
  
 
 
@@ -1148,7 +1321,7 @@ function printStats () {
                 var wut = (((hmm * i)/i));
                 // console.log (ayy * i);
                 // console.log(wut * i);
-            }, 400 * i);
+            }, logSpeed * i);
         })(i);;
         
     }
@@ -1166,7 +1339,7 @@ function printStats () {
                 var hmm = parseInt((((quarterLog.length * 400)/120)) * userSimSpeed);
                 var wut = ((hmm * i)/i)
                 // console.log(hmm);
-            }, 400 * i );
+            }, logSpeed * i );
         })(i);
     }
 
@@ -1180,7 +1353,7 @@ function printStats () {
                 var hmm = parseInt((((quarterLog.length * 400)/120)) * userSimSpeed);
                 var wut = ((hmm * i)/i)
 
-            }, 400 * i);
+            }, logSpeed * i);
         })(i);
     }
 
@@ -1189,14 +1362,18 @@ function printStats () {
             setTimeout(function () {
                 // var div = $('.gameBox'),
                 // height = div.height();
-                $(".gameLog").append('<div class="gameEvent">'+this.gameLog[i]+'</div>');
+                $(".gameLog").append('<div class="gameEvent">'+this.gameLog[i]+'</div>')
+    .fadeIn({
+    	duration: appendSpeed,
+      start: scrollDown
+    });
                 // updateScroll();
                 // div.animate({scrollTop: height}, i);
                 // height += div.height();
                 // $(".gameLog").scrollTop = div.height;
               var hmm = parseInt((((quarterLog.length * 400)/120)) * userSimSpeed);
                 var wut = (.175 * ((hmm * i)/i))       
-            }, 70 * i);
+            }, textSpeed * i);
         })(i);
     }
     return;  
@@ -1379,21 +1556,50 @@ function probStl() {
 //OVR gives a slight boost
 //SORT BY USG
 function probAst() {
+
     
     var possPlayersAST = this.OFFteam.players;
+
+    var assisted  = Math.random();
 
     for (let i = 0; i < possPlayersAST.length; i++) {
         var teamMate = possPlayersAST.sort(function(a, b){
             return b.USGpct-a.USGpct
         });   
         this.selectedPlayerAST = teamMate[Math.floor(Math.random() * teamMate.length)];
+        // console.log(this.selectedPlayerAST);
     }   
-    if (this.selectedPlayerAST.name === this.selectedPlayerOff.name){
-        this.selectedPlayerAST = "";
-    }     
-    else {   
-    return ( .3 * ((this.selectedPlayerAST.ASTpct + ((this.OFFteam.offense)/10))));
+
+    // console.log(.3 *(((this.selectedPlayerAST.ASTpct/100 + ((this.OFFteam.offense)/100)))));
+
+    // if (inbounds <= .80){
+    //     // return .3 * (this.selectedPlayerBLK.BLKpct/10) + (this.DEFteam.defense/10000);
+    //            doSteal();
+    //     }
+
+    //AST Check - Has to be a different player to get the assist
+    if ((assisted <= (((2.57 * (this.selectedPlayerAST.ASTpct + ((this.OFFteam.offense)/10))))/100)) && (this.selectedPlayerAST.name != this.selectedPlayerOff.name) ){
+        // console.log(this.selectedPlayerAST);
+        return
     }
+
+    //Prevents same player assisting themselves is AST check failed
+    else if (this.selectedPlayerAST.name === this.selectedPlayerOff.name){
+        this.selectedPlayerAST = "";
+        // console.log(this.selectedPlayerAST);
+        // return (0);
+        return
+    }   
+    //AST check failure  
+    else {
+        this.selectedPlayerAST = "";
+
+        return
+    }
+    // else {   
+    //     console.log(( .1 * ((this.selectedPlayerAST.ASTpct/100 + ((this.OFFteam.offense)/10)))));
+    // return ( .3 * ((this.selectedPlayerAST.ASTpct + ((this.OFFteam.offense)/10))));
+    // }
 };
 
 
@@ -1563,7 +1769,8 @@ function doShot() {
     
     // Assisted shots are easier
     if (passer !== "") {
-        probMake += 0.025;
+        probMake += 0.1;
+        // console.log(probMake);
     }
 
     // this.gameLog.push(probMake);
@@ -2408,6 +2615,8 @@ function doReb() {
     var possPlayersDREB = this.DEFteam.players;
     var possPlayersOREB = this.OFFteam.players;
 
+    var glassCleaner = Math.random();
+
     //Defensive Rebunders
     for (let i = 0; i < possPlayersDREB.length; i++) {
         var defenderREB = possPlayersDREB.sort(function(a, b){
@@ -2422,7 +2631,9 @@ function doReb() {
         });   
         this.selectedPlayerOREB = teamMateREB[Math.floor(Math.random() * teamMateREB.length)];     
     }
-    // this.gameLog.push((((this.selectedPlayerOREB.ORBpct/10) + this.OFFteam.offense/100) / ((this.selectedPlayerDREB.DRBpct/10) + (this.selectedPlayerDREB.TRBpct/100))));
+//    console.log((((this.selectedPlayerOREB.ORBpct/10) + this.OFFteam.offense/100) / ((this.selectedPlayerDREB.DRBpct/10) + (this.selectedPlayerDREB.TRBpct/100))));
+
+// console.log(this.selectedPlayerDREB);
     
     //OFF rebound check
     if ( (((this.selectedPlayerOREB.ORBpct/10) + this.OFFteam.offense/100) / ((this.selectedPlayerDREB.DRBpct/10) + (this.selectedPlayerDREB.TRBpct/100))/6) > Math.random()) {
@@ -2438,13 +2649,92 @@ function doReb() {
         return "orb";
     }
     //DEF rebound
+    //For better distribution, a few checks
     else {
-        this.selectedPlayerDREB.REB +=1;
-        this.DEFteam.REB +=1;
-        this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDREB.name + " grabbed the defensive rebound.");
-        this.gameLog.push(this.selectedPlayerDREB.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDREB.REB));
-        changePossession();
-        return "drb";
+        //If their DRBpct > a random number, they get it
+        if (this.selectedPlayerDREB.DRBpct/100 > glassCleaner ){
+            // console.log(this.selectedPlayerDREB);
+            // console.log(this.selectedPlayerDef);
+            // console.log(this.selectedPlayerDREB.DRBpct/100);
+            this.selectedPlayerDREB.REB +=1;
+            this.DEFteam.REB +=1;
+            this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDREB.name + " grabbed the defensive rebound.");
+            this.gameLog.push(this.selectedPlayerDREB.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDREB.REB));
+            changePossession();
+            return "drb";
+        }
+        //If it's less than a random number, another player gets a chance at the rebound
+        else if (this.selectedPlayerDREB.DRBpct/100 < glassCleaner ) {
+
+             //If they are different, the one with the higher TRB% will get the rebound
+            //Some players just concede rebounds to their teammates who are known for rebounding.
+            if (this.selectedPlayerDREB != this.selectedPlayerDef) {
+             
+
+                        if (this.selectedPlayerDREB.TRBpct < this.selectedPlayerDef.TRBpct) {
+                        this.selectedPlayerDef.REB +=1;
+                        this.DEFteam.REB +=1;
+                        this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDef.name + " grabbed the defensive rebound.");
+                        this.gameLog.push(this.selectedPlayerDef.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDef.REB));
+                        changePossession();
+                        return "drb";
+                        }
+
+                    else {
+                        this.selectedPlayerDREB.REB +=1;
+                        this.DEFteam.REB +=1;
+                        this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDREB.name + " grabbed the defensive rebound.");
+                        this.gameLog.push(this.selectedPlayerDREB.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDREB.REB));
+                        changePossession();
+                        return "drb";
+
+                    }
+            }
+            
+            //If the Defensive Player and the Rebounder are the same player
+            // for loop and re-sort by DRB%
+            // Rebound goes to the best 3 defensive rebounders randomly 
+            //This prevents players not known for grabbing a lot of rebounds from doing so
+            //The best rebounders are usually forwards and centers, some shooting guards are good rebounders
+            //Few PGs will get rebounds in this scenario, if any
+            else if (this.selectedPlayerDREB = this.selectedPlayerDef) {
+            
+                for (let i = 0; i < possPlayersDREB.length; i++) {
+                    var defenderREB = possPlayersDREB.sort(function(a, b){
+                        return b.DRBpct-a.DRBpct
+                    });   
+                 
+                    this.selectedPlayerDREB = defenderREB[Math.floor(Math.random() * 3)];
+                }
+
+        
+                // console.log(this.selectedPlayerDREB);
+                this.selectedPlayerDREB.REB +=1;
+                this.DEFteam.REB +=1;
+                this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDREB.name + " grabbed the defensive rebound.");
+                this.gameLog.push(this.selectedPlayerDREB.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDREB.REB));
+                changePossession();
+                return "drb";
+
+
+            }
+
+        }
+        // else {
+        //     this.selectedPlayerDef.REB +=1;
+        //     this.DEFteam.REB +=1;
+        //     this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDef.name + " grabbed the defensive rebound.");
+        //     this.gameLog.push(this.selectedPlayerDef.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDef.REB));
+        //     changePossession();
+        //     return "drb";
+        // }
+        // console.log(this.selectedPlayerDREB);
+        // this.selectedPlayerDREB.REB +=1;
+        // this.DEFteam.REB +=1;
+        // this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDREB.name + " grabbed the defensive rebound.");
+        // this.gameLog.push(this.selectedPlayerDREB.name + "("+this.DEFteam.tag+")" + " REB: " + (this.selectedPlayerDREB.REB));
+        // changePossession();
+        // return "drb";
     }
 };
 
