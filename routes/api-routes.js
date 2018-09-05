@@ -73,123 +73,114 @@ module.exports = function (app) {
 
     }).then(function (results) {
       res.json(results);
-      console.log(JSON.parse(results[0].dataValues.data).full_name);
+      var seasonTotal = JSON.parse(results[0].dataValues.data).seasons[0].teams[0].total
+      // console.log(JSON.parse(results[0].dataValues.data));
+      console.log(seasonTotal);
+      // console.log(JSON.parse(results[0].dataValues.data).full_name);
+      // console.log(JSON.parse(results[0].dataValues.data).seasons[0].year);
       // Above should return player name in console
       // console.log(results[0].dataValues.data));
+      db.Stats.create({
+        playerName: JSON.parse(results[0].dataValues.data).full_name,
+        year: JSON.parse(results[0].dataValues.data).seasons[0].year,
+        //per: req.body.per,
+        tsPCT: parseFloat((seasonTotal.points / (2 * (seasonTotal.field_goals_att + (0.44 * seasonTotal.free_throws_att))))).toFixed(3),
+        threePAR: parseFloat((seasonTotal.three_points_att / seasonTotal.field_goals_att)).toFixed(3),
+        ftR: parseFloat((seasonTotal.free_throws_att / seasonTotal.field_goals_att)).toFixed(3),
+        // orbPCT: req.body.orbPCT,
+        // drbPCT: req.body.drbPCT,
+        // trbPCT: req.body.trbPCT,
+        // astPCT: req.body.astPCT,
+        // stlPCT: req.body.stlPCT,
+        // blkPCT: req.body.blkPCT,
+        // tovPCT: req.body.tovPCT,
+        // usgPCT: req.body.usgPCT,
+        fgm: parseInt(seasonTotal.field_goals_made),
+        fga: parseInt(seasonTotal.field_goals_att),
+        threePA: parseInt(seasonTotal.three_points_att),
+        threePM: parseInt(seasonTotal.three_points_made),
+        ftm: parseInt(seasonTotal.free_throws_made),
+        fta: parseInt(seasonTotal.free_throws_att),
+        pts: parseInt(seasonTotal.points),
+        reb: parseInt(seasonTotal.rebounds),
+        oreb: parseInt(seasonTotal.offensive_rebounds),
+        ast: parseInt(seasonTotal.assists),
+        stl: parseInt(seasonTotal.steals),
+        tov: parseInt(seasonTotal.turnovers),
+        blk: parseInt(seasonTotal.blocks),
+        fls: parseInt(seasonTotal.personal_fouls)
+      });
     });
   });
 
-  // GET route for getting all of the todos
   app.get("/api/stats/", function (req, res) {
-    // findAll returns all entries for a table when used with no options
     db.Stats.findAll({
-      // where: {
-      //   id: req.params.id
-      // }
+
     }).then(function (results) {
-      // We have access to the todos as an argument inside of the callback function
-      // console.log(results);
-      res.json(results);
+      res.send(results);
     });
   });
 
   // POST route for saving a new todo
-  app.get("/api/cache/", function (req, res) {
-    console.log(req.body);
-    // res.send("Test");
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-   
-    // need to change all the req.body to corresponding JSON values
-    db.Stats.create({
-      playerName: req.body.name,
-      year: req.body.year,
-      per: req.body.per,
-      tsPCT: req.body.tsPCT,
-      threePAR: req.body.threePAR,
-      ftR: req.body.ftR,
-      orbPCT: req.body.orbPCT,
-      drbPCT: req.body.drbPCT,
-      trbPCT: req.body.trbPCT,
-      astPCT: req.body.astPCT,
-      stlPCT: req.body.stlPCT,
-      blkPCT: req.body.blkPCT,
-      tovPCT: req.body.tovPCT,
-      usgPCT: req.body.usgPCT,
-      fgm: req.body.fgm,
-      fga: req.body.fga,
-      threePA: req.body.threePA,
-      threePM: req.body.threePM,
-      ftm: req.body.ftm,
-      fta: req.body.fta,
-      pts: req.body.pts,
-      reb: req.body.reb,
-      oreb: req.body.oreb,
-      ast: req.body.ast,
-      stl: req.body.stl,
-      tov: req.body.tov,
-      blk: req.body.blk,
-      fls: req.body.fls
-    }).then(function (results) {
-      // console.log(results);
-      // We have access to the new todo as an argument inside of the callback function
-      res.json(results);
-    });
-  });
+  // app.post("/api/stats", function (req, res) {
+  //   // console.log(res.body);
+  //   res.send("Test");
+  //   // create takes an argument of an object describing the item we want to
+  //   // insert into our table. In this case we just we pass in an object with a text
+  //   // and complete property (req.body)
 
-
-  // POST route for saving a new todo
-  app.post("/api/stats", function (req, res) {
-    // console.log(res.body);
-    res.send("Test");
-    // create takes an argument of an object describing the item we want to
-    // insert into our table. In this case we just we pass in an object with a text
-    // and complete property (req.body)
-
-    db.Stats.create({
-      playerName: req.body.name,
-      year: req.body.year,
-      per: req.body.per,
-      tsPCT: req.body.tsPCT,
-      threePAR: req.body.threePAR,
-      ftR: req.body.ftR,
-      orbPCT: req.body.orbPCT,
-      drbPCT: req.body.drbPCT,
-      trbPCT: req.body.trbPCT,
-      astPCT: req.body.astPCT,
-      stlPCT: req.body.stlPCT,
-      blkPCT: req.body.blkPCT,
-      tovPCT: req.body.tovPCT,
-      usgPCT: req.body.usgPCT,
-      fgm: req.body.fgm,
-      fga: req.body.fga,
-      threePA: req.body.threePA,
-      threePM: req.body.threePM,
-      ftm: req.body.ftm,
-      fta: req.body.fta,
-      pts: req.body.pts,
-      reb: req.body.reb,
-      oreb: req.body.oreb,
-      ast: req.body.ast,
-      stl: req.body.stl,
-      tov: req.body.tov,
-      blk: req.body.blk,
-      fls: req.body.fls
-    }).then(function (results) {
-      // console.log(results);
-      // We have access to the new todo as an argument inside of the callback function
-      res.json(results);
-    });
-  });
+  //   db.Stats.create({
+  //     playerName: req.body.name,
+  //     year: req.body.year,
+  //     per: req.body.per,
+  //     tsPCT: req.body.tsPCT,
+  //     threePAR: req.body.threePAR,
+  //     ftR: req.body.ftR,
+  //     orbPCT: req.body.orbPCT,
+  //     drbPCT: req.body.drbPCT,
+  //     trbPCT: req.body.trbPCT,
+  //     astPCT: req.body.astPCT,
+  //     stlPCT: req.body.stlPCT,
+  //     blkPCT: req.body.blkPCT,
+  //     tovPCT: req.body.tovPCT,
+  //     usgPCT: req.body.usgPCT,
+  //     fgm: req.body.fgm,
+  //     fga: req.body.fga,
+  //     threePA: req.body.threePA,
+  //     threePM: req.body.threePM,
+  //     ftm: req.body.ftm,
+  //     fta: req.body.fta,
+  //     pts: req.body.pts,
+  //     reb: req.body.reb,
+  //     oreb: req.body.oreb,
+  //     ast: req.body.ast,
+  //     stl: req.body.stl,
+  //     tov: req.body.tov,
+  //     blk: req.body.blk,
+  //     fls: req.body.fls
+  //   }).then(function (results) {
+  //     // console.log(results);
+  //     // We have access to the new todo as an argument inside of the callback function
+  //     res.json(results);
+  //   });
+  // });
 
   // DELETE route for deleting todos. We can get the id of the todo we want to delete from
   // req.params.id
-  app.delete("/api/stats/:id", function (req, res) {
 
+  app.delete("/api/stats/:id", function(req, res) {
+    db.Stats.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function() {
+
+      });
   });
 
   // PUT route for updating todos. We can get the updated todo from req.body
-  app.put("/api/stats", function (req, res) {
+  // app.put("/api/stats", function (req, res) {
 
-  });
+  // });
 };
