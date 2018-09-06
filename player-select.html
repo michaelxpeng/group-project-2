@@ -20,7 +20,11 @@
     <option value="2017">2017</option>
 </select>
 
-<div class="total-available">
+<input type="text" placeholder="Search Player..">
+
+<h3 id="salary-heading">Remaining Team Salary: $<span id="salary-display"></span></h3>
+
+<!-- <div class="total-available"> -->
     <div id="tab-div">
         <button class="tab active" value="ALL">ALL</button>
         <button class="tab" value="PG">PG</button>
@@ -43,7 +47,8 @@
             <tbody></tbody>
         </table>
     </div>
-</div>
+    <div id="stat-holder"></div>
+<!-- </div> -->
 
 <div id="user-lineup-div">
     <table id="user-lineup" class="sortable">
@@ -79,6 +84,8 @@
         </tr>
     </table>
 </div>
+
+<button id="save-team">SAVE<br>TEAM</button>
 
 <script src="assets/js/select-logic.js"></script>
 </body>
