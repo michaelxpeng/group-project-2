@@ -1,4 +1,4 @@
--- Drops the todolist if it exists currently --
+-- Drops fantasy if it exists currently --
 DROP DATABASE IF EXISTS fantasy;
--- Creates the "todolist" database --
+-- Creates the fantasy database --
 CREATE DATABASE fantasy;
