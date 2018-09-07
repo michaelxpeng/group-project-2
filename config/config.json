@@ -6,6 +6,23 @@
       "host": "127.0.0.1",
       "port": 3306,
       "dialect": "mysql"
-    }
+    },
 
+    "production": {
+      "username": "root",
+      "password": "!Mp920506",
+      "database": "fantasy_production",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql"
+    },
+
+    "test": {
+      "username": "root",
+      "password": "!Mp920506",
+      "database": "fantasy_test",
+      "host": "127.0.0.1",
+      "port": 3306,
+      "dialect": "mysql"
+    }
 }
