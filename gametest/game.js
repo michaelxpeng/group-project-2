@@ -2065,5 +2065,3 @@ function minTommss(){
     //       });
     //     });
     //   };
-    
-     

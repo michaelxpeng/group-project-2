@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://lh3.googleusercontent.com/dmhLNvQ-2LbyER1ZIaj4YZZpiOAprqwyLodVdatIouaZJYOXiGU2BpankZgKGmGjrmCL=s180">
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
+    <!-- <link rel="stylesheet" type="text/css" media="screen" href="reset.css" /> -->
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
@@ -17,7 +18,196 @@
 
 </head>
 <body>
-   
+<div class="game-boxscore">
+  <h1 class="boxscore-heading">teamA</h1>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>PTS</th>
+        <th>FG %</th>
+        <th>3PT %</th>
+        <th>FT</th>
+        <th>OREB</th>
+        <th>REB</th>
+        <th>AST</th>
+        <th>STL</th>
+        <th>BLK</th>
+        <th>TOV</th>
+        <th>FLS</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td id="name-player0"></td>
+        <td id="PTS-player0">0</td>
+        <td id="FG-player0">0</td>
+        <td id="3PT-player0">0</td>
+        <td id="FT-player0">0</td>
+        <td id="OREB-player0">0</td>
+        <td id="REB-player0">0</td>
+        <td id="AST-player0">0</td>
+        <td id="STL-player0">0</td>
+        <td id="BLK-player0">0</td>
+        <td id="TOV-player0">0</td>
+        <td id="FLS-player0">0</td>
+      </tr>
+      <tr>
+        <td id="name-player1"></td>
+        <td id="PTS-player1">0</td>
+        <td id="FG-player1">0</td>
+        <td id="3PT-player1">0</td>
+        <td id="FT-player1">0</td>
+        <td id="OREB-player1">0</td>
+        <td id="REB-player1">0</td>
+        <td id="AST-player1">0</td>
+        <td id="STL-player1">0</td>
+        <td id="BLK-player1">0</td>
+        <td id="TOV-player1">0</td>
+        <td id="FLS-player1">0</td>
+      </tr>
+      <tr>
+        <td id="name-player2"></td>
+        <td id="PTS-player2">0</td>
+        <td id="FG-player2">0</td>
+        <td id="3PT-player2">0</td>
+        <td id="FT-player2">0</td>
+        <td id="OREB-player2">0</td>
+        <td id="REB-player2">0</td>
+        <td id="AST-player2">0</td>
+        <td id="STL-player2">0</td>
+        <td id="BLK-player2">0</td>
+        <td id="TOV-player2">0</td>
+        <td id="FLS-player2">0</td>
+      </tr>
+      <tr>
+        <td id="name-player3"></td>
+        <td id="PTS-player3">0</td>
+        <td id="FG-player3">0</td>
+        <td id="3PT-player3">0</td>
+        <td id="FT-player3">0</td>
+        <td id="OREB-player3">0</td>
+        <td id="REB-player3">0</td>
+        <td id="AST-player3">0</td>
+        <td id="STL-player3">0</td>
+        <td id="BLK-player3">0</td>
+        <td id="TOV-player3">0</td>
+        <td id="FLS-player3">0</td>
+      </tr>
+      <tr>
+        <td id="name-player4"></td>
+        <td id="PTS-player4">0</td>
+        <td id="FG-player4">0</td>
+        <td id="3PT-player4">0</td>
+        <td id="FT-player4">0</td>
+        <td id="OREB-player4">0</td>
+        <td id="REB-player4">0</td>
+        <td id="AST-player4">0</td>
+        <td id="STL-player4">0</td>
+        <td id="BLK-player4">0</td>
+        <td id="TOV-player4">0</td>
+        <td id="FLS-player4">0</td>
+      </tr>
+    </tbody>
+  </table>
+  
+  <h1 class="boxscore-heading">teamB</h1>
+  <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>PTS</th>
+          <th>FG %</th>
+          <th>3PT %</th>
+          <th>FT</th>
+          <th>OREB</th>
+          <th>REB</th>
+          <th>AST</th>
+          <th>STL</th>
+          <th>BLK</th>
+          <th>TOV</th>
+          <th>FLS</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="name-player5"></td>
+          <td id="PTS-player5">0</td>
+          <td id="FG-player5">0</td>
+          <td id="3PT-player5">0</td>
+          <td id="FT-player5">0</td>
+          <td id="OREB-player5">0</td>
+          <td id="REB-player5">0</td>
+          <td id="AST-player5">0</td>
+          <td id="STL-player5">0</td>
+          <td id="BLK-player5">0</td>
+          <td id="TOV-player5">0</td>
+          <td id="FLS-player5">0</td>
+        </tr>
+        <tr>
+          <td id="name-player6"></td>
+          <td id="PTS-player6">0</td>
+          <td id="FG-player6">0</td>
+          <td id="3PT-player6">0</td>
+          <td id="FT-player6">0</td>
+          <td id="OREB-player6">0</td>
+          <td id="REB-player6">0</td>
+          <td id="AST-player6">0</td>
+          <td id="STL-player6">0</td>
+          <td id="BLK-player6">0</td>
+          <td id="TOV-player6">0</td>
+          <td id="FLS-player6">0</td>
+        </tr>
+        <tr>
+          <td id="name-player7"></td>
+          <td id="PTS-player7">0</td>
+          <td id="FG-player7">0</td>
+          <td id="3PT-player7">0</td>
+          <td id="FT-player7">0</td>
+          <td id="OREB-player7">0</td>
+          <td id="REB-player7">0</td>
+          <td id="AST-player7">0</td>
+          <td id="STL-player7">0</td>
+          <td id="BLK-player7">0</td>
+          <td id="TOV-player7">0</td>
+          <td id="FLS-player7">0</td>
+        </tr>
+        <tr>
+          <td id="name-player8"></td>
+          <td id="PTS-player8">0</td>
+          <td id="FG-player8">0</td>
+          <td id="3PT-player8">0</td>
+          <td id="FT-player8">0</td>
+          <td id="OREB-player8">0</td>
+          <td id="REB-player8">0</td>
+          <td id="AST-player8">0</td>
+          <td id="STL-player8">0</td>
+          <td id="BLK-player8">0</td>
+          <td id="TOV-player8">0</td>
+          <td id="FLS-player8">0</td>
+        </tr>
+        <tr>
+          <td id="name-player9"></td>
+          <td id="PTS-player9">0</td>
+          <td id="FG-player9">0</td>
+          <td id="3PT-player9">0</td>
+          <td id="FT-player9">0</td>
+          <td id="OREB-player9">0</td>
+          <td id="REB-player9">0</td>
+          <td id="AST-player9">0</td>
+          <td id="STL-player9">0</td>
+          <td id="BLK-player9">0</td>
+          <td id="TOV-player9">0</td>
+          <td id="FLS-player9">0</td>
+        </tr>
+      </tbody>
+    </table>
+
+  <button id="table-test">test</button>
+</div>
+<div class="game-main">
+
+
     <img id="ball" src="https://lh3.googleusercontent.com/dmhLNvQ-2LbyER1ZIaj4YZZpiOAprqwyLodVdatIouaZJYOXiGU2BpankZgKGmGjrmCL=s180">
 
 
@@ -53,7 +243,9 @@
         </div>
       </div>
       <div class="subtitle"><b>All-Time NBA Sim</b> </div>
+  
 
+</div>
     
 </body>
 </html>
