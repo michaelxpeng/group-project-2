@@ -68,50 +68,79 @@ module.exports = function (app) {
   //   res.send(req.body);
   // });
 
-  app.get("/api/cache/", function (req, res) {
+  app.get("/api/2017teamcache/", function (req, res) {
     db.CacheRequest.findAll({
 
     }).then(function (results) {
       res.json(results);
-      var seasonTotal = JSON.parse(results[0].dataValues.data).seasons[0].teams[0].total
       // console.log(JSON.parse(results[0].dataValues.data));
-      console.log(seasonTotal);
+      // console.log(JSON.parse(results[0].dataValues.data).players[0].full_name);
+      for (var i = 0; i < results.length; i++) {
+        var team = JSON.parse(results[i].dataValues.data);
+        console.log("TEAM: " + team.name);
+          for (var j = 0; j < team.players.length; j++) {
+            var players = team.players[j].full_name;
+            console.log(players);
+          };
+      };
+
+      // db.Teams.create ({
+      //   season: ,
+      //   teamName:
+      //   teamID:
+      //   playerName: 
+      //   playerID:
+      // });
+
+    });
+  });
+
+
+// -----------
+  app.get("/api/cache/", function (req, res) {
+    db.CacheRequest.findAll({
+
+    }).then(function (results) {
+      res.json(results[0].dataValues.data);
+      // console.log(JSON.parse(results[0].dataValues.data));
+      // console.log(seasonTotal);
       // console.log(JSON.parse(results[0].dataValues.data).full_name);
       // console.log(JSON.parse(results[0].dataValues.data).seasons[0].year);
       // Above should return player name in console
       // console.log(results[0].dataValues.data));
-      db.Stats.create({
-        playerName: JSON.parse(results[0].dataValues.data).full_name,
-        year: JSON.parse(results[0].dataValues.data).seasons[0].year,
-        //per: req.body.per,
-        tsPCT: parseFloat((seasonTotal.points / (2 * (seasonTotal.field_goals_att + (0.44 * seasonTotal.free_throws_att))))).toFixed(3),
-        threePAR: parseFloat((seasonTotal.three_points_att / seasonTotal.field_goals_att)).toFixed(3),
-        ftR: parseFloat((seasonTotal.free_throws_att / seasonTotal.field_goals_att)).toFixed(3),
-        // orbPCT: req.body.orbPCT,
-        // drbPCT: req.body.drbPCT,
-        // trbPCT: req.body.trbPCT,
-        // astPCT: req.body.astPCT,
-        // stlPCT: req.body.stlPCT,
-        // blkPCT: req.body.blkPCT,
-        // tovPCT: req.body.tovPCT,
-        // usgPCT: req.body.usgPCT,
-        fgm: parseInt(seasonTotal.field_goals_made),
-        fga: parseInt(seasonTotal.field_goals_att),
-        threePA: parseInt(seasonTotal.three_points_att),
-        threePM: parseInt(seasonTotal.three_points_made),
-        ftm: parseInt(seasonTotal.free_throws_made),
-        fta: parseInt(seasonTotal.free_throws_att),
-        pts: parseInt(seasonTotal.points),
-        reb: parseInt(seasonTotal.rebounds),
-        oreb: parseInt(seasonTotal.offensive_rebounds),
-        ast: parseInt(seasonTotal.assists),
-        stl: parseInt(seasonTotal.steals),
-        tov: parseInt(seasonTotal.turnovers),
-        blk: parseInt(seasonTotal.blocks),
-        fls: parseInt(seasonTotal.personal_fouls)
-      });
+      // db.Stats.create({
+      //   playerName: JSON.parse(results[1].dataValues.data).full_name,
+      //   year: JSON.parse(results[1].dataValues.data).seasons[0].year,
+      //   //per: req.body.per,
+      //   tsPCT: parseFloat((seasonTotal.points / (2 * (seasonTotal.field_goals_att + (0.44 * seasonTotal.free_throws_att))))).toFixed(3),
+      //   threePAR: parseFloat((seasonTotal.three_points_att / seasonTotal.field_goals_att)).toFixed(3),
+      //   ftR: parseFloat((seasonTotal.free_throws_att / seasonTotal.field_goals_att)).toFixed(3),
+      //   // orbPCT: req.body.orbPCT,
+      //   // drbPCT: req.body.drbPCT,
+      //   // trbPCT: req.body.trbPCT,
+      //   // astPCT: req.body.astPCT,
+      //   // stlPCT: req.body.stlPCT,
+      //   // blkPCT: req.body.blkPCT,
+      //   // tovPCT: req.body.tovPCT,
+      //   // usgPCT: req.body.usgPCT,
+      //   fgm: parseInt(seasonTotal.field_goals_made),
+      //   fga: parseInt(seasonTotal.field_goals_att),
+      //   threePA: parseInt(seasonTotal.three_points_att),
+      //   threePM: parseInt(seasonTotal.three_points_made),
+      //   ftm: parseInt(seasonTotal.free_throws_made),
+      //   fta: parseInt(seasonTotal.free_throws_att),
+      //   pts: parseInt(seasonTotal.points),
+      //   reb: parseInt(seasonTotal.rebounds),
+      //   oreb: parseInt(seasonTotal.offensive_rebounds),
+      //   ast: parseInt(seasonTotal.assists),
+      //   stl: parseInt(seasonTotal.steals),
+      //   tov: parseInt(seasonTotal.turnovers),
+      //   blk: parseInt(seasonTotal.blocks),
+      //   fls: parseInt(seasonTotal.personal_fouls)
+      // });
     });
   });
+// ------------
 
   app.get("/api/stats/", function (req, res) {
     db.Stats.findAll({
