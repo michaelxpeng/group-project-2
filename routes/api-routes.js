@@ -70,12 +70,21 @@ module.exports = function (app) {
       // Find all the teams first from results
       for (var i = 0; i < results.length; i++) {
         var team = JSON.parse(results[i].dataValues.data);
+        // console.log("------------------");
+        // console.log("TEAM: " + team.name);
+        // Create an instance for the Teams model
+        db.Teams.create({
+          season: team.season.year,
+          teamName: team.name,
+          teamID: team.id
+        });
         // Loop through all the teams' players
         for (var j = 0; j < team.players.length; j++) {
           var playerName = team.players[j].full_name;
           var playerID = team.players[j].id;
-          console.log(playerName);
-          
+          // console.log("Name: " + playerName);
+          // console.log("ID: " + playerID);
+
           // Create an instance for the Players model
           db.Players.create({
             playerName: playerName,
@@ -83,13 +92,6 @@ module.exports = function (app) {
           });
         };
       };
-
-      // Create an instance for the Teams model
-      db.Teams.create({
-        season: JSON.parse(results[i].dataValues.data).season.year,
-        teamName: JSON.parse(results[i].dataValues.data).name,
-        teamID: JSON.parse(results[i].dataValues.data).id
-      });
     });
   });
 
@@ -113,58 +115,135 @@ module.exports = function (app) {
     });
   });
 
-  // Find the cached data for teams in the 2017 season
-  // app.get("/api/2017playerscache/", function (req, res) {
+
+  // app.get("/api/statscache/", function (req, res) {
   //   db.CacheRequest.findAll({
 
   //   }).then(function (results) {
-  //     res.json(results[0].dataValues.data);
-      // console.log(JSON.parse(results[0].dataValues.data));
-      // console.log(seasonTotal);
-      // console.log(JSON.parse(results[0].dataValues.data).full_name);
-      // console.log(JSON.parse(results[0].dataValues.data).seasons[0].year);
-      // Above should return player name in console
-      // console.log(results[0].dataValues.data));
-      // db.Stats.create({
-      //   playerName: JSON.parse(results[1].dataValues.data).full_name,
-      //   year: JSON.parse(results[1].dataValues.data).seasons[0].year,
-      //   //per: req.body.per,
-      //   tsPCT: parseFloat((seasonTotal.points / (2 * (seasonTotal.field_goals_att + (0.44 * seasonTotal.free_throws_att))))).toFixed(3),
-      //   threePAR: parseFloat((seasonTotal.three_points_att / seasonTotal.field_goals_att)).toFixed(3),
-      //   ftR: parseFloat((seasonTotal.free_throws_att / seasonTotal.field_goals_att)).toFixed(3),
-      //   // orbPCT: req.body.orbPCT,
-      //   // drbPCT: req.body.drbPCT,
-      //   // trbPCT: req.body.trbPCT,
-      //   // astPCT: req.body.astPCT,
-      //   // stlPCT: req.body.stlPCT,
-      //   // blkPCT: req.body.blkPCT,
-      //   // tovPCT: req.body.tovPCT,
-      //   // usgPCT: req.body.usgPCT,
-      //   fgm: parseInt(seasonTotal.field_goals_made),
-      //   fga: parseInt(seasonTotal.field_goals_att),
-      //   threePA: parseInt(seasonTotal.three_points_att),
-      //   threePM: parseInt(seasonTotal.three_points_made),
-      //   ftm: parseInt(seasonTotal.free_throws_made),
-      //   fta: parseInt(seasonTotal.free_throws_att),
-      //   pts: parseInt(seasonTotal.points),
-      //   reb: parseInt(seasonTotal.rebounds),
-      //   oreb: parseInt(seasonTotal.offensive_rebounds),
-      //   ast: parseInt(seasonTotal.assists),
-      //   stl: parseInt(seasonTotal.steals),
-      //   tov: parseInt(seasonTotal.turnovers),
-      //   blk: parseInt(seasonTotal.blocks),
-      //   fls: parseInt(seasonTotal.personal_fouls)
-      // });
-  //   });
-  // });
-  // ------------
-
-  // app.get("/api/stats/", function (req, res) {
-  //   db.Stats.findAll({
-
-  //   }).then(function (results) {
-  //     res.send(results);
+  //     res.json(results);
   //   });
   // });
 
+  // Find the cached data for teams in the 2017 season
+  app.get("/api/2017playerscache/", function (req, res) {
+    db.CacheRequest.findAll({
+
+    }).then(function (results) {
+      res.json(results);
+      // console.log(JSON.parse(results[0].dataValues.data).players[0].average);
+
+      for (var i = 0; i < results.length; i++) {
+        // Loop through all 30 teams
+        var team = JSON.parse(results[i].dataValues.data);
+        // console.log(JSON.stringify(teams));
+        for (var j = 0; j < team.players.length; j++) {
+          var player = team.players[j];
+          var playerTotal = team.players[j].total;
+          var playerAverage = team.players[j].average;
+          var ownPossession = 0.5 * ((team.own_record.total.field_goals_att + 0.4 * team.own_record.total.free_throws_att - 1.07 * (team.own_record.total.offensive_rebounds / (team.own_record.total.offensive_rebounds + team.opponents.total.defensive_rebounds)) * (team.own_record.total.field_goals_att - team.own_record.total.field_goals_made) + team.own_record.total.turnovers) + (team.opponents.total.field_goals_att + 0.4 * team.opponents.total.free_throws_att - 1.07 * (team.opponents.total.offensive_rebounds / (team.opponents.total.offensive_rebounds + team.own_record.total.defensive_rebounds)) * (team.opponents.total.field_goals_att - team.opponents.total.field_goals_made) + team.opponents.total.turnovers));
+          var oppPossession = 0.5 * ((team.opponents.total.field_goals_att + 0.4 * team.opponents.total.free_throws_att - 1.07 * (team.opponents.total.offensive_rebounds / (team.opponents.total.offensive_rebounds + team.own_record.total.defensive_rebounds)) * (team.opponents.total.field_goals_att - team.opponents.total.field_goals_made) + team.opponents.total.turnovers) + (team.own_record.total.field_goals_att + 0.4 * team.own_record.total.free_throws_att - 1.07 * (team.own_record.total.offensive_rebounds / (team.own_record.total.offensive_rebounds + team.opponents.total.defensive_rebounds)) * (team.own_record.total.field_goals_att - team.own_record.total.field_goals_made) + team.own_record.total.turnovers));
+
+          var playerName = player.full_name;
+          console.log("-------------")
+          console.log("Name: " + playerName);
+          var year = team.season.year;
+          console.log("Year: " + year);
+          var per = (playerAverage.efficiency).toFixed(1);
+          console.log("PER: " + per);
+          var tsPCT = (playerTotal.points / (2 * (playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att)))).toFixed(3);
+          console.log("tsPCT: " + tsPCT);
+          var threePAR = (playerTotal.three_points_att / playerTotal.field_goals_att).toFixed(3);
+          console.log("threePAR: " + threePAR);
+          var ftR = (playerTotal.free_throws_att / playerTotal.field_goals_att).toFixed(3);
+          console.log("ftR: " + ftR);
+          var orbPCT = (100 * (playerTotal.offensive_rebounds * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.offensive_rebounds + team.opponents.total.defensive_rebounds))).toFixed(1);
+          console.log("orbPCT: " + orbPCT);
+          var drbPCT = (100 * (playerTotal.defensive_rebounds * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.defensive_rebounds + team.opponents.total.offensive_rebounds))).toFixed(1);
+          console.log("drbPCT: " + drbPCT);
+          var trbPCT = (100 * (playerTotal.rebounds * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.rebounds + team.opponents.total.rebounds))).toFixed(1);
+          console.log("trbPCT: " + trbPCT);
+          var astPCT = (100 * playerTotal.assists / (((playerTotal.minutes / (team.own_record.total.minutes / 5)) * team.own_record.total.field_goals_made) - playerTotal.field_goals_made)).toFixed(1);
+          console.log("astPCT: " + astPCT);
+          var stlPCT = (100 * (playerTotal.steals * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * oppPossession)).toFixed(1);
+          console.log("stlPCT: " + stlPCT);
+          var blkPCT = (100 * (playerTotal.blocks * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.opponents.total.field_goals_att - team.opponents.total.three_points_att))).toFixed(1);
+          console.log("blkPCT: " + blkPCT);
+          var tovPCT = (100 * playerTotal.turnovers / (playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers)).toFixed(1);
+          console.log("tovPCT: " + tovPCT);
+          var usgPCT = (100 * ((playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers) * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.field_goals_att + (0.44 * team.own_record.total.free_throws_att) + team.own_record.total.turnovers))).toFixed(1);
+          console.log("usgPCT: " + usgPCT);
+          var fgm = playerTotal.field_goals_made;
+          console.log("fgm: " + fgm);
+          var fga = playerTotal.field_goals_att;
+          console.log("fga: " + fga);
+          var threePA = playerTotal.three_points_att;
+          console.log("threePA: " + threePA);
+          var threePM = playerTotal.three_points_made;
+          console.log("threePM: " + threePM);
+          var ftm = playerTotal.free_throws_made;
+          console.log("ftm: " + ftm);
+          var fta = playerTotal.free_throws_att;
+          console.log("fta: " + fta);
+          var pts = playerTotal.points;
+          console.log("pts: " + pts);
+          var reb = playerTotal.rebounds;
+          console.log("reb: " + reb);
+          var oreb = playerTotal.offensive_rebounds;
+          console.log("oreb: " + oreb);
+          var ast = playerTotal.assists;
+          console.log("ast: " + ast);
+          var stl = playerTotal.steals;
+          console.log("stl: " + stl);
+          var tov = playerTotal.turnovers;
+          console.log("tov: " + tov);
+          var blk = playerTotal.blocks;
+          console.log("blk: " + blk);
+          var fls = playerTotal.personal_fouls;
+          console.log("fls: " + fls);
+
+          db.Stats.create({
+            playerName: playerName,
+            year: year,
+            per: per,
+            tsPCT: tsPCT,
+            threePAR: threePAR,
+            ftR: ftR,
+            orbPCT: orbPCT,
+            drbPCT: drbPCT,
+            trbPCT: trbPCT,
+            astPCT: astPCT,
+            stlPCT: stlPCT,
+            blkPCT: blkPCT,
+            tovPCT: tovPCT,
+            usgPCT: usgPCT,
+            fgm: fgm,
+            fga: fga,
+            threePA: threePA,
+            threePM: threePM,
+            ftm: ftm,
+            fta: fta,
+            pts: pts,
+            reb: reb,
+            oreb: oreb,
+            ast: ast,
+            stl: stl,
+            tov: tov,
+            blk: blk,
+            fls: fls
+          });
+        };
+      };
+
+
+    });
+  });
+
+  app.get("/api/stats/", function (req, res) {
+    db.Stats.findAll({
+
+    }).then(function (results) {
+      res.send(results);
+    });
+  });
+  
 };
