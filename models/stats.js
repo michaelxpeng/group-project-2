@@ -28,49 +28,7 @@ module.exports = function(sequelize, DataTypes) {
         tov: DataTypes.INTEGER,
         blk: DataTypes.INTEGER,
         fls: DataTypes.INTEGER
-
-    //   rpg: DataTypes.STRING,
-    //   complete: DataTypes.BOOLEAN
-    // });
-
-//     var teamStats = sequelize.define("TeamStats", {
-
-//         name:"Cleveland Steamers",
-//    tag: "CLE",
-//    players: DataTypes.ARRAY,
-//    possession: DataTypes.BOOLEAN,
-//    wonTipOff: DataTypes.BOOLEAN,
-//    defense: DataTypes.INTEGER,
-//    offense: DataTypes.INTEGER,
-//    FGM: DataTypes.INTEGER,
-//    FGA: DataTypes.INTEGER,
-//    ThreePA: DataTypes.INTEGER,
-//    ThreePM: DataTypes.INTEGER,
-//    FTM: DataTypes.INTEGER,
-//    FTA: DataTypes.INTEGER,
-//    PTS: DataTypes.INTEGER,
-//    REB: DataTypes.INTEGER,
-//    OREB: DataTypes.INTEGER,
-//    AST: DataTypes.INTEGER,
-//    STL: DataTypes.INTEGER,
-//    TOV: DataTypes.INTEGER,
-//    BLK: DataTypes.INTEGER,
-//    FLS: DataTypes.INTEGER,
-//    Q1PTS: DataTypes.INTEGER,
-//    Q2PTS: DataTypes.INTEGER,
-//    Q3PTS: DataTypes.INTEGER,
-//    Q4PTS: DataTypes.INTEGER,
-//    OTPTS: DataTypes.INTEGER
-
     });
     Stats.sync();
     return Stats;
-    // return teamStats;
-  
-
-//   var Stats2 = sequelize.define("Stats", {
-//     text: DataTypes.STRING,
-//     complete: DataTypes.BOOLEAN
-//   });
-//   return Stats2;
  };

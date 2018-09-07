@@ -1,41 +1,38 @@
 var db = require("../models");
 const request = require("request");
 
-// stores and retrieves cache data from the database
+// Store and retrieve cache data from the database
 function getCacheRequest(url, cb) {
-  // find the retrieved data
-  // 10 use cacherequest to find the retrieved data
+  // Find the retrieved data
+  // Use db.CacheRequest to find the retrieved data
   db.CacheRequest.findAll({
     where: {
       url: url
     }
   }).then(function (results) {
-    // 20 if it finds the data, 
-
+    // If it finds the data, 
     if (typeof (results) !== "undefined" && Array.isArray(results) && results.length > 0) {
       console.log("found as an array");
-      // 30 run the callback with the data as input
+      // Run the callback with the data as input
       console.log(JSON.parse(results[0].dataValues.data));
       cb(results[0].dataValues.data);
     }
-    // 40 else
+    // Else
     else {
       console.log("cannot find it")
-      // 45 calls the API
-      // 50 retrieves the data from the API request
+      // Call the API
+      // Retrieve the data from the API request
       request(url, (error, response, body) => {
         if (error) {
-          //errors
           console.log(error);
         } else {
-          //no errors
-          // 60 stores the data into cacherequest database
+          // Store the data into CacheRequest database
           // console.log(body);
           db.CacheRequest.create({
             url: url,
             data: body
           }).then(function (CacheRequestResult) {
-            // 70 run the callback with the data as input
+            // Run the callback with the data as input
             // console.log(CacheRequestResult);
             console.log(JSON.parse(CacheRequestResult[0].dataValues.data));
             cb(CacheRequestResult[0].dataValues.data);
@@ -50,58 +47,78 @@ function getCacheRequest(url, cb) {
 // =============================================================
 module.exports = function (app) {
 
-  // switch statements to hit all the API urls?
-  app.get("/api/cache/:apirequest1", (req, res) => {
-    var url = Buffer.from(decodeURIComponent(req.params.apirequest1), "base64").toString("ascii");
+  // Call the API
+  app.get("/api/cache/:apirequest", (req, res) => {
+    // Encode the API for apirequest wildcard
+    var url = Buffer.from(decodeURIComponent(req.params.apirequest), "base64").toString("ascii");
+    // Return the result from the API call
     getCacheRequest(url, function (CacheRequestResult) {
       console.log(CacheRequestResult);
     });
   });
 
-  // // POST route for saving a new todo
-  // app.post("/api/stats", function (req, res) {
-  //   console.log(req.body);
-
-  //   // do database save query here based on req.body
-
-  //   //  then send back response based on database success or error
-  //   res.send(req.body);
-  // });
-
-  app.get("/api/2017teamcache/", function (req, res) {
+  // Find the cached data for teams in the 2017 season
+  app.get("/api/2017teamscache/", function (req, res) {
+    // Display all the data in the CacheRequest database
     db.CacheRequest.findAll({
 
     }).then(function (results) {
+      // Send data to the page
       res.json(results);
-      // console.log(JSON.parse(results[0].dataValues.data));
-      // console.log(JSON.parse(results[0].dataValues.data).players[0].full_name);
+
+      // Run a for loop to find all the players in the 2017 season
+      // Find all the teams first from results
       for (var i = 0; i < results.length; i++) {
         var team = JSON.parse(results[i].dataValues.data);
-        console.log("TEAM: " + team.name);
-          for (var j = 0; j < team.players.length; j++) {
-            var players = team.players[j].full_name;
-            console.log(players);
-          };
+        // Loop through all the teams' players
+        for (var j = 0; j < team.players.length; j++) {
+          var playerName = team.players[j].full_name;
+          var playerID = team.players[j].id;
+          console.log(playerName);
+          
+          // Create an instance for the Players model
+          db.Players.create({
+            playerName: playerName,
+            playerID: playerID
+          });
+        };
       };
 
-      // db.Teams.create ({
-      //   season: ,
-      //   teamName:
-      //   teamID:
-      //   playerName: 
-      //   playerID:
-      // });
-
+      // Create an instance for the Teams model
+      db.Teams.create({
+        season: JSON.parse(results[i].dataValues.data).season.year,
+        teamName: JSON.parse(results[i].dataValues.data).name,
+        teamID: JSON.parse(results[i].dataValues.data).id
+      });
     });
   });
 
-
-// -----------
-  app.get("/api/cache/", function (req, res) {
-    db.CacheRequest.findAll({
+  // Find stored data for all players in the 2017 season
+  app.get("/api/players", function (req, res) {
+    db.Players.findAll({
 
     }).then(function (results) {
-      res.json(results[0].dataValues.data);
+      // Display all data to the page
+      res.json(results);
+    });
+  });
+
+  // Find stored data for all teams in the 2017 season
+  app.get("/api/teams", function (req, res) {
+    db.Teams.findAll({
+
+    }).then(function (results) {
+      // Display all data to the page
+      res.json(results);
+    });
+  });
+
+  // Find the cached data for teams in the 2017 season
+  // app.get("/api/2017playerscache/", function (req, res) {
+  //   db.CacheRequest.findAll({
+
+  //   }).then(function (results) {
+  //     res.json(results[0].dataValues.data);
       // console.log(JSON.parse(results[0].dataValues.data));
       // console.log(seasonTotal);
       // console.log(JSON.parse(results[0].dataValues.data).full_name);
@@ -138,78 +155,16 @@ module.exports = function (app) {
       //   blk: parseInt(seasonTotal.blocks),
       //   fls: parseInt(seasonTotal.personal_fouls)
       // });
-    });
-  });
-// ------------
+  //   });
+  // });
+  // ------------
 
-  app.get("/api/stats/", function (req, res) {
-    db.Stats.findAll({
+  // app.get("/api/stats/", function (req, res) {
+  //   db.Stats.findAll({
 
-    }).then(function (results) {
-      res.send(results);
-    });
-  });
-
-  // POST route for saving a new todo
-  // app.post("/api/stats", function (req, res) {
-  //   // console.log(res.body);
-  //   res.send("Test");
-  //   // create takes an argument of an object describing the item we want to
-  //   // insert into our table. In this case we just we pass in an object with a text
-  //   // and complete property (req.body)
-
-  //   db.Stats.create({
-  //     playerName: req.body.name,
-  //     year: req.body.year,
-  //     per: req.body.per,
-  //     tsPCT: req.body.tsPCT,
-  //     threePAR: req.body.threePAR,
-  //     ftR: req.body.ftR,
-  //     orbPCT: req.body.orbPCT,
-  //     drbPCT: req.body.drbPCT,
-  //     trbPCT: req.body.trbPCT,
-  //     astPCT: req.body.astPCT,
-  //     stlPCT: req.body.stlPCT,
-  //     blkPCT: req.body.blkPCT,
-  //     tovPCT: req.body.tovPCT,
-  //     usgPCT: req.body.usgPCT,
-  //     fgm: req.body.fgm,
-  //     fga: req.body.fga,
-  //     threePA: req.body.threePA,
-  //     threePM: req.body.threePM,
-  //     ftm: req.body.ftm,
-  //     fta: req.body.fta,
-  //     pts: req.body.pts,
-  //     reb: req.body.reb,
-  //     oreb: req.body.oreb,
-  //     ast: req.body.ast,
-  //     stl: req.body.stl,
-  //     tov: req.body.tov,
-  //     blk: req.body.blk,
-  //     fls: req.body.fls
   //   }).then(function (results) {
-  //     // console.log(results);
-  //     // We have access to the new todo as an argument inside of the callback function
-  //     res.json(results);
+  //     res.send(results);
   //   });
   // });
 
-  // DELETE route for deleting todos. We can get the id of the todo we want to delete from
-  // req.params.id
-
-  app.delete("/api/stats/:id", function(req, res) {
-    db.Stats.destroy({
-      where: {
-        id: req.params.id
-      }
-    })
-      .then(function() {
-
-      });
-  });
-
-  // PUT route for updating todos. We can get the updated todo from req.body
-  // app.put("/api/stats", function (req, res) {
-
-  // });
 };
