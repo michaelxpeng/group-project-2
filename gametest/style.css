@@ -65,11 +65,6 @@ body, html {
 }
 
 body {
-   
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     background-image: url("blackbg.jpg");
     color: whitesmoke;
     /* background: radial-gradient(circle, #8AB1AA 40%, #5EACC2, #1F81AF); */
@@ -280,3 +275,48 @@ body {
     padding: 5px 10px;
     margin-left: 8px;
   }
+
+
+
+
+/* AFTER BOX SCORE ADDITION */
+table, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 10px;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.game-boxscore{
+  width: 40%;
+  display: inline-block;
+  float: left;
+}
+
+.game-main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+  float: left;
+}
+
+tr:nth-child(odd){
+  background-color: rgb(78, 78, 78);
+}
+th{
+  color: #222222;
+  background-color: rgb(255, 255, 255);
+}
+
+.boxscore-heading{
+  color: #222222;
+  background-image: linear-gradient(to right, rgb(255, 255, 255) , rgba(255, 255, 255, 0));
+}
