@@ -18,5 +18,8 @@
     "mysql2": "^1.6.1",
     "request": "^2.88.0",
     "sequelize": "^4.38.0"
+  },
+  "devDependencies": {
+    "jsdoc": "^3.5.5"
   }
 }

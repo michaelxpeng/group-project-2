@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="reset.css" /> -->
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -18,6 +19,7 @@
 
 </head>
 <body>
+
 <div class="game-boxscore">
   <h1 class="boxscore-heading">teamA</h1>
   <table>
@@ -211,8 +213,11 @@
     <img id="ball" src="https://lh3.googleusercontent.com/dmhLNvQ-2LbyER1ZIaj4YZZpiOAprqwyLodVdatIouaZJYOXiGU2BpankZgKGmGjrmCL=s180">
 
 
+    <img id="ball" src="https://lh3.googleusercontent.com/dmhLNvQ-2LbyER1ZIaj4YZZpiOAprqwyLodVdatIouaZJYOXiGU2BpankZgKGmGjrmCL=s180">
+
 <!-- I swapped gamelog and game box to test -->
-    <div class="gameBox">
+   
+<div class="gameBox">
     <!-- <span class="gameLog" style="height: 637px; background-color: purple; overflow: auto;"> -->
             <div class="gameLog">
                     
@@ -221,12 +226,20 @@
     <!-- </span> -->
     </div>
 
-    <button class="startButton" onclick="jumpBall()">Start Game</button>
-
     <!-- <div class="simSlider">
   <input class="simSliderRange" type="range" range="min" value="1" min="1" max="25">
   <span class="simSliderValue"></span>
 </div> -->
+
+<button class="startButton" onclick="jumpBall()">Select Speed</button>
+<button class="slowButton" onclick="slowSim()"><i class="fas fa-step-forward"></i></button>
+<button class="normalButton" onclick="normalSim()"><i class="fas fa-play"></i></button>
+<button class="fastButton" onclick="fastSim()"><i class="fas fa-fast-forward"></i>
+
+</button>
+
+
+
     <div class="scoreboard">
         <div class="team B">
           <div class="rank">B</div>
@@ -243,9 +256,8 @@
         </div>
       </div>
       <div class="subtitle"><b>All-Time NBA Sim</b> </div>
-  
 
 </div>
-    
+
 </body>
 </html>
