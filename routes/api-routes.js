@@ -146,7 +146,7 @@ module.exports = function (app) {
           var playerName = player.full_name;
           console.log("-------------")
           console.log("Name: " + playerName);
-          var position = player.primary_position;
+          var position = player.position;
           console.log("Position: " + position);
           var year = team.season.year;
           console.log("Year: " + year);
