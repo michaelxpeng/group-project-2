@@ -117,6 +117,31 @@
 // updateScroll();
 // setInterval(updateScroll,1);
 
+// $(document).on('click', '#table-test', function(){
+//     console.log('it works');
+// })
+
+setTimeout(function($){
+    $('#table-test').on('click',  function(){
+
+        for(var i = 0; i <  10; i++){
+            $('#name-player'+i).text('player'+i);
+            $('#PTS-player'+i).text(i);
+            $('#FG-player'+i).text(i);
+            $('#3PT-player'+i).text(i);
+            $('#FT-player'+i).text(i);
+            $('#OREB-player'+i).text(i);
+            $('#REB-player'+i).text(i);
+            $('#AST-player'+i).text(i);
+            $('#STL-player'+i).text(i);
+            $('#BLK-player'+i).text(i);
+            $('#TOV-player'+i).text(i);
+            $('#FLS-player'+i).text(i);
+        }
+    })
+}, 0, $);
+
+
 
 // function gotoBottom(){
 //     var element = $(".gameBox");

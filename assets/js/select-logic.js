@@ -2,7 +2,9 @@ var positionArray = ['PG', 'SG', 'SF', 'PF', 'C']
 // fill table with data
 for(var i = 1; i < 100; i++){
     var position = positionArray[Math.floor(Math.random()*5)];
-    var statsDiv = $('<div class="hidden" id="stats'+i+'">').html('<p>tst'+i+'</p>')
+    var statsDiv = $('<div class="hidden stat-display" id="stats'+i+'">').html('<p>tst'+i+'</p>');
+    statsDiv.html("Position: " + position + "<br>Name: player"+i+"<br>Salary:"+1000+i)
+    $('#stat-holder').append(statsDiv);
     $('#available-players').append(
         
         $("<tr>").append(
@@ -10,14 +12,16 @@ for(var i = 1; i < 100; i++){
             $('<td>').text("player"+i),
             $('<td>').text(1000+i),
             $('<td>').html('<button class="add-player">ADD</button>'),
-            statsDiv
-        ).val(position).attr('name' , "george"+i).attr('salary' , 1000+i).addClass('available-player-row')
+            // statsDiv
+        ).val(position).attr('name' , "george"+i).attr('data', i).attr('salary' , 1000+i).addClass('available-player-row')
         .hover(
             function (){
-                $(this).find("div").removeClass('hidden')
+                var rowRefNumb = $(this).attr('data');
+                $('#stats'+rowRefNumb).removeClass('hidden').fadeIn()
             } ,
             function (){
-                $(this).find("div").addClass('hidden')
+                var rowRefNumb = $(this).attr('data');
+                $('#stats'+rowRefNumb).addClass('hidden')
             }
         )
     )
@@ -96,4 +100,5 @@ $(".tab").on('click', function(){
 
 $('.available-player-row').on('click', function(){
     console.log($(this).val())
+    console.log($(this).attr('salary'))
 })
