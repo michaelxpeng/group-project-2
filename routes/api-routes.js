@@ -135,7 +135,6 @@ module.exports = function (app) {
       for (var i = 0; i < results.length; i++) {
         // Loop through all 30 teams
         var team = JSON.parse(results[i].dataValues.data);
-
         for (var j = 0; j < team.players.length; j++) {
           var player = team.players[j];
           var playerTotal = team.players[j].total;
@@ -146,7 +145,7 @@ module.exports = function (app) {
           var playerName = player.full_name;
           console.log("-------------")
           console.log("Name: " + playerName);
-          var position = player.primary_position;
+          var position = player.position;
           console.log("Position: " + position);
           var year = team.season.year;
           console.log("Year: " + year);

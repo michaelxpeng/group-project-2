@@ -17,6 +17,7 @@
     "json-stringify-safe": "^5.0.1",
     "mysql2": "^1.6.1",
     "nba": "^4.2.2",
+    "path": "^0.12.7",
     "request": "^2.88.0",
     "sequelize": "^4.38.0"
   },
