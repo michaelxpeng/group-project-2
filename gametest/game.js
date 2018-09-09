@@ -74,7 +74,7 @@
 //3rd Dapo
 
 
-// var player = {
+// var player0 = {
 //     name: "Kyrie Irving",
 //     year: "2017-2018",
 //     PER: 25.0,
@@ -107,7 +107,7 @@
 //     FLS:0
 // };
 
-var player = {
+var player0 = {
     name: "Stephen Curry",
     year: "2015-16",
     PER: 31.5,
@@ -939,7 +939,7 @@ var player9 = {
 var teamA = {
     name:"Cleveland Steamers",
     tag: "CLE",
-    players: [player, player1, player2, player3, player4],
+    players: [player0, player1, player2, player3, player4],
     possession: true,
     wonTipOff: false,
     defense: 90,
@@ -1286,6 +1286,178 @@ function printStats () {
     // simSpeed();
      
     setTimeout(function(){/* Look mah! No name! */},2000);
+
+    $(".boxscore-headingA").html(this.teamA.name);
+
+
+    $("#name-player0").html(this.player0.name);
+    $("#PTS-player0").html(this.player0.PTS);
+    $("#FG-player0").html((this.player0.FGM)+ "-" +(this.player0.FGA));
+    $("#3PT-player0").html((this.player0.ThreePM)+ "-" +(this.player0.ThreePA));
+    $("#FT-player0").html((this.player0.FTM)+ "-" +(this.player0.FTA));
+    $("#OREB-player0").html(this.player0.OREB);
+    $("#REB-player0").html(this.player0.REB);
+    $("#AST-player0").html(this.player0.AST);
+    $("#STL-player0").html(this.player0.STL);
+    $("#BLK-player0").html(this.player0.BLK);
+    $("#TOV-player0").html(this.player0.TOV);
+    $("#FLS-player0").html(this.player0.FLS);
+
+    $("#name-player1").html(this.player1.name);
+    $("#PTS-player1").html(this.player1.PTS);
+    $("#FG-player1").html((this.player1.FGM)+ "-" +(this.player1.FGA));
+    $("#3PT-player1").html((this.player1.ThreePM)+ "-" +(this.player1.ThreePA));
+    $("#FT-player1").html((this.player1.FTM)+ "-" +(this.player1.FTA));
+    $("#OREB-player1").html(this.player1.OREB);
+    $("#REB-player1").html(this.player1.REB);
+    $("#AST-player1").html(this.player1.AST);
+    $("#STL-player1").html(this.player1.STL);
+    $("#BLK-player1").html(this.player1.BLK);
+    $("#TOV-player1").html(this.player1.TOV);
+    $("#FLS-player1").html(this.player1.FLS);
+
+    $("#name-player2").html(this.player2.name);
+    $("#PTS-player2").html(this.player2.PTS);
+    $("#FG-player2").html((this.player2.FGM)+ "-" +(this.player2.FGA));
+    $("#3PT-player2").html((this.player2.ThreePM)+ "-" +(this.player2.ThreePA));
+    $("#FT-player2").html((this.player2.FTM)+ "-" +(this.player2.FTA));
+    $("#OREB-player2").html(this.player2.OREB);
+    $("#REB-player2").html(this.player2.REB);
+    $("#AST-player2").html(this.player2.AST);
+    $("#STL-player2").html(this.player2.STL);
+    $("#BLK-player2").html(this.player2.BLK);
+    $("#TOV-player2").html(this.player2.TOV);
+    $("#FLS-player2").html(this.player2.FLS);
+
+    $("#name-player3").html(this.player3.name);
+    $("#PTS-player3").html(this.player3.PTS);
+    $("#FG-player3").html((this.player3.FGM)+ "-" +(this.player3.FGA));
+    $("#3PT-player3").html((this.player3.ThreePM)+ "-" +(this.player3.ThreePA));
+    $("#FT-player3").html((this.player3.FTM)+ "-" +(this.player3.FTA));
+    $("#OREB-player3").html(this.player3.OREB);
+    $("#REB-player3").html(this.player3.REB);
+    $("#AST-player3").html(this.player3.AST);
+    $("#STL-player3").html(this.player3.STL);
+    $("#BLK-player3").html(this.player3.BLK);
+    $("#TOV-player3").html(this.player3.TOV);
+    $("#FLS-player3").html(this.player3.FLS);
+
+    $("#name-player4").html(this.player4.name);
+    $("#PTS-player4").html(this.player4.PTS);
+    $("#FG-player4").html((this.player4.FGM)+ "-" +(this.player4.FGA));
+    $("#3PT-player4").html((this.player4.ThreePM)+ "-" +(this.player4.ThreePA));
+    $("#FT-player4").html((this.player4.FTM)+ "-" +(this.player4.FTA));
+    $("#OREB-player4").html(this.player4.OREB);
+    $("#REB-player4").html(this.player4.REB);
+    $("#AST-player4").html(this.player4.AST);
+    $("#STL-player4").html(this.player4.STL);
+    $("#BLK-player4").html(this.player4.BLK);
+    $("#TOV-player4").html(this.player4.TOV);
+    $("#FLS-player4").html(this.player4.FLS);
+
+    $("#total-teamA").html("Team");
+    $("#PTS-teamA").html(this.teamA.PTS);
+    $("#FG-teamA").html((this.teamA.FGM)+ "-" +(this.teamA.FGA));
+    $("#3PT-teamA").html((this.teamA.ThreePM)+ "-" +(this.teamA.ThreePA));
+    $("#FT-teamA").html((this.teamA.FTM)+ "-" +(this.teamA.FTA));
+    $("#OREB-teamA").html(this.teamA.OREB);
+    $("#REB-teamA").html(this.teamA.REB);
+    $("#AST-teamA").html(this.teamA.AST);
+    $("#STL-teamA").html(this.teamA.STL);
+    $("#BLK-teamA").html(this.teamA.BLK);
+    $("#TOV-teamA").html(this.teamA.TOV);
+    $("#FLS-teamA").html(this.teamA.FLS);
+
+    $("#FG-teamApct").html((((this.teamA.FGM)/(this.teamA.FGA)*100).toFixed(2))+"%");
+    $("#3PT-teamApct").html((((this.teamA.ThreePM)/(this.teamA.ThreePA)*100).toFixed(2))+"%");
+    $("#FT-teamApct").html((((this.teamA.FTM)/(this.teamA.FTA)*100).toFixed(2))+"%");
+
+    $(".boxscore-headingB").html(this.teamB.name);
+
+    $("#name-player5").html(this.player5.name);
+    $("#PTS-player5").html(this.player5.PTS);
+    $("#FG-player5").html((this.player5.FGM)+ "-" +(this.player5.FGA));
+    $("#3PT-player5").html((this.player5.ThreePM)+ "-" +(this.player5.ThreePA));
+    $("#FT-player5").html((this.player5.FTM)+ "-" +(this.player5.FTA));
+    $("#OREB-player5").html(this.player5.OREB);
+    $("#REB-player5").html(this.player5.REB);
+    $("#AST-player5").html(this.player5.AST);
+    $("#STL-player5").html(this.player5.STL);
+    $("#BLK-player5").html(this.player5.BLK);
+    $("#TOV-player5").html(this.player5.TOV);
+    $("#FLS-player5").html(this.player5.FLS);
+
+    $("#name-player6").html(this.player6.name);
+    $("#PTS-player6").html(this.player6.PTS);
+    $("#FG-player6").html((this.player6.FGM)+ "-" +(this.player6.FGA));
+    $("#3PT-player6").html((this.player6.ThreePM)+ "-" +(this.player6.ThreePA));
+    $("#FT-player6").html((this.player6.FTM)+ "-" +(this.player6.FTA));
+    $("#OREB-player6").html(this.player6.OREB);
+    $("#REB-player6").html(this.player6.REB);
+    $("#AST-player6").html(this.player6.AST);
+    $("#STL-player6").html(this.player6.STL);
+    $("#BLK-player6").html(this.player6.BLK);
+    $("#TOV-player6").html(this.player6.TOV);
+    $("#FLS-player6").html(this.player6.FLS);
+
+    $("#name-player7").html(this.player7.name);
+    $("#PTS-player7").html(this.player7.PTS);
+    $("#FG-player7").html((this.player7.FGM)+ "-" +(this.player7.FGA));
+    $("#3PT-player7").html((this.player7.ThreePM)+ "-" +(this.player7.ThreePA));
+    $("#FT-player7").html((this.player7.FTM)+ "-" +(this.player7.FTA));
+    $("#OREB-player7").html(this.player7.OREB);
+    $("#REB-player7").html(this.player7.REB);
+    $("#AST-player7").html(this.player7.AST);
+    $("#STL-player7").html(this.player7.STL);
+    $("#BLK-player7").html(this.player7.BLK);
+    $("#TOV-player7").html(this.player7.TOV);
+    $("#FLS-player7").html(this.player7.FLS);
+
+    $("#name-player8").html(this.player8.name);
+    $("#PTS-player8").html(this.player8.PTS);
+    $("#FG-player8").html((this.player8.FGM)+ "-" +(this.player8.FGA));
+    $("#3PT-player8").html((this.player8.ThreePM)+ "-" +(this.player8.ThreePA));
+    $("#FT-player8").html((this.player8.FTM)+ "-" +(this.player8.FTA));
+    $("#OREB-player8").html(this.player8.OREB);
+    $("#REB-player8").html(this.player8.REB);
+    $("#AST-player8").html(this.player8.AST);
+    $("#STL-player8").html(this.player8.STL);
+    $("#BLK-player8").html(this.player8.BLK);
+    $("#TOV-player8").html(this.player8.TOV);
+    $("#FLS-player8").html(this.player8.FLS);
+
+    $("#name-player9").html(this.player9.name);
+    $("#PTS-player9").html(this.player9.PTS);
+    $("#FG-player9").html((this.player9.FGM)+ "-" +(this.player9.FGA));
+    $("#3PT-player9").html((this.player9.ThreePM)+ "-" +(this.player9.ThreePA));
+    $("#FT-player9").html((this.player9.FTM)+ "-" +(this.player9.FTA));
+    $("#OREB-player9").html(this.player9.OREB);
+    $("#REB-player9").html(this.player9.REB);
+    $("#AST-player9").html(this.player9.AST);
+    $("#STL-player9").html(this.player9.STL);
+    $("#BLK-player9").html(this.player9.BLK);
+    $("#TOV-player9").html(this.player9.TOV);
+    $("#FLS-player9").html(this.player9.FLS);
+
+    $("#total-teamB").html("Team");
+    $("#PTS-teamB").html(this.teamB.PTS);
+    $("#FG-teamB").html((this.teamB.FGM)+ "-" +(this.teamB.FGA));
+    $("#3PT-teamB").html((this.teamB.ThreePM)+ "-" +(this.teamB.ThreePA));
+    $("#FT-teamB").html((this.teamB.FTM)+ "-" +(this.teamB.FTA));
+    $("#OREB-teamB").html(this.teamB.OREB);
+    $("#REB-teamB").html(this.teamB.REB);
+    $("#AST-teamB").html(this.teamB.AST);
+    $("#STL-teamB").html(this.teamB.STL);
+    $("#BLK-teamB").html(this.teamB.BLK);
+    $("#TOV-teamB").html(this.teamB.TOV);
+    $("#FLS-teamB").html(this.teamB.FLS);
+
+    $("#FG-teamBpct").html((((this.teamB.FGM)/(this.teamB.FGA)*100).toFixed(2))+"%");
+    $("#3PT-teamBpct").html((((this.teamB.ThreePM)/(this.teamB.ThreePA)*100).toFixed(2))+"%");
+    $("#FT-teamBpct").html((((this.teamB.FTM)/(this.teamB.FTA)*100).toFixed(2))+"%");
+
+
+    
 
     for (let i = 0; i < this.quarterLog.length; i++) {
         
