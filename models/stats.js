@@ -1,7 +1,9 @@
 module.exports = function(sequelize, DataTypes) {
     var Stats = sequelize.define("Stats", {
       playerName: DataTypes.STRING,
+      position: DataTypes.STRING,
       year: DataTypes.STRING,
+      gamesPlayed: DataTypes.INTEGER,
       per: DataTypes.DECIMAL(10,3),
       tsPCT: DataTypes.DECIMAL(10,3),
       threePAR: DataTypes.DECIMAL(10,3), 
