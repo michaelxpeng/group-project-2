@@ -9,9 +9,26 @@
   <link rel="stylesheet" href="css/styles.css" media="screen" title="no title">
   <script src="https://code.jquery.com/jquery.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  
 </head>
 
 <body>
+  <script type = "text/javascript">
+  $(".btn").on("click", function () {
+var firstName = "lebron";
+var lastName = "james";
+    var queryURL = "https://nba-players.herokuapp.com/players/" + lastName + "/" + firstName;
+
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+        
+      }).then(function (response) {
+          // console.log(response);
+      });
+
+});
+    </script>
   <div class="container">
     <div class="row">
       <div class="col-md-6 offset-md-3">
