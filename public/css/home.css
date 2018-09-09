@@ -1,0 +1,22 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    overflow-y: hidden;
+    /* font-family: 'Montserrat', sans-serif; */
+}
+
+.bg {
+    /* The image used */
+    background-image: url("https://cdn-images-1.medium.com/max/957/1*raDFCG6soUAyMyNFhfmdYQ.png");
+    /* Full height */
+    height: 100%; 
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 0;
+    opacity: .9;
+    background-color: purple;
+}
+
+

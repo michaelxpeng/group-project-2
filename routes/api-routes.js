@@ -135,7 +135,6 @@ module.exports = function (app) {
       for (var i = 0; i < results.length; i++) {
         // Loop through all 30 teams
         var team = JSON.parse(results[i].dataValues.data);
-        // console.log(JSON.stringify(teams));
         for (var j = 0; j < team.players.length; j++) {
           var player = team.players[j];
           var playerTotal = team.players[j].total;
@@ -146,8 +145,12 @@ module.exports = function (app) {
           var playerName = player.full_name;
           console.log("-------------")
           console.log("Name: " + playerName);
+          var position = player.position;
+          console.log("Position: " + position);
           var year = team.season.year;
           console.log("Year: " + year);
+          var gamesPlayed = playerTotal.games_played;
+          console.log("Games played: " + gamesPlayed)
           var per = (playerAverage.efficiency).toFixed(1);
           console.log("PER: " + per);
           var tsPCT = (playerTotal.points / (2 * (playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att)))).toFixed(3);
@@ -203,7 +206,9 @@ module.exports = function (app) {
 
           db.Stats.create({
             playerName: playerName,
+            position: position,
             year: year,
+            gamesPlayed: gamesPlayed,
             per: per,
             tsPCT: tsPCT,
             threePAR: threePAR,

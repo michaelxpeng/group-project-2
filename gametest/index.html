@@ -9,6 +9,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="style.css" />
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="reset.css" /> -->
     <link href="https://fonts.googleapis.com/css?family=Oxygen" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.3/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -18,15 +19,16 @@
 
 </head>
 <body>
+
 <div class="game-boxscore">
-  <h1 class="boxscore-heading">teamA</h1>
+  <h1 class="boxscore-headingA">teamA</h1>
   <table>
     <thead>
       <tr>
         <th></th>
         <th>PTS</th>
-        <th>FG %</th>
-        <th>3PT %</th>
+        <th>FG</th>
+        <th>3PT</th>
         <th>FT</th>
         <th>OREB</th>
         <th>REB</th>
@@ -108,17 +110,45 @@
         <td id="TOV-player4">0</td>
         <td id="FLS-player4">0</td>
       </tr>
+      <tr>
+          <td id="total-teamA"></td>
+          <td id="PTS-teamA">0</td>
+          <td id="FG-teamA">0</td>
+          <td id="3PT-teamA">0</td>
+          <td id="FT-teamA">0</td>
+          <td id="OREB-teamA">0</td>
+          <td id="REB-teamA">0</td>
+          <td id="AST-teamA">0</td>
+          <td id="STL-teamA">0</td>
+          <td id="BLK-teamA">0</td>
+          <td id="TOV-teamA">0</td>
+          <td id="FLS-teamA">0</td>
+        </tr>
+        <tr>
+            <td id="name-teamA-"></td>
+            <td id="PTS-teamA-"></td>
+            <td id="FG-teamApct">0</td>
+            <td id="3PT-teamApct">0</td>
+            <td id="FT-teamApct">0</td>
+            <td id="OREB-teamA-"></td>
+            <td id="REB-teamA-"></td>
+            <td id="AST-teamA-"></td>
+            <td id="STL-teamA-"></td>
+            <td id="BLK-teamA-"></td>
+            <td id="TOV-teamA-"></td>
+            <td id="FLS-teamA-"></td>
+          </tr>
     </tbody>
   </table>
   
-  <h1 class="boxscore-heading">teamB</h1>
+  <h1 class="boxscore-headingB">teamB</h1>
   <table>
       <thead>
         <tr>
           <th></th>
           <th>PTS</th>
-          <th>FG %</th>
-          <th>3PT %</th>
+          <th>FG</th>
+          <th>3PT</th>
           <th>FT</th>
           <th>OREB</th>
           <th>REB</th>
@@ -200,6 +230,34 @@
           <td id="TOV-player9">0</td>
           <td id="FLS-player9">0</td>
         </tr>
+        <tr>
+            <td id="total-teamB"></td>
+            <td id="PTS-teamB">0</td>
+            <td id="FG-teamB">0</td>
+            <td id="3PT-teamB">0</td>
+            <td id="FT-teamB">0</td>
+            <td id="OREB-teamB">0</td>
+            <td id="REB-teamB">0</td>
+            <td id="AST-teamB">0</td>
+            <td id="STL-teamB">0</td>
+            <td id="BLK-teamB">0</td>
+            <td id="TOV-teamB">0</td>
+            <td id="FLS-teamB">0</td>
+          </tr>
+          <tr>
+              <td id="name-teamB-"></td>
+              <td id="PTS-teamB-"></td>
+              <td id="FG-teamBpct">0</td>
+              <td id="3PT-teamBpct">0</td>
+              <td id="FT-teamBpct">0</td>
+              <td id="OREB-teamB-"></td>
+              <td id="REB-teamB-"></td>
+              <td id="AST-teamB-"></td>
+              <td id="STL-teamB-"></td>
+              <td id="BLK-teamB-"></td>
+              <td id="TOV-teamB-"></td>
+              <td id="FLS-teamB-"></td>
+            </tr>
       </tbody>
     </table>
 
@@ -210,9 +268,9 @@
 
     <img id="ball" src="https://lh3.googleusercontent.com/dmhLNvQ-2LbyER1ZIaj4YZZpiOAprqwyLodVdatIouaZJYOXiGU2BpankZgKGmGjrmCL=s180">
 
-
 <!-- I swapped gamelog and game box to test -->
-    <div class="gameBox">
+   
+<div class="gameBox">
     <!-- <span class="gameLog" style="height: 637px; background-color: purple; overflow: auto;"> -->
             <div class="gameLog">
                     
@@ -221,12 +279,20 @@
     <!-- </span> -->
     </div>
 
-    <button class="startButton" onclick="jumpBall()">Start Game</button>
-
     <!-- <div class="simSlider">
   <input class="simSliderRange" type="range" range="min" value="1" min="1" max="25">
   <span class="simSliderValue"></span>
 </div> -->
+
+<button class="startButton" onclick="jumpBall()">Select Speed</button>
+<button class="slowButton" onclick="slowSim()"><i class="fas fa-step-forward"></i></button>
+<button class="normalButton" onclick="normalSim()"><i class="fas fa-play"></i></button>
+<button class="fastButton" onclick="fastSim()"><i class="fas fa-fast-forward"></i>
+
+</button>
+
+
+
     <div class="scoreboard">
         <div class="team B">
           <div class="rank">B</div>
@@ -243,9 +309,8 @@
         </div>
       </div>
       <div class="subtitle"><b>All-Time NBA Sim</b> </div>
-  
 
 </div>
-    
+
 </body>
 </html>
