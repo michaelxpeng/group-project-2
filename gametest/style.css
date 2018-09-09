@@ -417,7 +417,8 @@ th{
   background-color: rgb(255, 255, 255);
 }
 
-.boxscore-heading{
+.boxscore-headingA,
+.boxscore-headingB{
   color: #222222;
   background-image: linear-gradient(to right, rgb(255, 255, 255) , rgba(255, 255, 255, 0));
 }
