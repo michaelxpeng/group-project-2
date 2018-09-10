@@ -56,6 +56,10 @@ console.log(newUser.userEmail);
   $("#button2").on("click", function(event) {
     // prevent form from submitting
     event.preventDefault();
+
+    var logo = $('#logo').val().trim();
+
+    var teamName = $('#teamName').val().trim();
     
     var pg = $('#pg').val().trim();
         console.log(userName);
@@ -73,6 +77,8 @@ console.log(newUser.userEmail);
     console.log(sg);
 
     var roster = {
+        logo: logo,
+        teamName: teamName,
         pg: pg,
         sg: sg,
         sf: sf,
@@ -84,6 +90,8 @@ console.log(newUser.userEmail);
 dataRef.ref().push(roster);
    
 //Logs roster to console
+console.log(roster.logo);
+console.log(roster.teamName);
 console.log(roster.pg);
 console.log(roster.sg);
 console.log(roster.sf);
@@ -93,7 +101,8 @@ console.log(roster.center);
   });
 
    //clears inputs
-       
+   $("#logo").val("");
+   $("#teamName").val("");    
    $("#pg").val("");
    $("#sg").val("");
    $("#sf").val("");
@@ -103,13 +112,15 @@ console.log(roster.center);
    return false;
 
 //third button to display saved user roster onto page
-   $("#button3").on("click", function(event) {
+   $("#button2").on("click", function(event) {
 
     dataRef.ref().on("child_added", function(childSnapshot, prevChildKey)  {
 
         console.log(childSnapshot.val());
          
          // Store everything into a variable that's coming out of snapshot
+         var logoSnap = childSnapshot.val().logo;
+         var teamNameSnap = childSnapshot.val().teamName;
          var pgSnap = childSnapshot.val().pg;
          var sgSnap = childSnapshot.val().sg;
          var sfSnap = childSnapshot.val().sf;
