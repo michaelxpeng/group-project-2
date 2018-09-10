@@ -135,7 +135,6 @@ module.exports = function (app) {
       for (var i = 0; i < results.length; i++) {
         // Loop through all 30 teams
         var team = JSON.parse(results[i].dataValues.data);
-
         for (var j = 0; j < team.players.length; j++) {
           var player = team.players[j];
           var playerTotal = team.players[j].total;
