@@ -7,7 +7,7 @@ $.get("/api/stats", function(response){
         var ThreePCT = (response[i].threePM/response[i].threePA).toFixed(3);
         var FTpct = (response[i].ftm/response[i].fta).toFixed(3);
         if(response[i].gamesPlayed > 58){
-            var posSelect = $('<select>');
+            var posSelect = $('<select class="position-selector">');
             if(response[i].position === "C"){
                 posSelect.append("<option value='C'>C</option>")
             }else if(response[i].position === "F-C" || response[i].position === "C-F"){
