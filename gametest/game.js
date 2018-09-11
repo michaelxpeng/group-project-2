@@ -1113,6 +1113,9 @@ var textSpeed
 var logSpeed
 var appendSpeed
 var scrollSpeed
+var gameTimeEst
+var speedSelected = false;
+
  
 
 
@@ -1290,7 +1293,7 @@ function printStats () {
     $(".boxscore-headingA").html(this.teamA.name);
 
 
-    $("#name-player0").html(this.player0.name);
+    $("#name-player0").html(this.player0.name).css("color", "whitesmoke");
     $("#PTS-player0").html(this.player0.PTS);
     $("#FG-player0").html((this.player0.FGM)+ "-" +(this.player0.FGA));
     $("#3PT-player0").html((this.player0.ThreePM)+ "-" +(this.player0.ThreePA));
@@ -1303,7 +1306,7 @@ function printStats () {
     $("#TOV-player0").html(this.player0.TOV);
     $("#FLS-player0").html(this.player0.FLS);
 
-    $("#name-player1").html(this.player1.name);
+    $("#name-player1").html(this.player1.name).css("color", "whitesmoke");
     $("#PTS-player1").html(this.player1.PTS);
     $("#FG-player1").html((this.player1.FGM)+ "-" +(this.player1.FGA));
     $("#3PT-player1").html((this.player1.ThreePM)+ "-" +(this.player1.ThreePA));
@@ -1316,7 +1319,7 @@ function printStats () {
     $("#TOV-player1").html(this.player1.TOV);
     $("#FLS-player1").html(this.player1.FLS);
 
-    $("#name-player2").html(this.player2.name);
+    $("#name-player2").html(this.player2.name).css("color", "whitesmoke");
     $("#PTS-player2").html(this.player2.PTS);
     $("#FG-player2").html((this.player2.FGM)+ "-" +(this.player2.FGA));
     $("#3PT-player2").html((this.player2.ThreePM)+ "-" +(this.player2.ThreePA));
@@ -1329,7 +1332,7 @@ function printStats () {
     $("#TOV-player2").html(this.player2.TOV);
     $("#FLS-player2").html(this.player2.FLS);
 
-    $("#name-player3").html(this.player3.name);
+    $("#name-player3").html(this.player3.name).css("color", "whitesmoke");
     $("#PTS-player3").html(this.player3.PTS);
     $("#FG-player3").html((this.player3.FGM)+ "-" +(this.player3.FGA));
     $("#3PT-player3").html((this.player3.ThreePM)+ "-" +(this.player3.ThreePA));
@@ -1342,7 +1345,7 @@ function printStats () {
     $("#TOV-player3").html(this.player3.TOV);
     $("#FLS-player3").html(this.player3.FLS);
 
-    $("#name-player4").html(this.player4.name);
+    $("#name-player4").html(this.player4.name).css("color", "whitesmoke");
     $("#PTS-player4").html(this.player4.PTS);
     $("#FG-player4").html((this.player4.FGM)+ "-" +(this.player4.FGA));
     $("#3PT-player4").html((this.player4.ThreePM)+ "-" +(this.player4.ThreePA));
@@ -1374,7 +1377,7 @@ function printStats () {
 
     $(".boxscore-headingB").html(this.teamB.name);
 
-    $("#name-player5").html(this.player5.name);
+    $("#name-player5").html(this.player5.name).css("color", "whitesmoke");
     $("#PTS-player5").html(this.player5.PTS);
     $("#FG-player5").html((this.player5.FGM)+ "-" +(this.player5.FGA));
     $("#3PT-player5").html((this.player5.ThreePM)+ "-" +(this.player5.ThreePA));
@@ -1387,7 +1390,7 @@ function printStats () {
     $("#TOV-player5").html(this.player5.TOV);
     $("#FLS-player5").html(this.player5.FLS);
 
-    $("#name-player6").html(this.player6.name);
+    $("#name-player6").html(this.player6.name).css("color", "whitesmoke");
     $("#PTS-player6").html(this.player6.PTS);
     $("#FG-player6").html((this.player6.FGM)+ "-" +(this.player6.FGA));
     $("#3PT-player6").html((this.player6.ThreePM)+ "-" +(this.player6.ThreePA));
@@ -1400,7 +1403,7 @@ function printStats () {
     $("#TOV-player6").html(this.player6.TOV);
     $("#FLS-player6").html(this.player6.FLS);
 
-    $("#name-player7").html(this.player7.name);
+    $("#name-player7").html(this.player7.name).css("color", "whitesmoke");
     $("#PTS-player7").html(this.player7.PTS);
     $("#FG-player7").html((this.player7.FGM)+ "-" +(this.player7.FGA));
     $("#3PT-player7").html((this.player7.ThreePM)+ "-" +(this.player7.ThreePA));
@@ -1413,7 +1416,7 @@ function printStats () {
     $("#TOV-player7").html(this.player7.TOV);
     $("#FLS-player7").html(this.player7.FLS);
 
-    $("#name-player8").html(this.player8.name);
+    $("#name-player8").html(this.player8.name).css("color", "whitesmoke");
     $("#PTS-player8").html(this.player8.PTS);
     $("#FG-player8").html((this.player8.FGM)+ "-" +(this.player8.FGA));
     $("#3PT-player8").html((this.player8.ThreePM)+ "-" +(this.player8.ThreePA));
@@ -1426,7 +1429,7 @@ function printStats () {
     $("#TOV-player8").html(this.player8.TOV);
     $("#FLS-player8").html(this.player8.FLS);
 
-    $("#name-player9").html(this.player9.name);
+    $("#name-player9").html(this.player9.name).css("color", "whitesmoke");
     $("#PTS-player9").html(this.player9.PTS);
     $("#FG-player9").html((this.player9.FGM)+ "-" +(this.player9.FGA));
     $("#3PT-player9").html((this.player9.ThreePM)+ "-" +(this.player9.ThreePA));
@@ -1462,23 +1465,24 @@ function printStats () {
     for (let i = 0; i < this.quarterLog.length; i++) {
         
         if (this.quarterLog[i] === 1){
-            $(".gameState").css({"top": "-31px", "left": "200px", "font-size": "1.5em"})
+            // $(".gameState").css({"top": "-31px", "left": "200px", "font-size": "1.5em"})
             this.quarterLog[i] = "1ST";
         }
         else if (this.quarterLog[i] === 2){
-            $(".gameState").css({"top": "-30px", "left": "188px", "font-size": "1.4em"})
+            // $(".gameState").css({"top": "-30px", "left": "188px", "font-size": "1.4em"})
             this.quarterLog[i] = "2ND";
         }
         else if (this.quarterLog[i] === 3){
-            $(".gameState").css({"top": "-30px", "left": "188px", "font-size": "1.4em"})
+            // $(".gameState").css({"top": "-30px", "left": "188px", "font-size": "1.4em"})
             this.quarterLog[i] = "3RD";
         }
         else if (this.quarterLog[i] === 4){
-            $(".gameState").css({"top": "-30px", "left": "188px", "font-size": "1.4em"})
+            // $(".gameState").css({"top": "-30px", "left": "188px", "font-size": "1.4em"})
             this.quarterLog[i] = "4TH";
         }
         else if (this.quarterLog[i] = "FINAL"){
-            // $(".gameState").removeAttr("style");
+            // $(".gameState").removeAttr("style")
+            
         }
         
         var hmm = parseInt(400 * userSimSpeed);
