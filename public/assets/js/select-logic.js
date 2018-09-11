@@ -10,53 +10,53 @@ $.get("/api/stats", function(response){
             var posSelect = $('<select class="position-selector">');
             if(response[i].position === "C"){
                 posSelect.append("<option value='C'>C</option>")
-            }else if(response[i].position === "F-C" || response[i].position === "C-F"){
+            } else if (response[i].position === "F-C" || response[i].position === "C-F") {
                 posSelect.append(
-                    "<option value='C'>C</option>"+
+                    "<option value='C'>C</option>" +
                     "<option value='PF'>PF</option>"
                 )
-            }else if(response[i].position === "F"){
+            } else if (response[i].position === "F") {
                 posSelect.append(
-                    "<option value='SF'>SF</option>"+
+                    "<option value='SF'>SF</option>" +
                     "<option value='PF'>PF</option>"
                 )
-            }else if(response[i].position === "G-F" || response[i].position === "F-G"){
+            } else if (response[i].position === "G-F" || response[i].position === "F-G") {
                 posSelect.append(
-                    "<option value='PF'>PF</option>"+
-                    "<option value='SF'>SF</option>"+
+                    "<option value='PF'>PF</option>" +
+                    "<option value='SF'>SF</option>" +
                     "<option value='SG'>SG</option>"
                 )
-            }else if(response[i].position === "G"){
+            } else if (response[i].position === "G") {
                 posSelect.append(
-                    "<option value='PG'>PG</option>"+
-                    "<option value='SG'>SG</option>"+
+                    "<option value='PG'>PG</option>" +
+                    "<option value='SG'>SG</option>" +
                     "<option value='SF'>SF</option>"
                 )
             }
             // playerCount++;
             // var position = positionArray[Math.floor(Math.random()*5)];
-            var salary = parseInt(((parseFloat(response[i].per)+parseFloat(response[i].usgPCT))/2)*100)
-            var statsDiv = $('<div class="hidden stat-display" id="stats'+i+'">');
+            var salary = parseInt(((parseFloat(response[i].per) + parseFloat(response[i].usgPCT)) / 2) * 100)
+            var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
             statsDiv.html(
-                "Name: "+response[i].playerName+
-                "<br>Year: "+response[i].year+
-                "<br>Position: "+response[i].position+
-                "<br>Salary: $"+parseInt(salary)+
-                "<br>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(2)
+                "Name: " + response[i].playerName +
+                "<br>Year: " + response[i].year +
+                "<br>Position: " + response[i].position +
+                "<br>Salary: $" + parseInt(salary) +
+                "<br>Points: " + (parseInt(response[i].pts) / response[i].gamesPlayed).toFixed(2) +
+                "<br>Rebounds: " + (parseInt(response[i].reb) / response[i].gamesPlayed).toFixed(2) +
+                "<br>Assists: " + (parseInt(response[i].ast) / response[i].gamesPlayed).toFixed(2) +
+                "<br>Steals: " + (parseInt(response[i].stl) / response[i].gamesPlayed).toFixed(2) +
+                "<br>Blocks: " + (parseInt(response[i].blk) / response[i].gamesPlayed).toFixed(2)
             );
             $('#stat-holder').append(statsDiv);
+
             $('#available-players').append(
-                
                 $("<tr>").append(
                     $('<td>').text(response[i].position),
                     $('<td>').text(response[i].playerName),
-                    $('<td>').text("$"+parseInt(salary)),
+                    $('<td>').text("$" + parseInt(salary)),
                     $('<td>').html(posSelect),
-                    $('<td>').html('<button class="add-player" value="'+response[i].playerName+salary+'">ADD</button>'),
+                    $('<td>').html('<button class="add-player" value="' + response[i].playerName + salary + '">ADD</button>'),
                     // statsDiv
                 ).val(response[i].position).attr('data', i).attr('salary' , salary)
                 .attr('name' , response[i].playerName)
@@ -98,7 +98,9 @@ $.get("/api/stats", function(response){
         }else{
             userSalary -= playerSalaryCheck;
             $('#salary-display').text(userSalary);
+
             var selPlayerPos = $(this).parents('tr').find('select').val();
+            console.log(selPlayerPos)
             var selPlayerSal = $(this).parents('tr').attr('salary');
             var selPlayerName = $(this).parents('tr').attr('name');
             var TSpct = $(this).parents('tr').attr('TSpct')
@@ -175,38 +177,70 @@ $.get("/api/stats", function(response){
             }
         }
     })
+
+
+    $('.drop').on('click', function () {
+        // $(this).parent('tr').find('td').clear();
+    });
+
+    function searchPlayers() {
+        // Declare variables
+        var input, filter, a, i;
+        input = document.getElementById('search');
+        filter = input.value.toUpperCase();
+
+        // Loop through all response items, and hide those who don't match the search query
+        for (i = 0; i < response.length; i++) {
+            a = response[i].playerName;
+            if (a.toUpperCase().indexOf(filter) > -1) {
+                $('#available-players').append(
+                    $("<tr>").append(
+                        $('<td>').text(response[i].position),
+                        $('<td>').text(response[i].playerName),
+                        $('<td>').text("$" + parseInt(salary)),
+                        $('<td>').html(posSelect),
+                        $('<td>').html('<button class="add-player" value="' + response[i].playerName + salary + '">ADD</button>'),
+                    ).val(response[i].position).attr('name', response[i].playerName).attr('data', i).attr('salary', salary).addClass('available-player-row'),
+                )
+            }
+            else {
+                $('.available-player-row').addClass('hidden');
+            }
+        }
+    }
+
 })
 
 $(".tab").on('click', function(){
     var tabValue = $(this).val();
-    if(tabValue === 'all'){
+    if (tabValue === 'all') {
         $('.available-player-row').removeClass('hidden')
         $(".tab").removeClass('active');
         $(this).addClass('active');
-    }else if(tabValue === 'guards'){
+    } else if (tabValue === 'guards') {
         $('.available-player-row').removeClass('hidden')
         $(".tab").removeClass('active');
         $(this).addClass('active');
-        $('.available-player-row').filter(function(index){
-            if($(this).val() != 'G'){
+        $('.available-player-row').filter(function (index) {
+            if ($(this).val() != 'G') {
                 return index
             }
         }).addClass('hidden')
-    }else if(tabValue === 'wings'){
+    } else if (tabValue === 'wings') {
         $('.available-player-row').removeClass('hidden')
         $(".tab").removeClass('active');
         $(this).addClass('active');
-        $('.available-player-row').filter(function(index){
-            if(($(this).val() != 'G-F') && ($(this).val() != 'F-G') && ($(this).val() != 'F')){
+        $('.available-player-row').filter(function (index) {
+            if (($(this).val() != 'G-F') && ($(this).val() != 'F-G') && ($(this).val() != 'F')) {
                 return index
             }
         }).addClass('hidden')
-    }else if(tabValue === 'bigs'){
+    } else if (tabValue === 'bigs') {
         $('.available-player-row').removeClass('hidden')
         $(".tab").removeClass('active');
         $(this).addClass('active');
-        $('.available-player-row').filter(function(index){
-            if(($(this).val() != 'C-F') && ($(this).val() != 'F-C') && ($(this).val() != 'C')){
+        $('.available-player-row').filter(function (index) {
+            if (($(this).val() != 'C-F') && ($(this).val() != 'F-C') && ($(this).val() != 'C')) {
                 return index
             }
         }).addClass('hidden')
@@ -311,4 +345,4 @@ $('#save-team').on('click', function(){
         console.log(player4)
     }
 
-})
+});
