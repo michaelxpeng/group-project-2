@@ -38,15 +38,14 @@ $.get("/api/stats", function(response){
             var salary = parseInt(((parseFloat(response[i].per)+parseFloat(response[i].usgPCT))/2)*100)
             var statsDiv = $('<div class="hidden stat-display" id="stats'+i+'">');
             statsDiv.html(
-                "Name: "+response[i].playerName+
-                "<br>Year: "+response[i].year+
-                "<br>Position: "+response[i].position+
-                "<br>Salary: $"+parseInt(salary)+
-                "<br>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(2)+
-                "<br>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(2)
+                "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+
+                "<h4>"+response[i].year+"</h4>"+
+                "<h3>Per Game Averages:</h3>"+
+                "<h4>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(2)+"</h4>"
             );
             $('#stat-holder').append(statsDiv);
             $('#available-players').append(
@@ -56,7 +55,7 @@ $.get("/api/stats", function(response){
                     $('<td>').text(response[i].playerName),
                     $('<td>').text("$"+parseInt(salary)),
                     $('<td>').html(posSelect),
-                    $('<td>').html('<button class="add-player" value="'+response[i].playerName+salary+'">ADD</button>'),
+                    $('<td>').html('<button class="add-player" value="'+response[i].playerName+salary+'">+</button>'),
                     // statsDiv
                 ).val(response[i].position).attr('data', i).attr('salary' , salary)
                 .attr('name' , response[i].playerName)
@@ -76,11 +75,13 @@ $.get("/api/stats", function(response){
                 .hover(
                     function (){
                         var rowRefNumb = $(this).attr('data');
-                        $('#stats'+rowRefNumb).removeClass('hidden').fadeIn()
+                        $('#select-instructions').addClass('hidden');
+                        $('#stats'+rowRefNumb).removeClass('hidden')
                     } ,
                     function (){
                         var rowRefNumb = $(this).attr('data');
-                        $('#stats'+rowRefNumb).addClass('hidden')
+                        $('#stats'+rowRefNumb).addClass('hidden');
+                        $('#select-instructions').removeClass('hidden');
                     }
                 )
             )
@@ -123,7 +124,7 @@ $.get("/api/stats", function(response){
                     $('<th>').text(selPlayerPos),
                     $('<td>').text(selPlayerName),
                     $('<td>').text(selPlayerSal),
-                    $('<td>').html("<td><button class='drop-player'>drop</button></td>")
+                    $('<td>').html("<td><button class='drop-player'>--</button></td>")
                 ).attr('salary' , selPlayerSal)
                 .attr('name' , selPlayerName)
                 .attr('TSpct' , TSpct)
@@ -215,7 +216,7 @@ $(".tab").on('click', function(){
 
 $('#save-team').on('click', function(){
     if($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined){
-        console.log("All Positions Need to Be Filled")
+        alert("All Positions Need to Be Filled")
     }else{
         var player0 = {
             position:$('#PG-row').attr('position'),
