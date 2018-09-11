@@ -1,14 +1,17 @@
 body, html {
     margin: 0;
-    height: 100%;
+    /* height: 100%; */
 }
+
+
 
 body {
    
     display: flex;
     flex-direction: column;
     /* justify-content: center; */
-    align-items: center;
+    /* align-items: center; */
+    background-repeat: repeat-y;
     background-image: url("blackbg.jpg");
     color: whitesmoke;
     /* background: radial-gradient(circle, #8AB1AA 40%, #5EACC2, #1F81AF); */
@@ -17,7 +20,7 @@ body {
   }
 
 /* Game Events are sent here */
-.gameBox {
+/* .gameBox {
     margin: auto;
     width: 500px;
     height: 30vh;
@@ -27,6 +30,21 @@ body {
     overflow: scroll;
    
     
+} */
+
+.gameBox {
+  margin: auto;
+  width: 500px;
+  height: 30vh;
+  overflow-y: scroll;
+  background: rgba(245, 245, 245, 0.829);
+  background:rgba(0,0,0,.6);
+  overflow: scroll;
+  position: absolute;
+  right: 3vw;;
+  top: 20vh;
+ 
+  
 }
 
 .gameLog {
@@ -64,6 +82,9 @@ body {
         color: whitesmoke;
         cursor: pointer;
         user-select: none;
+        position: absolute;
+        right: 14vw;
+        top: 55vh;
 }
 
 
@@ -90,6 +111,8 @@ body {
     opacity: .8;
     /* display: none; */
     color: black;
+    align-content: center;
+    
 }
 .slowButton {
     background-color: red;
@@ -98,6 +121,9 @@ body {
     left: -5%;
     top: 0%; */
     margin-top: 1%;
+    position: absolute;
+    top: 49vh;
+    right: 22vw;
 }
 
 .slowButton:hover {
@@ -119,6 +145,9 @@ body {
     background-color: yellow;
     /* height: 15px; */
     /* top:  -2.5%; */
+    position: absolute;
+    top: 51vh;
+    right: 19vw;
 }
 
 .fastButton {
@@ -127,6 +156,9 @@ body {
     /* height: 15px; */
     /* left: 5%;
     top: -5%; */
+    position: absolute;
+    top: 51vh;
+    right: 16vw;
 }
 
 /* Logo  */
@@ -136,6 +168,7 @@ body {
     top: -3vh; */
     float: left;
     flex-direction: row;
+    display: none;
     /* display: inline-flex; */
 }
 
@@ -173,15 +206,16 @@ body {
  
   /* Scoreboard  */
 
-  .scoreboard {
+  .scoreboardM {
     width: 350px;
     height: 150px;
     border-radius: 20px;
     background: linear-gradient(-60deg, #46404f 53%, #4B4452 53%);
     box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.25);
+    display: none;
   }
   
-  .team {
+  /* .team {
     width: 100%;
     height: 50%;
     display: flex;
@@ -288,7 +322,7 @@ body {
   }
 
   .team.A .scoreA {
-      /* color: #EABF4F; */
+      color: #EABF4F;
       color: whitesmoke;
   }
   
@@ -305,77 +339,112 @@ body {
   
   b {
     font-weight: bold;
-  }
+  }  */
 
+  
+  .scoreboard {
+    position: fixed;
+    top: 0;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 1%;
+    padding-bottom: .65%;
+    /* float: left; */
+    font-size: 2em;
+    color: whitesmoke;
+    /* color: #333333; */
+    /* background-color: rgba(0,0,0,.6); */
+    background-color: #333333;
+    /* background-color: #fefdfa; */
+    /* background-color: #263f3f ; */
+    z-index: 10;
+    width: 100vw;
+    height: 12vh;
+    text-decoration: none;
+    box-shadow: 1.5px 1.5px 1.5px 1.5px whitesmoke;
+}
 
-/* .simSlider:hover {
-    opacity: 1;
-} */
+.team .logo {
+    width: 75px;
+    height: 75px;
+    margin: 25px;
+    z-index: 11;
+}
 
-.simSlider {
+.team.B .logo {
+    position: fixed;
+    top: -1%;
+    left: 5%
+}
+
+.team.A .logo {
+    position: fixed;
+    top: -1%;
+    left: 86%
+}
+
+.team.B .name {
+    position: fixed;
+    top: 5%;
+    left: 20%
+}
+
+.team.A .name {
+    position: fixed;
+    top: 5%;
+    left: 75%
+}
+
+.scoreB {
+    position: fixed;
+    top: 5%;
+    left: 30%
+}
+
+.scoreA {
+    position: fixed;
+    top: 5%;
+    left: 68%
+}
+
+.gameState {
+    position: fixed;
+    top: 1%;
+    left: 47%;
+}
+
+.team.B .rank {
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    background-color: #EABF4F;
+    height: 15.2vh;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16pt;
+    font-weight: bold;
+    flex-shrink: 0;
 
 }
 
-.simSliderRange {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 10%;
-    border-radius: 5px;
-    background: gold;
-    outline: none;
-    padding: 0;
-    margin: 0;
-    /* transform: rotate(180deg); */
-
-  
-
-    /* ::-webkit-slider-thumb {
-      appearance: none;
-      width: $range-handle-size;
-      height: $range-handle-size;
-      border-radius: 50%;
-      background: $range-handle-color;
-      cursor: pointer;
-      /* transition: background .15s ease-in-out; */
-  
-      /* :hover { */
-        /* background: $range-handle-color-hover;
-      } */
-    } 
-/*   
+.team.A .rank {
+    position: fixed;
+    top: 0%;
+    left: 97%;
+    background-color: #6F212F;
+    height: 15.2vh;
+    width: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16pt;
+    font-weight: bold;
+    flex-shrink: 0;
+}
 
 
-    &:active::-webkit-slider-thumb {
-      background: $range-handle-color-hover;
-    } */
-  
-    
-    
-    /* // Focus state
-    &:focus {
-      
-      &::-webkit-slider-thumb {
-        box-shadow: 0 0 0 3px $shade-0,
-                    0 0 0 6px teal;
-      } */
-    /* }
-  } */
-
-
-
-
-.simSliderValue  {
-    display: inline-block;
-    position: relative;
-    width: 10%;
-    color: whitesmoke;
-    line-height: 20px;
-    text-align: center;
-    border-radius: 3px;
-    background: black;
-    padding: 5px 10px;
-    margin-left: 8px;
-  }
 
 
 
@@ -387,17 +456,20 @@ table, tbody, tfoot, thead, tr, th, td {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;
+  vertical-align: baseline;
 }
 table {
 	border-collapse: collapse;
-	border-spacing: 0;
+  border-spacing: 0;
 }
 
 .game-boxscore{
   width: 40%;
   display: inline-block;
   float: left;
+  position: absolute;
+  top: 15vh;
+  left: 12vw;
 }
 
 .game-main{
@@ -410,7 +482,12 @@ table {
 }
 
 tr:nth-child(odd){
+  color:  transparent;
   background-color: rgb(78, 78, 78);
+}
+tr:nth-child(even){
+  color: transparent;
+  background-color: rgba(0,0,0,.6);
 }
 th{
   color: #222222;
@@ -422,3 +499,246 @@ th{
   color: #222222;
   background-image: linear-gradient(to right, rgb(255, 255, 255) , rgba(255, 255, 255, 0));
 }
+
+
+/* Stat Reveal */
+.statReveal {
+  margin: auto;
+  width: 500px;
+  height: 20vh;
+  overflow-y: scroll;
+  background: rgba(245, 245, 245, 0.829);
+  background:rgba(0,0,0,.6);
+  overflow: scroll;
+  position: fixed;
+  bottom: 10vh;
+  right: 1vw;
+  display: none;
+}
+
+.boxScoreButton {
+  font-size: 14px;
+  line-height: 1;
+  border-radius: 500px;
+  padding: 1em 1em 1em;
+  transition-duration: .3s;
+  border-width: 0;
+  letter-spacing: 2px;
+  min-width: 160px;
+  text-transform: uppercase;
+  white-space: normal;
+  margin: auto;
+  /* position: relative;
+  top: vh; */
+  background-color: #990000;
+  color: whitesmoke;
+  cursor: pointer;
+  user-select: none;
+  position: fixed;
+  bottom: 8vh;
+  right: 12vw;
+  display: none;
+}
+
+@media screen and (max-width: 1439px) {
+
+  body,html {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  #ball {
+    display: block;
+    height: 180px;
+    margin-bottom: 3vh;
+  }
+
+  .scoreboard {
+    display: none;
+  }
+
+  .scoreboardM {
+    width: 350px;
+    height: 150px;
+    border-radius: 20px;
+    background: linear-gradient(-60deg, #46404f 53%, #4B4452 53%);
+    box-shadow: 2px 3px 5px 0px rgba(0, 0, 0, 0.25);
+    display: block;
+    position: static;
+    /* left: 75vh;
+    bottom: 30vh; */
+  }
+  
+  .team {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: center;
+    font-size: 20pt;
+    color: whitesmoke;
+  }
+  .team .name- {
+    flex-shrink: 0;
+    width: 52px;
+    display: flex;
+    justify-content: center;
+    letter-spacing: 2px;
+  }
+  .team:nth-child(1) .rank- {
+    border-top-left-radius: 20px;
+  }
+  .team:nth-child(3) .rank- {
+    border-bottom-left-radius: 20px;
+  }
+  .team .rank- {
+    height: 100%;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16pt;
+    font-weight: bold;
+    flex-shrink: 0;
+  }
+  .team .logo- {
+    position: initial;
+    width: 50px;
+    margin: 25px;
+  }
+  .team .scoreA {
+    flex-shrink: 0;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    letter-spacing: 2px;
+  }
+  .team .scoreB {
+    flex-shrink: 0;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 30px;
+    letter-spacing: 2px;
+  }
+  .team .recordA {
+    font-size: 16pt;
+    color: #746f7f;
+    padding: 1px;
+    margin-right: 30px;
+  }
+
+  .team .recordB {
+    font-size: 16pt;
+    color: #746f7f;
+    padding: 1px;
+    margin-right: 30px;
+  }
+  
+  .divider- {
+    height: 1px;
+    width: 310px;
+    position: absolute;
+    margin-left: 40px;
+    font-size: 10pt;
+    color: whitesmoke;
+  }
+  .divider-::before {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    height: 1px;
+    width: 180px;
+    background-color: #746f7f;
+  }
+  .divider-::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    height: 1px;
+    width: 80px;
+    right: 0;
+    top: 0;
+    background-color: #746f7f;
+  }
+  .divider- p {
+    position: absolute;
+    font-weight: bold;
+    left: 187px;
+    top: -20px;
+  }
+  
+  .B- .rank- {
+    background-color: #EABF4F;
+    color: whitesmoke;
+  }
+  .team.B- .scoreB {
+    color: whitesmoke;
+  }
+
+  .team.A- .scoreA {
+      color: #EABF4F;
+      color: whitesmoke;
+  }
+  
+  .A- .rank- {
+    background-color: #6F212F;
+  }
+
+ 
+  
+  .subtitle {
+    margin: 20px;
+    color: whitesmoke;
+  }
+  
+  b {
+    font-weight: bold;
+  } 
+
+  .scoreA, 
+  .scoreB {
+    position: static;
+  }
+
+  .gameBox,
+  .gameLog,
+  .slowButton,
+  .normalButton,
+  .fastButton,
+  .startButton,
+  .game-boxscore {
+    position: static;
+    margin:0;
+  }
+
+  .gameBox {
+    margin-bottom: 5vh;
+  }
+
+  .game-main {
+    margin-top: 10vh;
+  }
+
+  .game-boxscore {
+    display: none;
+  }
+  }
+
+  @media screen and (max-width: 499px) {
+  
+  .gameBox{
+    width: 100vw;
+  }
+
+  .statReveal,
+  .boxScoreButton {
+    color: transparent;
+    background-color: transparent;    
+  }
+  
+  }
