@@ -79,31 +79,31 @@ module.exports = function (app) {
           teamID: team.id
         });
         // Loop through all the teams' players
-        for (var j = 0; j < team.players.length; j++) {
-          var playerName = team.players[j].full_name;
-          var playerID = team.players[j].id;
+        // for (var j = 0; j < team.players.length; j++) {
+        //   var playerName = team.players[j].full_name;
+        //   var playerID = team.players[j].id;
           // console.log("Name: " + playerName);
           // console.log("ID: " + playerID);
 
-          // Create an instance for the Players model
-          db.Players.create({
-            playerName: playerName,
-            playerID: playerID
-          });
-        };
+        //   // Create an instance for the Players model
+        //   db.Players.create({
+        //     playerName: playerName,
+        //     playerID: playerID
+        //   });
+        // };
       };
     });
   });
 
   // Find stored data for all players in the 2017 season
-  app.get("/api/players", function (req, res) {
-    db.Players.findAll({
+  // app.get("/api/players", function (req, res) {
+  //   db.Players.findAll({
 
-    }).then(function (results) {
-      // Display all data to the page
-      res.json(results);
-    });
-  });
+  //   }).then(function (results) {
+  //     // Display all data to the page
+  //     res.json(results);
+  //   });
+  // });
 
   // Find stored data for all teams in the 2017 season
   app.get("/api/teams", function (req, res) {
@@ -114,15 +114,6 @@ module.exports = function (app) {
       res.json(results);
     });
   });
-
-
-  // app.get("/api/statscache/", function (req, res) {
-  //   db.CacheRequest.findAll({
-
-  //   }).then(function (results) {
-  //     res.json(results);
-  //   });
-  // });
 
   // Find the cached data for teams in the 2017 season
   app.get("/api/2017playerscache/", function (req, res) {
