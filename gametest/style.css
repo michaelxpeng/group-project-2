@@ -417,7 +417,7 @@ body {
     position: fixed;
     top: 0%;
     left: 0%;
-    background-color: #EABF4F;
+    background-color: blue;
     height: 15.2vh;
     width: 45px;
     display: flex;
@@ -433,7 +433,7 @@ body {
     position: fixed;
     top: 0%;
     left: 97%;
-    background-color: #6F212F;
+    background-color: red;
     height: 15.2vh;
     width: 45px;
     display: flex;
@@ -673,7 +673,7 @@ th{
   }
   
   .B- .rank- {
-    background-color: #EABF4F;
+    background-color: blue;
     color: whitesmoke;
   }
   .team.B- .scoreB {
@@ -681,12 +681,12 @@ th{
   }
 
   .team.A- .scoreA {
-      color: #EABF4F;
+      color: red;
       color: whitesmoke;
   }
   
   .A- .rank- {
-    background-color: #6F212F;
+    background-color: red;
   }
 
  

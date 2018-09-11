@@ -18,7 +18,7 @@ module.exports = function(app) {
   });
 
   app.get("/selection", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/index.html"));
+    res.sendFile(path.join(__dirname, "../public/selection.html"));
   });
 
   app.get("/dashboard", function(req, res) {
