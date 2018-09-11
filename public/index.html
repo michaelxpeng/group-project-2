@@ -11,7 +11,48 @@
     <script src="assets/js/sortable.js"></script>
 </head>
 <body>
+<!-- <<<<<<< evan
+  <script type = "text/javascript">
+  $(".btn").on("click", function () {
+var firstName = "lebron";
+var lastName = "james";
+    var queryURL = "https://nba-players.herokuapp.com/players/" + lastName + "/" + firstName;
 
+    $.ajax({
+        url: queryURL,
+        method: "GET"
+        
+      }).then(function (response) {
+          // console.log(response);
+      });
+
+});
+    </script>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ul class="list-group todo-list">
+          <li class="list-group-item new-item">
+            <form id="todo-form">
+              <div class="container">
+                <div class="row">
+                  <div class="col-10">
+                    <input class="new-item form-control" placeholder="Add a todo" type="text" />
+                    <input class="new-stat form-control" placeholder="Add a stat" type="text" />
+                    
+                  </div>
+                  <div class="col-2">
+                    <button type="submit" class="btn btn-success">Add Todo</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </li>
+          <span class="todo-container">
+          </span>
+        </ul>
+      </div> -->
+  
 <!-- <select id="year-select">
     <option value="2013">2013</option>
     <option value="2014">2014</option>
@@ -45,7 +86,8 @@
             </thead>
             <tbody></tbody>
         </table>
-    </div>
+
+  </div>
     <div id="stat-holder"></div>
 <!-- </div> -->
 
