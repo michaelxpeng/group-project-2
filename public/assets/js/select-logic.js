@@ -336,7 +336,8 @@ $('#save-team').on('click', function(){
         console.log(player2);
         console.log(player3);
         console.log(player4);
+
+        location.href = "/dashboard";
     };
 
-    location.href = "/dashboard";
 });
