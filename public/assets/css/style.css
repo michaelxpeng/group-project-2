@@ -151,7 +151,9 @@ tr:nth-child(even){
     border-radius: 20px;
     overflow: hidden;
 }
-
+#user-lineup td,th{
+    padding: 5px;
+}
 
 #save-team{
     color: black;
