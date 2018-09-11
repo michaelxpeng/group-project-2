@@ -198,8 +198,9 @@ function slowSim () {
     textSpeed = 365;
     logSpeed = 2430;
     appendSpeed = 1000;
+    gameTimeEst = 282000;
 
-    $(".startButton").css("content", "Start Game");
+    $(".startButton").html("Start Game");
     speedSelected = true;
     $('.slowButton, .normalButton, .fastButton').fadeOut();
 
@@ -210,10 +211,12 @@ function normalSim () {
 
     scrollSpeed = 35;
     textSpeed = 60;
-    logSpeed = 400;
+    logSpeed = 395;
     appendSpeed = 375;
+    gameTimeEst = 47000;
 
-    $(".startButton").css("content", "Start Game");
+
+    $(".startButton").html("Start Game");
     speedSelected = true;
     $('.slowButton, .normalButton, .fastButton').fadeOut();
 
@@ -225,9 +228,46 @@ function fastSim () {
     textSpeed = 30;
     logSpeed = 180;
     appendSpeed = 180;
+    gameTimeEst = 23000;
 
-    $(".startButton").css("content", "Start Game");
+    $(".startButton").html("Start Game");
     speedSelected = true;
     $('.slowButton, .normalButton, .fastButton').fadeOut();
 
 };
+
+function notifyUser () {
+    $(".statReveal, .boxScoreButton").fadeIn();
+}
+
+function statReveal () {
+    $("tr:even, tr:odd").css("color", "whitesmoke");
+    $(".statReveal, .boxScoreButton").fadeOut();
+    return
+    // $("tr:even").css("background-color", "yellow");
+}
+
+function speedCheck () {
+    if (speedSelected == true) {
+        jumpBall();
+        notifyUser();
+        gameFinal();
+        $('.startButton').fadeOut();
+
+    }
+
+    else {
+        return
+    }
+}
+
+// $(document).ready(function(){
+//     if ($(".gameState")) {
+
+//     }
+// });
+
+
+function gameFinal () {
+setInterval(function(){ statReveal(); }, gameTimeEst);
+}
