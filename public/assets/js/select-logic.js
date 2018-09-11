@@ -123,7 +123,7 @@ $.get("/api/stats", function (response) {
                 $(row).attr("validCheck", selPlayerName + selPlayerSal).html('').append(
                     $('<th>').text(selPlayerPos),
                     $('<td>').text(selPlayerName),
-                    $('<td>').text(selPlayerSal),
+                    $('<td>').text('$' + selPlayerSal),
                     $('<td>').html("<td><button class='drop-player'>Drop</button></td>")
                 ).attr('salary', selPlayerSal)
                     .attr('name', selPlayerName)
@@ -337,4 +337,5 @@ $('#save-team').on('click', function () {
         console.log(player4);
     };
 
+    location.href = "/dashboard";
 });
