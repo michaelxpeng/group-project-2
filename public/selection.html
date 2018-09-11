@@ -10,29 +10,35 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/js/sortable.js"></script>
+
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
+
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
 </head>
 
 <body>
-  
-<select id="year-select">
-    <option value="2017">2017</option>
-    <option value="2016">2016</option>
-    <option value="2015">2015</option>
-    <option value="2014">2014</option>
-    <option value="2013">2013</option>
-</select>
 
-    <input type="text" id="search" placeholder="Search Player..">
+    <!-- <input type="text" id="search" placeholder="Search Player.."> -->
 
     <h3 id="salary-heading">Remaining Team Salary: $<span id="salary-display">12000</span></h3>
+
+<div class="total-available">
 
     <div id="tab-div">
         <button class="tab active" value="all">All</button>
         <button class="tab" value="guards">Guards</button>
         <button class="tab" value="wings">Wings</button>
         <button class="tab" value="bigs">Bigs</button>
+
+        <select id="year-select">
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+        </select>
     </div>
+
     <div id="available-players-div">
 
         <table id="available-players" class="sortable">
@@ -47,10 +53,12 @@
             </thead>
             <tbody></tbody>
         </table>
-
     </div>
-    <div id="stat-holder"></div>
-    <!-- </div> -->
+
+    <div id="stat-holder">
+        <p id="select-instructions">Hover Cursor Over Player's Name to See Stats</p>
+    </div>
+</div>
 
 <div id="user-lineup-div">
     <table id="user-lineup" class="">
