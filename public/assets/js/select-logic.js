@@ -39,17 +39,17 @@ $('#year-select').change(function(){
                     )
                 }
 
-                var salary = parseInt((((((parseFloat(response[i].ppg) + parseFloat(response[i].rpg) + parseFloat(response[i].apg)) + parseFloat(response[i].usgPCT)) / 2) * 100) / 1.2))
+                var salary = response[i].salary;
                 var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
                 statsDiv.html(
                     "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+
                     "<h4>"+response[i].year+"</h4>"+
                     "<h3>Per Game Averages:</h3>"+
-                    "<h4>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
-                    "<h4>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
-                    "<h4>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
-                    "<h4>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
-                    "<h4>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(2)+"</h4>"
+                    "<h4>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
+                    "<h4>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
+                    "<h4>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
+                    "<h4>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
+                    "<h4>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(1)+"</h4>"
                 );
                 $('#stat-holder').append(statsDiv);
 
