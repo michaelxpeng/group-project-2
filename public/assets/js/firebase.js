@@ -1,12 +1,5 @@
 // Initialize Firebase
 var config = {
-  // apiKey: "AIzaSyA4TzoxRV5oRyYlHqT6lvmxIJxBHPYp4co",
-  // authDomain: "fantasy-draft-1f6a6.firebaseapp.com",
-  // databaseURL: "https://fantasy-draft-1f6a6.firebaseio.com",
-  // projectId: "fantasy-draft-1f6a6",
-  // storageBucket: "fantasy-draft-1f6a6.appspot.com",
-  // messagingSenderId: "271694339648"
-
   apiKey: "AIzaSyC_PVkwDiphyNCRdbZ63bDZ95-Lj7cP0r8",
   authDomain: "rcb-fantasydraft.firebaseapp.com",
   databaseURL: "https://rcb-fantasydraft.firebaseio.com",
@@ -69,7 +62,7 @@ $("#save-team").on("click", function () {
     name: $('#PG-row').attr('name'),
     TSpct: parseFloat($('#PG-row').attr('TSpct')),
     ThreePAr: parseFloat($('#PG-row').attr('ThreePAr')),
-    ThreePCT: parseFloat($('#PG-row').attr('ThreePCT')),
+    ThreePct: parseFloat($('#PG-row').attr('ThreePCT')),
     FTr: parseFloat($('#PG-row').attr('FTr')),
     FTpct: parseFloat($('#PG-row').attr('FTpct')),
     ORBpct: parseFloat($('#PG-row').attr('ORBpct')),
@@ -78,7 +71,22 @@ $("#save-team").on("click", function () {
     STLpct: parseFloat($('#PG-row').attr('STLpct')),
     BLKpct: parseFloat($('#PG-row').attr('BLKpct')),
     TOVpct: parseFloat($('#PG-row').attr('TOVpct')),
-    USGpct: parseFloat($('#PG-row').attr('USGpct'))
+    USGpct: parseFloat($('#PG-row').attr('USGpct')),
+    salary: parseInt($('#SG-row').attr('salary')),
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
   };
 
   var sg = {
@@ -86,7 +94,7 @@ $("#save-team").on("click", function () {
     name: $('#SG-row').attr('name'),
     TSpct: parseFloat($('#SG-row').attr('TSpct')),
     ThreePAr: parseFloat($('#SG-row').attr('ThreePAr')),
-    ThreePCT: parseFloat($('#SG-row').attr('ThreePCT')),
+    ThreePct: parseFloat($('#SG-row').attr('ThreePCT')),
     FTr: parseFloat($('#SG-row').attr('FTr')),
     FTpct: parseFloat($('#SG-row').attr('FTpct')),
     ORBpct: parseFloat($('#SG-row').attr('ORBpct')),
@@ -95,7 +103,22 @@ $("#save-team").on("click", function () {
     STLpct: parseFloat($('#SG-row').attr('STLpct')),
     BLKpct: parseFloat($('#SG-row').attr('BLKpct')),
     TOVpct: parseFloat($('#SG-row').attr('TOVpct')),
-    USGpct: parseFloat($('#SG-row').attr('USGpct'))
+    USGpct: parseFloat($('#SG-row').attr('USGpct')),
+    salary: parseInt($('#SG-row').attr('salary')),
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
   };
 
   var sf = {
@@ -103,7 +126,7 @@ $("#save-team").on("click", function () {
     name: $('#SF-row').attr('name'),
     TSpct: parseFloat($('#SF-row').attr('TSpct')),
     ThreePAr: parseFloat($('#SF-row').attr('ThreePAr')),
-    ThreePCT: parseFloat($('#SF-row').attr('ThreePCT')),
+    ThreePct: parseFloat($('#SF-row').attr('ThreePCT')),
     FTr: parseFloat($('#SF-row').attr('FTr')),
     FTpct: parseFloat($('#SF-row').attr('FTpct')),
     ORBpct: parseFloat($('#SF-row').attr('ORBpct')),
@@ -112,7 +135,22 @@ $("#save-team").on("click", function () {
     STLpct: parseFloat($('#SF-row').attr('STLpct')),
     BLKpct: parseFloat($('#SF-row').attr('BLKpct')),
     TOVpct: parseFloat($('#SF-row').attr('TOVpct')),
-    USGpct: parseFloat($('#SF-row').attr('USGpct'))
+    USGpct: parseFloat($('#SF-row').attr('USGpct')),
+    salary: parseInt($('#SG-row').attr('salary')),
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
   };
 
   var pf = {
@@ -120,7 +158,7 @@ $("#save-team").on("click", function () {
     name: $('#PF-row').attr('name'),
     TSpct: parseFloat($('#PF-row').attr('TSpct')),
     ThreePAr: parseFloat($('#PF-row').attr('ThreePAr')),
-    ThreePCT: parseFloat($('#PF-row').attr('ThreePCT')),
+    ThreePct: parseFloat($('#PF-row').attr('ThreePCT')),
     FTr: parseFloat($('#PF-row').attr('FTr')),
     FTpct: parseFloat($('#PF-row').attr('FTpct')),
     ORBpct: parseFloat($('#PF-row').attr('ORBpct')),
@@ -129,7 +167,22 @@ $("#save-team").on("click", function () {
     STLpct: parseFloat($('#PF-row').attr('STLpct')),
     BLKpct: parseFloat($('#PF-row').attr('BLKpct')),
     TOVpct: parseFloat($('#PF-row').attr('TOVpct')),
-    USGpct: parseFloat($('#PF-row').attr('USGpct'))
+    USGpct: parseFloat($('#PF-row').attr('USGpct')),
+    salary: parseInt($('#SG-row').attr('salary')),
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
   };
 
   var c = {
@@ -137,7 +190,7 @@ $("#save-team").on("click", function () {
     name: $('#C-row').attr('name'),
     TSpct: parseFloat($('#C-row').attr('TSpct')),
     ThreePAr: parseFloat($('#C-row').attr('ThreePAr')),
-    ThreePCT: parseFloat($('#C-row').attr('ThreePCT')),
+    ThreePct: parseFloat($('#C-row').attr('ThreePCT')),
     FTr: parseFloat($('#C-row').attr('FTr')),
     FTpct: parseFloat($('#C-row').attr('FTpct')),
     ORBpct: parseFloat($('#C-row').attr('ORBpct')),
@@ -146,7 +199,22 @@ $("#save-team").on("click", function () {
     STLpct: parseFloat($('#C-row').attr('STLpct')),
     BLKpct: parseFloat($('#C-row').attr('BLKpct')),
     TOVpct: parseFloat($('#C-row').attr('TOVpct')),
-    USGpct: parseFloat($('#C-row').attr('USGpct'))
+    USGpct: parseFloat($('#C-row').attr('USGpct')),
+    salary: parseInt($('#SG-row').attr('salary')),
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
   };
 
   var roster = {
