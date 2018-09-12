@@ -10,11 +10,11 @@
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/js/sortable.js"></script>
-    <!-- <script src = "public/assets/js/signIn.js"></script> -->
+    <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
     <script src="assets/js/firebase.js"></script>
-
 </head>
+
 <div id="playerPG"></div>
 <script>
 
@@ -57,95 +57,100 @@
 </script>
 
 <body>
-    <!-- <input type="text" id="search" placeholder="Search Player.."> -->
+
     <h3 id="salary-heading">Remaining Team Salary: $<span id="salary-display">12000</span></h3>
 
-    <div class="total-available">
+<div class="total-available">
 
-        <div id="tab-div">
-            <button class="tab active" value="all">All</button>
-            <button class="tab" value="guards">Guards</button>
-            <button class="tab" value="wings">Wings</button>
-            <button class="tab" value="bigs">Bigs</button>
+    <div id="tab-div">
+        <button class="tab active" value="all">All</button>
+        <button class="tab" value="guards">Guards</button>
+        <button class="tab" value="wings">Wings</button>
+        <button class="tab" value="bigs">Bigs</button>
 
-            <select id="year-select">
-                <option selected disabled hidden style='display: none' value=''>Select Year...</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-                <option value="2014">2014</option>
-                <option value="2013">2013</option>
-            </select>
-        </div>
-
-        <div id="available-players-div">
-
-            <table id="available-players" class="sortable">
-                <thead>
-                    <tr>
-                        <th>Position</th>
-                        <th>Name</th>
-                        <th class="sorttable_salary">Salary</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
-
-        <div id="stat-holder">
-            <!-- <p id="select-instructions">Hover Cursor Over Player's Name to See Stats</p> -->
-            <p id="select-instructions">Select a Year to See Players</p>
+        <select id="year-select">
+            <option selected disabled hidden style='display: none' value=''>Select Year...</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+        </select>
+        <div class="hidden" id="search-div-id">
+            <input type="text" class="search" placeholder="Search Player..">
+            <button class="search-player">search</button>
         </div>
     </div>
 
-    <div id="user-lineup-div">
-        <table id="user-lineup" class="">
-            <tr>
-                <th>Position</th>
-                <th>Name</th>
-                <th>Year</th>
-                <th>Salary</th>
-                <th></th>
-            </tr>
-            <tr id="PG-row" position="PG" validCheck="">
-                <th>PG</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="SG-row" position="SG" validCheck="">
-                <th>SG</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="SF-row" position="SF" validCheck="">
-                <th>SF</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="PF-row" position="PF" validCheck="">
-                <th>PF</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr id="C-row" position="C" validCheck="">
-                <th>C</th>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
+    <div id="available-players-div">
+
+        <table id="available-players" class="sortable">
+            <thead>
+                <tr>
+                    <th>Position</th>
+                    <!-- <th class="sorttable_lastname">Name</th> -->
+                    <th>Name</th>
+                    <th class="sorttable_salary">Salary</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
         </table>
     </div>
+
+    <div id="stat-holder">
+        <!-- <p id="select-instructions">Hover Cursor Over Player's Name to See Stats</p> -->
+        <p id="select-instructions">Select a Year to See Players</p>
+    </div>
+</div>
+
+<div id="user-lineup-div">
+    <table id="user-lineup" class="">
+        <tr>
+            <th>Position</th>
+            <th>Name</th>
+            <th>Year</th> 
+            <th>Salary</th>
+            <th></th>
+        </tr>
+        <tr id="PG-row" position="PG" validCheck="">
+            <th>PG</th>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id="SG-row" position="SG" validCheck="">
+            <th>SG</th>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id="SF-row" position="SF" validCheck="">
+            <th>SF</th>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id="PF-row" position="PF" validCheck="">
+            <th>PF</th>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr id="C-row" position="C" validCheck="">
+            <th>C</th>
+            <td></td> 
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
 
     <button id="save-team">SAVE<br>TEAM</button>
 
