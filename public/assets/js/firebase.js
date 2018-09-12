@@ -1,5 +1,3 @@
-// {/* <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script> */}
-
 // Initialize Firebase
 var config = {
   // apiKey: "AIzaSyA4TzoxRV5oRyYlHqT6lvmxIJxBHPYp4co",
@@ -69,86 +67,86 @@ $("#save-team").on("click", function () {
   var pg = {
     position: $('#PG-row').attr('position'),
     name: $('#PG-row').attr('name'),
-    TSpct: $('#PG-row').attr('TSpct'),
-    ThreePAr: $('#PG-row').attr('ThreePAr'),
-    ThreePCT: $('#PG-row').attr('ThreePCT'),
-    FTr: $('#PG-row').attr('FTr'),
-    FTpct: $('#PG-row').attr('FTpct'),
-    ORBpct: $('#PG-row').attr('ORBpct'),
-    DRBpct: $('#PG-row').attr('DRBpct'),
-    ASTpct: $('#PG-row').attr('ASTpct'),
-    STLpct: $('#PG-row').attr('STLpct'),
-    BLKpct: $('#PG-row').attr('BLKpct'),
-    TOVpct: $('#PG-row').attr('TOVpct'),
-    USGpct: $('#PG-row').attr('USGpct')
+    TSpct: parseFloat($('#PG-row').attr('TSpct')),
+    ThreePAr: parseFloat($('#PG-row').attr('ThreePAr')),
+    ThreePCT: parseFloat($('#PG-row').attr('ThreePCT')),
+    FTr: parseFloat($('#PG-row').attr('FTr')),
+    FTpct: parseFloat($('#PG-row').attr('FTpct')),
+    ORBpct: parseFloat($('#PG-row').attr('ORBpct')),
+    DRBpct: parseFloat($('#PG-row').attr('DRBpct')),
+    ASTpct: parseFloat($('#PG-row').attr('ASTpct')),
+    STLpct: parseFloat($('#PG-row').attr('STLpct')),
+    BLKpct: parseFloat($('#PG-row').attr('BLKpct')),
+    TOVpct: parseFloat($('#PG-row').attr('TOVpct')),
+    USGpct: parseFloat($('#PG-row').attr('USGpct'))
   };
 
   var sg = {
     position: $('#SG-row').attr('position'),
     name: $('#SG-row').attr('name'),
-    TSpct: $('#SG-row').attr('TSpct'),
-    ThreePAr: $('#SG-row').attr('ThreePAr'),
-    ThreePCT: $('#SG-row').attr('ThreePCT'),
-    FTr: $('#SG-row').attr('FTr'),
-    FTpct: $('#SG-row').attr('FTpct'),
-    ORBpct: $('#SG-row').attr('ORBpct'),
-    DRBpct: $('#SG-row').attr('DRBpct'),
-    ASTpct: $('#SG-row').attr('ASTpct'),
-    STLpct: $('#SG-row').attr('STLpct'),
-    BLKpct: $('#SG-row').attr('BLKpct'),
-    TOVpct: $('#SG-row').attr('TOVpct'),
-    USGpct: $('#SG-row').attr('USGpct')
+    TSpct: parseFloat($('#SG-row').attr('TSpct')),
+    ThreePAr: parseFloat($('#SG-row').attr('ThreePAr')),
+    ThreePCT: parseFloat($('#SG-row').attr('ThreePCT')),
+    FTr: parseFloat($('#SG-row').attr('FTr')),
+    FTpct: parseFloat($('#SG-row').attr('FTpct')),
+    ORBpct: parseFloat($('#SG-row').attr('ORBpct')),
+    DRBpct: parseFloat($('#SG-row').attr('DRBpct')),
+    ASTpct: parseFloat($('#SG-row').attr('ASTpct')),
+    STLpct: parseFloat($('#SG-row').attr('STLpct')),
+    BLKpct: parseFloat($('#SG-row').attr('BLKpct')),
+    TOVpct: parseFloat($('#SG-row').attr('TOVpct')),
+    USGpct: parseFloat($('#SG-row').attr('USGpct'))
   };
 
   var sf = {
     position: $('#SF-row').attr('position'),
     name: $('#SF-row').attr('name'),
-    TSpct: $('#SF-row').attr('TSpct'),
-    ThreePAr: $('#SF-row').attr('ThreePAr'),
-    ThreePCT: $('#SF-row').attr('ThreePCT'),
-    FTr: $('#SF-row').attr('FTr'),
-    FTpct: $('#SF-row').attr('FTpct'),
-    ORBpct: $('#SF-row').attr('ORBpct'),
-    DRBpct: $('#SF-row').attr('DRBpct'),
-    ASTpct: $('#SF-row').attr('ASTpct'),
-    STLpct: $('#SF-row').attr('STLpct'),
-    BLKpct: $('#SF-row').attr('BLKpct'),
-    TOVpct: $('#SF-row').attr('TOVpct'),
-    USGpct: $('#SF-row').attr('USGpct')
+    TSpct: parseFloat($('#SF-row').attr('TSpct')),
+    ThreePAr: parseFloat($('#SF-row').attr('ThreePAr')),
+    ThreePCT: parseFloat($('#SF-row').attr('ThreePCT')),
+    FTr: parseFloat($('#SF-row').attr('FTr')),
+    FTpct: parseFloat($('#SF-row').attr('FTpct')),
+    ORBpct: parseFloat($('#SF-row').attr('ORBpct')),
+    DRBpct: parseFloat($('#SF-row').attr('DRBpct')),
+    ASTpct: parseFloat($('#SF-row').attr('ASTpct')),
+    STLpct: parseFloat($('#SF-row').attr('STLpct')),
+    BLKpct: parseFloat($('#SF-row').attr('BLKpct')),
+    TOVpct: parseFloat($('#SF-row').attr('TOVpct')),
+    USGpct: parseFloat($('#SF-row').attr('USGpct'))
   };
 
   var pf = {
     position: $('#PF-row').attr('position'),
     name: $('#PF-row').attr('name'),
-    TSpct: $('#PF-row').attr('TSpct'),
-    ThreePAr: $('#PF-row').attr('ThreePAr'),
-    ThreePCT: $('#PF-row').attr('ThreePCT'),
-    FTr: $('#PF-row').attr('FTr'),
-    FTpct: $('#PF-row').attr('FTpct'),
-    ORBpct: $('#PF-row').attr('ORBpct'),
-    DRBpct: $('#PF-row').attr('DRBpct'),
-    ASTpct: $('#PF-row').attr('ASTpct'),
-    STLpct: $('#PF-row').attr('STLpct'),
-    BLKpct: $('#PF-row').attr('BLKpct'),
-    TOVpct: $('#PF-row').attr('TOVpct'),
-    USGpct: $('#PF-row').attr('USGpct')
+    TSpct: parseFloat($('#PF-row').attr('TSpct')),
+    ThreePAr: parseFloat($('#PF-row').attr('ThreePAr')),
+    ThreePCT: parseFloat($('#PF-row').attr('ThreePCT')),
+    FTr: parseFloat($('#PF-row').attr('FTr')),
+    FTpct: parseFloat($('#PF-row').attr('FTpct')),
+    ORBpct: parseFloat($('#PF-row').attr('ORBpct')),
+    DRBpct: parseFloat($('#PF-row').attr('DRBpct')),
+    ASTpct: parseFloat($('#PF-row').attr('ASTpct')),
+    STLpct: parseFloat($('#PF-row').attr('STLpct')),
+    BLKpct: parseFloat($('#PF-row').attr('BLKpct')),
+    TOVpct: parseFloat($('#PF-row').attr('TOVpct')),
+    USGpct: parseFloat($('#PF-row').attr('USGpct'))
   };
 
   var c = {
     position: $('#C-row').attr('position'),
     name: $('#C-row').attr('name'),
-    TSpct: $('#C-row').attr('TSpct'),
-    ThreePAr: $('#C-row').attr('ThreePAr'),
-    ThreePCT: $('#C-row').attr('ThreePCT'),
-    FTr: $('#C-row').attr('FTr'),
-    FTpct: $('#C-row').attr('FTpct'),
-    ORBpct: $('#C-row').attr('ORBpct'),
-    DRBpct: $('#C-row').attr('DRBpct'),
-    ASTpct: $('#C-row').attr('ASTpct'),
-    STLpct: $('#C-row').attr('STLpct'),
-    BLKpct: $('#C-row').attr('BLKpct'),
-    TOVpct: $('#C-row').attr('TOVpct'),
-    USGpct: $('#C-row').attr('USGpct')
+    TSpct: parseFloat($('#C-row').attr('TSpct')),
+    ThreePAr: parseFloat($('#C-row').attr('ThreePAr')),
+    ThreePCT: parseFloat($('#C-row').attr('ThreePCT')),
+    FTr: parseFloat($('#C-row').attr('FTr')),
+    FTpct: parseFloat($('#C-row').attr('FTpct')),
+    ORBpct: parseFloat($('#C-row').attr('ORBpct')),
+    DRBpct: parseFloat($('#C-row').attr('DRBpct')),
+    ASTpct: parseFloat($('#C-row').attr('ASTpct')),
+    STLpct: parseFloat($('#C-row').attr('STLpct')),
+    BLKpct: parseFloat($('#C-row').attr('BLKpct')),
+    TOVpct: parseFloat($('#C-row').attr('TOVpct')),
+    USGpct: parseFloat($('#C-row').attr('USGpct'))
   };
 
   var roster = {
@@ -209,6 +207,3 @@ $("#button2").on("click", function (event) {
 
 
 });
-
-
-

@@ -45,9 +45,9 @@ $('#year-select').change(function(){
                     "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+
                     "<h4>"+response[i].year+"</h4>"+
                     "<h3>Per Game Averages:</h3>"+
-                    "<h4>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
-                    "<h4>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
-                    "<h4>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
+                    "<h4>Points: "+ parseFloat(response[i].ppg) +"</h4>"+
+                    "<h4>Rebounds: "+ parseFloat(response[i].rpg) +"</h4>"+
+                    "<h4>Assists: "+ parseFloat(response[i].apg) +"</h4>"+
                     "<h4>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(1)+"</h4>"+
                     "<h4>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(1)+"</h4>"
                 );
@@ -57,7 +57,7 @@ $('#year-select').change(function(){
                     $("<tr>").append(
                         $('<td>').text(response[i].position),
                         $('<td>').text(response[i].playerName),
-                        $('<td>').text("$" + parseInt(salary)),
+                        $('<td>').text("$" + salary),
                         $('<td>').html(posSelect),
                         $('<td>').html('<button class="add-player" value="'+response[i].playerName+salary+'">+</button>'),
                         // statsDiv
@@ -247,9 +247,9 @@ $(".tab").on('click', function () {
 
 $('#save-team').on('click', function(){
     if($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined){
-        alert("All Positions Need to Be Filled")
+        alert("All positions need to be filled")
     }else{
-        var player0 = {
+        var pg = {
             position: $('#PG-row').attr('position'),
             name: $('#PG-row').attr('name'),
             TSpct: $('#PG-row').attr('TSpct'),
@@ -266,7 +266,7 @@ $('#save-team').on('click', function(){
             USGpct: $('#PG-row').attr('USGpct')
         };
 
-        var player1 = {
+        var sg = {
             position: $('#SG-row').attr('position'),
             name: $('#SG-row').attr('name'),
             TSpct: $('#SG-row').attr('TSpct'),
@@ -283,7 +283,7 @@ $('#save-team').on('click', function(){
             USGpct: $('#SG-row').attr('USGpct')
         };
 
-        var player2 = {
+        var sf = {
             position: $('#SF-row').attr('position'),
             name: $('#SF-row').attr('name'),
             TSpct: $('#SF-row').attr('TSpct'),
@@ -300,7 +300,7 @@ $('#save-team').on('click', function(){
             USGpct: $('#SF-row').attr('USGpct')
         };
 
-        var player3 = {
+        var pf = {
             position: $('#PF-row').attr('position'),
             name: $('#PF-row').attr('name'),
             TSpct: $('#PF-row').attr('TSpct'),
@@ -317,7 +317,7 @@ $('#save-team').on('click', function(){
             USGpct: $('#PF-row').attr('USGpct')
         };
 
-        var player4 = {
+        var c = {
             position: $('#C-row').attr('position'),
             name: $('#C-row').attr('name'),
             TSpct: $('#C-row').attr('TSpct'),
@@ -334,13 +334,13 @@ $('#save-team').on('click', function(){
             USGpct: $('#C-row').attr('USGpct')
         };
 
-        // console.log(player0);
-        // console.log(player1);
-        // console.log(player2);
-        // console.log(player3);
-        // console.log(player4);
+        console.log(pg);
+        console.log(sg);
+        console.log(sf);
+        console.log(pf);
+        console.log(c);
 
-        location.href = "/dashboard";
+        // location.href = "/dashboard";
     };
 
 });
