@@ -33,19 +33,18 @@ $.get("/api/stats", function (response) {
                     "<option value='SF'>SF</option>"
                 )
             }
-
-            var salary = parseInt(((parseFloat(response[i].per) + parseFloat(response[i].usgPCT)) / 2) * 100)
+            
+            var salary = parseInt((((((response[i].ppg + response[i].rpg + response[i].apg) + parseFloat(response[i].usgPCT)) / 2) * 100) / 1.2))
             var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
             statsDiv.html(
-                "Name: " + response[i].playerName +
-                "<br>Year: " + response[i].year +
-                "<br>Position: " + response[i].position +
-                "<br>Salary: $" + parseInt(salary) +
-                "<br>Points: " + (parseInt(response[i].pts) / response[i].gamesPlayed).toFixed(2) +
-                "<br>Rebounds: " + (parseInt(response[i].reb) / response[i].gamesPlayed).toFixed(2) +
-                "<br>Assists: " + (parseInt(response[i].ast) / response[i].gamesPlayed).toFixed(2) +
-                "<br>Steals: " + (parseInt(response[i].stl) / response[i].gamesPlayed).toFixed(2) +
-                "<br>Blocks: " + (parseInt(response[i].blk) / response[i].gamesPlayed).toFixed(2)
+                "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+
+                "<h4>"+response[i].year+"</h4>"+
+                "<h3>Per Game Averages:</h3>"+
+                "<h4>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                "<h4>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(2)+"</h4>"
             );
             $('#stat-holder').append(statsDiv);
 
@@ -55,33 +54,35 @@ $.get("/api/stats", function (response) {
                     $('<td>').text(response[i].playerName),
                     $('<td>').text("$" + parseInt(salary)),
                     $('<td>').html(posSelect),
-                    $('<td>').html('<button class="add-player" value="' + response[i].playerName + salary + '">ADD</button>'),
+                    $('<td>').html('<button class="add-player" value="'+response[i].playerName+salary+'">+</button>'),
                     // statsDiv
-                ).val(response[i].position).attr('data', i).attr('salary', salary)
-                    .attr('name', response[i].playerName)
-                    .attr('TSpct', response[i].tsPCT)
-                    .attr('ThreePAr', response[i].threePAR)
-                    .attr('ThreePCT', ThreePCT)
-                    .attr('FTr', response[i].ftR)
-                    .attr('FTpct', FTpct)
-                    .attr('ORBpct', response[i].orbPCT)
-                    .attr('DRBpct', response[i].drbPCT)
-                    .attr('ASTpct', response[i].astPCT)
-                    .attr('STLpct', response[i].stlPCT)
-                    .attr('BLKpct', response[i].blkPCT)
-                    .attr('TOVpct', response[i].tovPCT)
-                    .attr('USGpct', response[i].usgPCT)
-                    .addClass('available-player-row')
-                    .hover(
-                        function () {
-                            var rowRefNumb = $(this).attr('data');
-                            $('#stats' + rowRefNumb).removeClass('hidden').fadeIn()
-                        },
-                        function () {
-                            var rowRefNumb = $(this).attr('data');
-                            $('#stats' + rowRefNumb).addClass('hidden')
-                        }
-                    )
+                ).val(response[i].position).attr('data', i).attr('salary' , salary)
+                .attr('name' , response[i].playerName)
+                .attr('TSpct' , response[i].tsPCT)
+                .attr('ThreePAr' , response[i].threePAR)
+                .attr('ThreePCT' , ThreePCT)
+                .attr('FTr' , response[i].ftR)
+                .attr('FTpct' , FTpct)
+                .attr('ORBpct' , response[i].orbPCT)
+                .attr('DRBpct' , response[i].drbPCT)
+                .attr('ASTpct' , response[i].astPCT)
+                .attr('STLpct' , response[i].stlPCT)
+                .attr('BLKpct' , response[i].blkPCT)
+                .attr('TOVpct' , response[i].tovPCT)
+                .attr('USGpct' , response[i].usgPCT)
+                .addClass('available-player-row')
+                .hover(
+                    function (){
+                        var rowRefNumb = $(this).attr('data');
+                        $('#select-instructions').addClass('hidden');
+                        $('#stats'+rowRefNumb).removeClass('hidden')
+                    } ,
+                    function (){
+                        var rowRefNumb = $(this).attr('data');
+                        $('#stats'+rowRefNumb).addClass('hidden');
+                        $('#select-instructions').removeClass('hidden');
+                    }
+                )
             )
         }
     }
@@ -123,44 +124,44 @@ $.get("/api/stats", function (response) {
                 $(row).attr("validCheck", selPlayerName + selPlayerSal).html('').append(
                     $('<th>').text(selPlayerPos),
                     $('<td>').text(selPlayerName),
-                    $('<td>').text('$' + selPlayerSal),
-                    $('<td>').html("<td><button class='drop-player'>Drop</button></td>")
-                ).attr('salary', selPlayerSal)
-                    .attr('name', selPlayerName)
-                    .attr('TSpct', TSpct)
-                    .attr('ThreePAr', ThreePAr)
-                    .attr('ThreePCT', ThreePCT)
-                    .attr('FTr', FTr)
-                    .attr('FTpct', FTpct)
-                    .attr('ORBpct', ORBpct)
-                    .attr('DRBpct', DRBpct)
-                    .attr('ASTpct', ASTpct)
-                    .attr('STLpct', STLpct)
-                    .attr('BLKpct', BLKpct)
-                    .attr('TOVpct', TOVpct)
-                    .attr('USGpct', USGpct)
-                    .find("button").on('click', function () {
-                        var rowSalary = parseInt($(this).parents('tr').attr("salary"))
-                        userSalary += rowSalary;
-                        $('#salary-display').text(userSalary);
-                        $(this).parents('tr')
-                            .attr("salary", "")
-                            .attr("validCheck", '')
-                            .attr('name', '')
-                            .attr('TSpct', '')
-                            .attr('ThreePAr', '')
-                            .attr('ThreePCT', '')
-                            .attr('FTr', '')
-                            .attr('FTpct', '')
-                            .attr('ORBpct', '')
-                            .attr('DRBpct', '')
-                            .attr('ASTpct', '')
-                            .attr('STLpct', '')
-                            .attr('BLKpct', '')
-                            .attr('TOVpct', '')
-                            .attr('USGpct', '')
-                            .find("td").empty();
-                    })
+                    $('<td>').text(selPlayerSal),
+                    $('<td>').html("<td><button class='drop-player'>--</button></td>")
+                ).attr('salary' , selPlayerSal)
+                .attr('name' , selPlayerName)
+                .attr('TSpct' , TSpct)
+                .attr('ThreePAr' , ThreePAr)
+                .attr('ThreePCT' , ThreePCT)
+                .attr('FTr' , FTr)
+                .attr('FTpct' , FTpct)
+                .attr('ORBpct' , ORBpct)
+                .attr('DRBpct' , DRBpct)
+                .attr('ASTpct' , ASTpct)
+                .attr('STLpct' , STLpct)
+                .attr('BLKpct' , BLKpct)
+                .attr('TOVpct' , TOVpct)
+                .attr('USGpct' , USGpct)
+                .find("button").on('click' , function(){
+                    var rowSalary = parseInt($(this).parents('tr').attr("salary"))
+                    userSalary += rowSalary;
+                    $('#salary-display').text(userSalary);
+                    $(this).parents('tr')
+                    .attr("salary", "")
+                    .attr("validCheck", '')
+                    .attr('name' , '')
+                    .attr('TSpct' , '')
+                    .attr('ThreePAr' , '')
+                    .attr('ThreePCT' , '')
+                    .attr('FTr' , '')
+                    .attr('FTpct' , '')
+                    .attr('ORBpct' , '')
+                    .attr('DRBpct' , '')
+                    .attr('ASTpct' , '')
+                    .attr('STLpct' , '')
+                    .attr('BLKpct' , '')
+                    .attr('TOVpct' , '')
+                    .attr('USGpct' , '')
+                    .find("td").empty();
+                })
             }
 
             if (selPlayerPos === 'C') {
@@ -241,10 +242,10 @@ $(".tab").on('click', function () {
     }
 });
 
-$('#save-team').on('click', function () {
-    if ($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined) {
-        console.log("All Positions Need to Be Filled")
-    } else {
+$('#save-team').on('click', function(){
+    if($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined){
+        alert("All Positions Need to Be Filled")
+    }else{
         var player0 = {
             position: $('#PG-row').attr('position'),
             name: $('#PG-row').attr('name'),
@@ -335,7 +336,8 @@ $('#save-team').on('click', function () {
         console.log(player2);
         console.log(player3);
         console.log(player4);
+
+        location.href = "/dashboard";
     };
 
-    location.href = "/dashboard";
 });
