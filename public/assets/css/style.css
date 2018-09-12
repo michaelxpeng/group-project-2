@@ -1,6 +1,10 @@
 body{
     background-image:url(../images/bg.jpg);
     color: whitesmoke;
+    font-family: 'Noto Serif', serif;
+}
+header{
+    padding: 25px 25px 0 25px;
 }
 /* DASHBOARD */
 h1{
@@ -14,7 +18,12 @@ h2{
 h3{
     font-size: 48px;
 }
-
+h4{
+    font-size: 24px;
+}
+#select-page-heading{
+    display: inline;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -76,19 +85,12 @@ tr:nth-child(even){
 
 
 /* specific styling for available players */
-#tab-div{
-    /* display: block; */
-    width: 100%;
+.total-available{
+    margin: 30px 0 20px 80px;
 }
-#available-players-div{
-    float: left;
-    /* display: inline-block; */
-    height: 400px;
-    width: 30%;
-    overflow-y: scroll;
-    border: solid 10px rgb(255, 255, 255);
-    border-radius: 0 0 0 40px;
-    /* margin: 40px; */
+#tab-div{
+    display: block;
+    /* width: 100%; */
 }
 .tab{
     background-color: rgba(200, 200, 200, 0.507);
@@ -111,26 +113,58 @@ tr:nth-child(even){
 .active{
     background-color: rgb(255, 255, 255)
 }
-.total-available{
-    width: 100%;
-    margin: 50px 0 0 50px;
-    clear: both;
-    /* margin-bottom: 200px; */
+#available-players-div{
+    float: left;
+    /* display: inline-block; */
+    height: 350px;
+    width: 30%;
+    overflow-y: scroll;
+    border: solid 10px rgb(255, 255, 255);
+    border-radius: 0 0 0 40px;
+    /* margin: 40px; */
 }
 .available-player-row:hover{
     color: black;
-    background-color: white;
+    background-color: rgb(216, 216, 216);
 }
 #stat-holder{
     /* display: inline-block; */
     float: left;
-    height: 400px;
+    height: 350px;
     width: 45%;
     background-color: rgba(43, 43, 43, 0.514);
     border: solid 10px white;
     border-radius: 0 40px 40px 0;
+    overflow: hidden;
 }
-
+#select-instructions{
+    color: #838383;
+    text-align: center;
+    font-size: 40px;
+    margin: 80px 0;
+    line-height: 50px;
+    padding: 50px;
+}
+.stat-display{
+    text-align: center;
+    /* padding: 20px 0; */
+}
+/* .stat-div-heading{
+    background-color: rgb(255, 183, 115);
+    color: rgb(0, 0, 0);
+} */
+.stat-display h2{
+    padding: 10px 0;
+}
+.stat-display h3{
+    padding: 10px 0;
+}
+.stat-display h4{
+    padding: 5px 0;
+}
+.stat-display h4:nth-child(even){
+    background-color: rgba(68, 68, 68, 0.712);
+}
 
 
 /* specific styling for user lineup */
@@ -142,9 +176,9 @@ tr:nth-child(even){
 #user-lineup-div{
     display: inline-block;
     /* clear: both; */
-    margin: auto;
+    margin: 40px 20px 0 80px;
     text-align: center;
-    margin-top: 40px;
+    /* margin-top: 40px; */
     /* float: right; */
     width: 40%;
     border: solid 10px rgb(255, 123, 0);
@@ -153,6 +187,7 @@ tr:nth-child(even){
 }
 #user-lineup td,th{
     padding: 5px;
+    /* height: 20px; */
 }
 
 #save-team{
@@ -162,7 +197,7 @@ tr:nth-child(even){
     display: inline-block;
     font-size: 50px;
     margin-right: 30%;
-    margin-top: 111PX;
+    margin-top: 50PX;
     border: solid 8px black;
     border-radius: 20px;
     padding: 10px 50px;
@@ -242,6 +277,35 @@ tr:nth-child(even){
     border: solid 10px rgb(255, 123, 0);
 }
 
+.add-player{
+    background-color: #ffffff00;
+    border: none;
+    color: #00ff22;
+    font-weight: bold;
+    font-size: 18px;
+    cursor: pointer;
+}
+.add-player:focus{
+    outline: none;
+}
+.add-player:hover{
+    text-shadow: 0 0 10px #00ff22
+}
+.drop-player{
+    background-color: #ffffff00;
+    border: none;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 18px;
+    letter-spacing: -4px;
+    cursor: pointer;
+}
+.drop-player:focus{
+    outline: none;
+}
+.drop-player:hover{
+    text-shadow: 0 0 10px #ff0000
+}
 
 
 #dashboard-buttons-div{
