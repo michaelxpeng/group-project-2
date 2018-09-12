@@ -8,7 +8,7 @@ $('.action-select').on('click', function(){
 })
 
 $('#new-team').on('click', function(){
-    location.href = "/";
+    location.href = "/selection";
 });
 
 $('#play-game').on('click', function(){
