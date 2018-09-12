@@ -2,12 +2,19 @@
 
 // Initialize Firebase
 var config = {
-  apiKey: "AIzaSyA4TzoxRV5oRyYlHqT6lvmxIJxBHPYp4co",
-  authDomain: "fantasy-draft-1f6a6.firebaseapp.com",
-  databaseURL: "https://fantasy-draft-1f6a6.firebaseio.com",
-  projectId: "fantasy-draft-1f6a6",
-  storageBucket: "fantasy-draft-1f6a6.appspot.com",
-  messagingSenderId: "271694339648"
+  // apiKey: "AIzaSyA4TzoxRV5oRyYlHqT6lvmxIJxBHPYp4co",
+  // authDomain: "fantasy-draft-1f6a6.firebaseapp.com",
+  // databaseURL: "https://fantasy-draft-1f6a6.firebaseio.com",
+  // projectId: "fantasy-draft-1f6a6",
+  // storageBucket: "fantasy-draft-1f6a6.appspot.com",
+  // messagingSenderId: "271694339648"
+
+  apiKey: "AIzaSyC_PVkwDiphyNCRdbZ63bDZ95-Lj7cP0r8",
+  authDomain: "rcb-fantasydraft.firebaseapp.com",
+  databaseURL: "https://rcb-fantasydraft.firebaseio.com",
+  projectId: "rcb-fantasydraft",
+  storageBucket: "rcb-fantasydraft.appspot.com",
+  messagingSenderId: "308196846996"
 };
 firebase.initializeApp(config);
 
