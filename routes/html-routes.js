@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   app.get("/dashboard", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/user-dashboard.html"));
+    res.sendFile(path.join(__dirname, "../public/dashboard.html"));
   });
 
   app.get("/game", function(req, res) {
