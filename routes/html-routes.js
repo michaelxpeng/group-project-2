@@ -17,4 +17,15 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/home.html"));
   });
 
+  app.get("/selection", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/selection.html"));
+  });
+
+  app.get("/dashboard", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/user-dashboard.html"));
+  });
+
+  app.get("/game", function(req, res) {
+    res.sendFile(path.join(__dirname, "../public/game.html"));
+  });
 };
