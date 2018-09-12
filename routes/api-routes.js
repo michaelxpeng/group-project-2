@@ -163,13 +163,13 @@ module.exports = function (app) {
           console.log("blkPCT: " + blkPCT);
           var tovPCT = (100 * playerTotal.turnovers / (playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers)).toFixed(1);
           console.log("tovPCT: " + tovPCT);
-          var usgPCT = (100 * ((playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers) * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.field_goals_att + (0.44 * team.own_record.total.free_throws_att) + team.own_record.total.turnovers))).toFixed(1);
+          var usgPCT = parseFloat((100 * ((playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers) * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.field_goals_att + (0.44 * team.own_record.total.free_throws_att) + team.own_record.total.turnovers))).toFixed(1));
           console.log("usgPCT: " + usgPCT);
-          var ppg = playerAverage.points;
+          var ppg = parseFloat(playerAverage.points);
           console.log("PPG: " + ppg);
-          var rpg = playerAverage.rebounds;
+          var rpg = parseFloat(playerAverage.rebounds);
           console.log("RPG: " + rpg);
-          var apg = playerAverage.assists;
+          var apg = parseFloat(playerAverage.assists);
           console.log("APG: " + apg);
           var fgm = playerTotal.field_goals_made;
           console.log("fgm: " + fgm);
@@ -199,6 +199,8 @@ module.exports = function (app) {
           console.log("blk: " + blk);
           var fls = playerTotal.personal_fouls;
           console.log("fls: " + fls);
+          var salary = Math.round((((ppg + rpg + apg + usgPCT) / 2) * 100) / 1.2);
+          console.log("Salary: $" + salary);
 
           db.Players2017.create({
             playerName: playerName,
@@ -232,7 +234,8 @@ module.exports = function (app) {
             stl: stl,
             tov: tov,
             blk: blk,
-            fls: fls
+            fls: fls,
+            salary: salary
           });
         };
       };
@@ -296,13 +299,13 @@ module.exports = function (app) {
           console.log("blkPCT: " + blkPCT);
           var tovPCT = (100 * playerTotal.turnovers / (playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers)).toFixed(1);
           console.log("tovPCT: " + tovPCT);
-          var usgPCT = (100 * ((playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers) * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.field_goals_att + (0.44 * team.own_record.total.free_throws_att) + team.own_record.total.turnovers))).toFixed(1);
+          var usgPCT = parseFloat((100 * ((playerTotal.field_goals_att + (0.44 * playerTotal.free_throws_att) + playerTotal.turnovers) * (team.own_record.total.minutes / 5)) / (playerTotal.minutes * (team.own_record.total.field_goals_att + (0.44 * team.own_record.total.free_throws_att) + team.own_record.total.turnovers))).toFixed(1));
           console.log("usgPCT: " + usgPCT);
-          var ppg = playerAverage.points;
+          var ppg = parseFloat(playerAverage.points);
           console.log("PPG: " + ppg);
-          var rpg = playerAverage.rebounds;
+          var rpg = parseFloat(playerAverage.rebounds);
           console.log("RPG: " + rpg);
-          var apg = playerAverage.assists;
+          var apg = parseFloat(playerAverage.assists);
           console.log("APG: " + apg);
           var fgm = playerTotal.field_goals_made;
           console.log("fgm: " + fgm);
@@ -332,7 +335,9 @@ module.exports = function (app) {
           console.log("blk: " + blk);
           var fls = playerTotal.personal_fouls;
           console.log("fls: " + fls);
-
+          var salary = Math.round((((ppg + rpg + apg + usgPCT) / 2) * 100) / 1.2);
+          console.log("Salary: $" + salary);
+          
           db.Players2016.create({
             playerName: playerName,
             position: position,
@@ -365,7 +370,8 @@ module.exports = function (app) {
             stl: stl,
             tov: tov,
             blk: blk,
-            fls: fls
+            fls: fls,
+            salary: salary
           });
         };
       };
