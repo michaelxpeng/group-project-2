@@ -254,7 +254,7 @@ $('#save-team').on('click', function(){
             name: $('#PG-row').attr('name'),
             TSpct: $('#PG-row').attr('TSpct'),
             ThreePAr: $('#PG-row').attr('ThreePAr'),
-            ThreePCT: $('#PG-row').attr('ThreePCT'),
+            ThreePct: $('#PG-row').attr('ThreePCT'),
             FTr: $('#PG-row').attr('FTr'),
             FTpct: $('#PG-row').attr('FTpct'),
             ORBpct: $('#PG-row').attr('ORBpct'),
@@ -263,7 +263,8 @@ $('#save-team').on('click', function(){
             STLpct: $('#PG-row').attr('STLpct'),
             BLKpct: $('#PG-row').attr('BLKpct'),
             TOVpct: $('#PG-row').attr('TOVpct'),
-            USGpct: $('#PG-row').attr('USGpct')
+            USGpct: $('#PG-row').attr('USGpct'),
+            salary: $('#PG-row').attr('salary')
         };
 
         var sg = {
@@ -271,7 +272,7 @@ $('#save-team').on('click', function(){
             name: $('#SG-row').attr('name'),
             TSpct: $('#SG-row').attr('TSpct'),
             ThreePAr: $('#SG-row').attr('ThreePAr'),
-            ThreePCT: $('#SG-row').attr('ThreePCT'),
+            ThreePct: $('#SG-row').attr('ThreePCT'),
             FTr: $('#SG-row').attr('FTr'),
             FTpct: $('#SG-row').attr('FTpct'),
             ORBpct: $('#SG-row').attr('ORBpct'),
@@ -280,7 +281,8 @@ $('#save-team').on('click', function(){
             STLpct: $('#SG-row').attr('STLpct'),
             BLKpct: $('#SG-row').attr('BLKpct'),
             TOVpct: $('#SG-row').attr('TOVpct'),
-            USGpct: $('#SG-row').attr('USGpct')
+            USGpct: $('#SG-row').attr('USGpct'),
+            salary: $('#SG-row').attr('salary')
         };
 
         var sf = {
@@ -288,7 +290,7 @@ $('#save-team').on('click', function(){
             name: $('#SF-row').attr('name'),
             TSpct: $('#SF-row').attr('TSpct'),
             ThreePAr: $('#SF-row').attr('ThreePAr'),
-            ThreePCT: $('#SF-row').attr('ThreePCT'),
+            ThreePct: $('#SF-row').attr('ThreePCT'),
             FTr: $('#SF-row').attr('FTr'),
             FTpct: $('#SF-row').attr('FTpct'),
             ORBpct: $('#SF-row').attr('ORBpct'),
@@ -297,7 +299,8 @@ $('#save-team').on('click', function(){
             STLpct: $('#SF-row').attr('STLpct'),
             BLKpct: $('#SF-row').attr('BLKpct'),
             TOVpct: $('#SF-row').attr('TOVpct'),
-            USGpct: $('#SF-row').attr('USGpct')
+            USGpct: $('#SF-row').attr('USGpct'),
+            salary: $('#SF-row').attr('salary')
         };
 
         var pf = {
@@ -305,7 +308,7 @@ $('#save-team').on('click', function(){
             name: $('#PF-row').attr('name'),
             TSpct: $('#PF-row').attr('TSpct'),
             ThreePAr: $('#PF-row').attr('ThreePAr'),
-            ThreePCT: $('#PF-row').attr('ThreePCT'),
+            ThreePct: $('#PF-row').attr('ThreePCT'),
             FTr: $('#PF-row').attr('FTr'),
             FTpct: $('#PF-row').attr('FTpct'),
             ORBpct: $('#PF-row').attr('ORBpct'),
@@ -314,7 +317,8 @@ $('#save-team').on('click', function(){
             STLpct: $('#PF-row').attr('STLpct'),
             BLKpct: $('#PF-row').attr('BLKpct'),
             TOVpct: $('#PF-row').attr('TOVpct'),
-            USGpct: $('#PF-row').attr('USGpct')
+            USGpct: $('#PF-row').attr('USGpct'),
+            salary: $('#PF-row').attr('salary')
         };
 
         var c = {
@@ -322,7 +326,7 @@ $('#save-team').on('click', function(){
             name: $('#C-row').attr('name'),
             TSpct: $('#C-row').attr('TSpct'),
             ThreePAr: $('#C-row').attr('ThreePAr'),
-            ThreePCT: $('#C-row').attr('ThreePCT'),
+            ThreePct: $('#C-row').attr('ThreePCT'),
             FTr: $('#C-row').attr('FTr'),
             FTpct: $('#C-row').attr('FTpct'),
             ORBpct: $('#C-row').attr('ORBpct'),
@@ -331,7 +335,8 @@ $('#save-team').on('click', function(){
             STLpct: $('#C-row').attr('STLpct'),
             BLKpct: $('#C-row').attr('BLKpct'),
             TOVpct: $('#C-row').attr('TOVpct'),
-            USGpct: $('#C-row').attr('USGpct')
+            USGpct: $('#C-row').attr('USGpct'),
+            salary: $('#C-row').attr('salary')
         };
 
         console.log(pg);
