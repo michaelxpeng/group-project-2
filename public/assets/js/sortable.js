@@ -149,7 +149,8 @@ sorttable = {
 	        }
 	        /* If you want a stable sort, uncomment the following line */
 	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
-	        /* and comment out this one */
+          /* and comment out this one */
+          console.log(this.sorttable_sortfunction);
 	        row_array.sort(this.sorttable_sortfunction);
 
 	        tb = this.sorttable_tbody;
@@ -300,6 +301,20 @@ sorttable = {
     if (dt1<dt2) return -1;
     return 1;
   },
+
+
+  //this sort does nothing but test my silly theories
+  sort_salary: function(a, b){
+    // console.log(a);
+    // console.log(parseFloat(b[0].substr(1)));
+    var numb1 = parseFloat(a[0].substr(1));
+    var numb2 = parseFloat(b[0].substr(1));
+    if (numb1 === numb2) return 0;
+    if (numb1 > numb2) return 1;
+    if (numb1 < numb2) return -1;
+    return 0;
+  },
+
 
   shaker_sort: function(list, comp_func) {
     // A stable sort function to allow multi-level sorting of data
