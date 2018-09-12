@@ -1,11 +1,13 @@
 var userSalary = 12000;
+var playerCount = 0;
+
 $('#salary-display').text(userSalary);
 $('#year-select').change(function(){
-    // year = $(this).val()
-    // $.get("/api/players" + year, function (response) {
-    $.get("/api/stats", function (response) {
+    $('#search-div-id').removeClass('hidden').addClass('search-div');
+    var year = $(this).val();
+    $.get("/api/players" + year, function (response) {
         $('#select-instructions').text("Hover Cursor Over Player's Name to See Stats");
-        // console.log(response[0])
+        $('#available-players').find('tbody').empty();
         for (var i = 0; i < response.length; i++) {
             var ThreePCT = (response[i].threePM / response[i].threePA).toFixed(3);
             var FTpct = (response[i].ftm / response[i].fta).toFixed(3);
@@ -37,7 +39,7 @@ $('#year-select').change(function(){
                     )
                 }
 
-                var salary = parseInt((((((response[i].ppg + response[i].rpg + response[i].apg) + parseFloat(response[i].usgPCT)) / 2) * 100) / 1.2))
+                var salary = parseInt((((((parseFloat(response[i].ppg) + parseFloat(response[i].rpg) + parseFloat(response[i].apg)) + parseFloat(response[i].usgPCT)) / 2) * 100) / 1.2))
                 var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
                 statsDiv.html(
                     "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+
@@ -104,7 +106,6 @@ $('#year-select').change(function(){
                 $('#salary-display').text(userSalary);
 
                 var selPlayerPos = $(this).parents('tr').find('select').val();
-                // console.log(selPlayerPos)
                 var selPlayerSal = $(this).parents('tr').attr('salary');
                 var selPlayerName = $(this).parents('tr').attr('name');
                 var playerYear = $(this).parents('tr').attr('year');
@@ -187,8 +188,25 @@ $('#year-select').change(function(){
 
 })
 
+$("#search-player").on("click", function () {
+    $('.available-player-row').removeClass('hidden')
+    $(".tab").removeClass('active');
+    var userSearch = ($("#search").val().trim()).toLowerCase()
+    
+    $('.available-player-row').filter(function () {
+
+        var rowName = $(this).attr('name').toLowerCase();
+        var rowNameArray = rowName.split(' ');
+
+        if(rowName != userSearch && userSearch != rowNameArray[0] && userSearch != rowNameArray[1] && userSearch != rowNameArray[2]){
+            return true
+        }
+        return false;
+        
+    }).addClass('hidden')
+})
+
 $(".tab").on('click', function () {
-    // console.log(this);
     var tabValue = $(this).val();
     if (tabValue === 'all') {
         $('.available-player-row').removeClass('hidden')
@@ -199,9 +217,6 @@ $(".tab").on('click', function () {
         $(".tab").removeClass('active');
         $(this).addClass('active');
         $('.available-player-row').filter(function (index) {
-            if(parseInt($(this).attr("data")) < 10){
-                // console.log(this);
-            }
             if ($(this).val() != 'G') {
                 return true;
             }
@@ -212,9 +227,6 @@ $(".tab").on('click', function () {
         $(".tab").removeClass('active');
         $(this).addClass('active');
         $('.available-player-row').filter(function (index) {
-            if(parseInt($(this).attr("data")) < 10){
-                // console.log(this);
-            }
             if (($(this).val() != 'G-F') && ($(this).val() != 'F-G') && ($(this).val() != 'F')) {
                 return true;
             }
@@ -225,9 +237,6 @@ $(".tab").on('click', function () {
         $(".tab").removeClass('active');
         $(this).addClass('active');
         $('.available-player-row').filter(function (index) {
-            if(parseInt($(this).attr("data")) < 10){
-                // console.log(this);
-            }
             if (($(this).val() != 'C-F') && ($(this).val() != 'F-C') && ($(this).val() != 'C')) {
                 return true;
             }

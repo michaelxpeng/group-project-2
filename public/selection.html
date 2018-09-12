@@ -18,8 +18,6 @@
 
 <body>
 
-    <!-- <input type="text" id="search" placeholder="Search Player.."> -->
-
     <h3 id="salary-heading">Remaining Team Salary: $<span id="salary-display">12000</span></h3>
 
 <div class="total-available">
@@ -38,6 +36,10 @@
             <option value="2014">2014</option>
             <option value="2013">2013</option>
         </select>
+        <div class="hidden" id="search-div-id">
+            <input type="text" class="search" placeholder="Search Player..">
+            <button class="search-player">search</button>
+        </div>
     </div>
 
     <div id="available-players-div">
@@ -46,6 +48,7 @@
             <thead>
                 <tr>
                     <th>Position</th>
+                    <!-- <th class="sorttable_lastname">Name</th> -->
                     <th>Name</th>
                     <th class="sorttable_salary">Salary</th>
                     <th></th>
