@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     var config = {
         apiKey: "AIzaSyC_PVkwDiphyNCRdbZ63bDZ95-Lj7cP0r8",
@@ -19,6 +20,8 @@ $(document).ready(function () {
         // keys will equal to each user team name?
         console.log(keys);
 
+
+
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
             var player0 = team[k].pg;
@@ -31,7 +34,17 @@ $(document).ready(function () {
             console.log(player3);
             var player4 = team[k].c;
             console.log(player4);
+
         };
+     
+       
+        userPlayers.push(player0);
+        userPlayers.push(player1);
+        userPlayers.push(player2);
+        userPlayers.push(player3);
+        userPlayers.push(player4);
+
+
     }
     function errData(err){
         console.log("Error");
@@ -40,13 +53,32 @@ $(document).ready(function () {
 });
 
 
+// console.log(player0);
+var userPlayers = [];
+
+//timeout gives us time for the async firebase pull
+setTimeout(function(){
+console.log(userPlayers);
+console.log(userPlayers[0]);
+this.player0 = userPlayers[0];
+this.player1 = userPlayers[1];
+this.player2 = userPlayers[2];
+this.player3 = userPlayers[3];
+this.player4 = userPlayers[4];
+
+console.log(player0);
+}, 2000)
+
+
+
 //Can replace this.gameLogdotpush with consoledotlog
 
 // Team Template
 var teamA = {
     name:"Cleveland Steamers",
     tag: "CLE",
-    players: [player0, player1, player2, player3, player4],
+    logo:"image",
+    players: userPlayers,
     possession: true,
     wonTipOff: false,
     defense: 90,
