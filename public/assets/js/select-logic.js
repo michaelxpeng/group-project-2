@@ -37,7 +37,7 @@ $('#year-select').change(function(){
                     )
                 }
 
-                var salary = parseInt((((((response[i].ppg + response[i].rpg + response[i].apg) + parseFloat(response[i].usgPCT)) / 2) * 100) / 1.2))
+                var salary = response[i].salary;
                 var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
                 statsDiv.html(
                     "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+

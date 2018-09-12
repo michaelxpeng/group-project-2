@@ -31,7 +31,8 @@ module.exports = function(sequelize, DataTypes) {
       stl: DataTypes.INTEGER,
       tov: DataTypes.INTEGER,
       blk: DataTypes.INTEGER,
-      fls: DataTypes.INTEGER
+      fls: DataTypes.INTEGER,
+      salary: DataTypes.INTEGER
   });
   Players2016.sync();
   return Players2016;
