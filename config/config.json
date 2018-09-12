@@ -1,14 +1,6 @@
 {
     "development": {
       "username": "root",
-      "password": "password",
-      "database": "fantasy",
-      "host": "127.0.0.1",
-      "port": 3306,
-      "dialect": "mysql"
-    },
-    "mike": {
-      "username": "root",
       "password": "!Mp920506",
       "database": "fantasy",
       "host": "127.0.0.1",

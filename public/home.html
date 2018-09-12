@@ -1,229 +1,232 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>NBA Sim</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="https://www.nba.com/assets/icons/favicon16.ico">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/home.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/home.css" type="text/css" media="screen"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
     <script src="https://apis.google.com/js/api:client.js"></script>
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
-<body>
-        <header class="logo">
-              <img class="fGM" onclick="location.reload()"src="images/FGMlogo.png" >
-             <a> <div id="name"></div></a>
 
-              <div class="truNav">
-                    <a class="userTutorial" onclick="tutorial()"><span class="userTip">How to Play</span><i class="far fa-question-circle"></i>
-                    </a>
-                    <!-- <a href="generic.html">Register</a>
+<body>
+    <header class="logo">
+        <img class="fGM" onclick="location.reload()" src="assets/images/FGMlogo.png">
+        <a> <div id="name"></div></a>
+
+        <div class="truNav">
+            <a class="userTutorial" onclick="tutorial()"><span class="userTip">How to Play</span><i class="far fa-question-circle"></i>
+            </a>
+            <!-- <a href="generic.html">Register</a>
                     <a href="elements.html">Contact</a> -->
-            </div>
-        </header>
+        </div>
+    </header>
 
     <script>
 
+        var tutorialView = false;
+        var imageUrl;
 
-            var tutorialView = false;
-            var imageUrl
-
-            //Google Sign-In
-            var googleUser = {};
-            var startApp = function() {
-              gapi.load('auth2', function(){
+        //Google Sign-In
+        var googleUser = {};
+        var startApp = function () {
+            gapi.load('auth2', function () {
                 // Retrieve the singleton for the GoogleAuth library and set up the client.
                 auth2 = gapi.auth2.init({
-                  client_id: '323125251924-5pike3iev4sf586lt7ue2l22c2re7jgq.apps.googleusercontent.com',
-                  cookiepolicy: 'single_host_origin',
-                  // Request scopes in addition to 'profile' and 'email'
-                  //scope: 'additional_scope'
+                    client_id: '323125251924-5pike3iev4sf586lt7ue2l22c2re7jgq.apps.googleusercontent.com',
+                    cookiepolicy: 'single_host_origin',
+                    // Request scopes in addition to 'profile' and 'email'
+                    //scope: 'additional_scope'
                 });
                 attachSignin(document.getElementById('customBtn'));
-              });
-            };
-          
-            function attachSignin(element) {
-              console.log(element.id);
-              auth2.attachClickHandler(element, {},
-                  function(googleUser) {
+            });
+        };
+
+        function attachSignin(element) {
+            console.log(element.id);
+            auth2.attachClickHandler(element, {},
+                function (googleUser) {
                     document.getElementById('name').innerText = "GM: " +
                         googleUser.getBasicProfile().getName();
-                  }, function(error) {
+                }, function (error) {
                     alert(JSON.stringify(error, undefined, 2));
-                  });
-            }
+                });
+        }
 
-            //Functionality
+        //Functionality
 
-            function playGame () {
-                $("#customBtn").fadeOut();
-                
-                $(".toSelect").fadeIn();
-            }
+        function playGame() {
+            $("#customBtn").fadeOut();
 
-            function tutorial () {
+            $(".toSelect").fadeIn();
+        }
 
-                if (tutorialView == false) {
-                    tutorialView == true
+        function tutorial() {
+
+            if (tutorialView == false) {
+                tutorialView == true
                 $(".homeDiv").fadeOut();
-                setTimeout(function(){
+                setTimeout(function () {
                     $(".tutorialDiv").fadeIn();
                     imageUrl = "https://mk0slamonlinensgt39k.kinstacdn.com/wp-content/uploads/2018/02/top100_feature.jpg";
-                    $(".pictureBox").css('background-position-x', '50%'); 
+                    $(".pictureBox").css('background-position-x', '50%');
                     $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
-                     }, 1000);
-                    }
-                else {
-                    return
-                }
+                }, 1000);
             }
-
-            function tutorial3 () {
-                console.log("clicked");
-                imageUrl = "http://i3.ytimg.com/vi/XUzRybXj2GA/hqdefault.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
-
-                $("#tutorialP").html("Want to re-live old glory? Pick a player from their best season.")
-                $(".next").attr("onclick","tutorial4()");
-
+            else {
+                return
             }
+        }
 
-            function tutorial2 () {
-                console.log("clicked");
-                imageUrl = "https://images.eurohoops.net/2016/10/nbamoney.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial3() {
+            console.log("clicked");
+            imageUrl = "http://i3.ytimg.com/vi/XUzRybXj2GA/hqdefault.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("As the GM, you are alotted $12,000 to create the best team possible.")
-                $(".next").attr("onclick","tutorial3()");
+            $("#tutorialP").html("Want to re-live old glory? Pick a player from their best season.")
+            $(".next").attr("onclick", "tutorial4()");
 
-            }
+        }
 
-            function tutorial4 () {
-                console.log("clicked");
-                imageUrl = "https://usathoopshype.files.wordpress.com/2015/12/stephen-curry-kings.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial2() {
+            console.log("clicked");
+            imageUrl = "https://images.eurohoops.net/2016/10/nbamoney.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("Your players' strengths and weaknesses will decide everything.")
-                $(".next").attr("onclick","tutorial5()");
+            $("#tutorialP").html("As the GM, you are allotted $12,000 to create the best team possible.")
+            $(".next").attr("onclick", "tutorial3()");
 
-            }
+        }
 
-            function tutorial5 () {
-                console.log("clicked");
-                imageUrl = "https://sparksports.io/wp-content/uploads/2016/03/la_lakers_legends_09.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial4() {
+            console.log("clicked");
+            imageUrl = "https://usathoopshype.files.wordpress.com/2015/12/stephen-curry-kings.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("Play small-ball or go big? The choice is yours.")
-                $(".next").attr("onclick","tutorial6()");
+            $("#tutorialP").html("Your players' strengths and weaknesses will decide everything.")
+            $(".next").attr("onclick", "tutorial5()");
 
-            }
+        }
 
-            function tutorial6 () {
-                console.log("clicked");
-                imageUrl = "https://pm1.narvii.com/6545/67a69fe52194b27ee1b1bf8a83a40784554efc5a_hq.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial5() {
+            console.log("clicked");
+            imageUrl = "https://sparksports.io/wp-content/uploads/2016/03/la_lakers_legends_09.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("Roles matter. Maximize your team's potential with the right fit.")
-                $(".next").attr("onclick","tutorial7()");
+            $("#tutorialP").html("Play small-ball or go big? The choice is yours.")
+            $(".next").attr("onclick", "tutorial6()");
 
-            }
+        }
 
-            function tutorial7 () {
-                console.log("clicked");
-                imageUrl = "http://www.opencourt-basketball.com/wp-content/uploads/2017/08/robert-horry.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial6() {
+            console.log("clicked");
+            imageUrl = "https://pm1.narvii.com/6545/67a69fe52194b27ee1b1bf8a83a40784554efc5a_hq.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("With that in mind, try to find some sleeper picks to save some cash.")
-                $(".next").attr("onclick","tutorial8()");
+            $("#tutorialP").html("Roles matter. Maximize your team's potential with the right fit.")
+            $(".next").attr("onclick", "tutorial7()");
 
-            }
+        }
 
-            function tutorial8 () {
-                console.log("clicked");
-                imageUrl = "https://cdn-s3.si.com/s3fs-public/2017/03/27/james-harden-driving.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial7() {
+            console.log("clicked");
+            imageUrl = "http://www.opencourt-basketball.com/wp-content/uploads/2017/08/robert-horry.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("Battle for supremacy. Is your team really good enough?")
-                $(".next").attr("onclick","tutorial9()");
+            $("#tutorialP").html("With that in mind, try to find some sleeper picks to save some cash.")
+            $(".next").attr("onclick", "tutorial8()");
 
-            }
+        }
 
-            function tutorial9 () {
-                console.log("clicked");
-                imageUrl = "https://s.newsweek.com/sites/www.newsweek.com/files/styles/full/public/2018/01/26/kyrie-irving-boston-celtics-drives-against-lebron-james-cavaliers-td-garden-boston.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial8() {
+            console.log("clicked");
+            imageUrl = "https://cdn-s3.si.com/s3fs-public/2017/03/27/james-harden-driving.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("Compete against your friends' lineups for bragging rights.")
-                $(".next").attr("onclick","tutorial10()");
+            $("#tutorialP").html("Battle for supremacy. Is your team really good enough?")
+            $(".next").attr("onclick", "tutorial9()");
 
-            }
+        }
 
-             function tutorial10 () {
-                console.log("clicked");
-                imageUrl = "https://icdn2.digitaltrends.com/image/spike-lee-knicks-720x720.jpg";
-                $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+        function tutorial9() {
+            console.log("clicked");
+            imageUrl = "https://s.newsweek.com/sites/www.newsweek.com/files/styles/full/public/2018/01/26/kyrie-irving-boston-celtics-drives-against-lebron-james-cavaliers-td-garden-boston.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
 
-                $("#tutorialP").html("Follow the game play-by-play. Every game has a different story.");
-                $(".next").html("End");
-                $(".next").attr("onclick","reset()");
+            $("#tutorialP").html("Compete against your friends' lineups for bragging rights.")
+            $(".next").attr("onclick", "tutorial10()");
 
-            }
+        }
 
-            function reset () {
-                tutorialView == false;
-                $(".tutorialDiv").fadeOut();
-                $(".next").attr("onclick","tutorial2()");
+        function tutorial10() {
+            console.log("clicked");
+            imageUrl = "https://icdn2.digitaltrends.com/image/spike-lee-knicks-720x720.jpg";
+            $(".pictureBox").css('background-image', 'url(' + imageUrl + ')');
+
+            $("#tutorialP").html("Follow the game play-by-play. Every game has a different story.");
+            $(".next").html("End");
+            $(".next").attr("onclick", "reset()");
+
+        }
+
+        function reset() {
+            tutorialView == false;
+            $(".tutorialDiv").fadeOut();
+            $(".next").attr("onclick", "tutorial2()");
 
 
-                setTimeout(function(){
-                    $(".next").html("Next");
-                    $(".userTutorial, .far").on('click',tutorial);
-                    $(".homeDiv").fadeIn();
-                     }, 1000);
-            }
-            </script>
-            </head>
-            <body>
-            <!-- In the callback, you would hide the gSignInWrapper element on a
+            setTimeout(function () {
+                $(".next").html("Next");
+                $(".userTutorial, .far").on('click', tutorial);
+                $(".homeDiv").fadeIn();
+            }, 1000);
+        }
+    </script>
+    </head>
+
+    <body>
+        <!-- In the callback, you would hide the gSignInWrapper element on a
             successful sign in -->
-               <!-- <div id="gSignInWrapper">
+        <!-- <div id="gSignInWrapper">
               <span class="label">Sign in with:</span>
               
             </div> -->
-            <div class='bg'>
+        <div class='bg'>
 
         </div>
-            <script>startApp();</script>
+        <script>startApp();</script>
 
-            <div class="tutorialDiv">
-                    <h1>Tutorial</h1>
-                    <div class="pictureBox"></div>
-                    <p id="tutorialP">Create a team from a pool featuring every NBA player, ever. </p>
-                    <a><button onclick="tutorial2()" class="next">Next</button></a> 
-        
-        
-            </div> 
-    <div class="homeDiv">
+        <div class="tutorialDiv">
+            <h1>Tutorial</h1>
+            <div class="pictureBox"></div>
+            <p id="tutorialP">Create a team from a pool featuring every NBA player, ever. </p>
+            <a><button onclick="tutorial2()" class="next">Next</button></a>
+
+
+        </div>
+        <div class="homeDiv">
             <h1>Draft Sim</h1>
             <p>Can you build the best team ever?</p>
             <p>Now's your time to call the shots.</p>
-           <!-- CHANGE THE ROUTE HERE -->
-            <a href="https://thumbs.gfycat.com/EasyEnchantedIchthyosaurs-small.gif"><button class="toSelect">Play</button></a> 
-        <a><div id="customBtn" onclick="playGame()" class="customGPlusSignIn">
+            <a href="/selection"><button class="toSelect">Play</button></a>
+            <a><div id="customBtn" onclick="playGame()" class="customGPlusSignIn">
                     <span class="icon"></span>
                     <span class="buttonText">Sign in with Google</span>
-                  </div></a> 
+                </div></a>
 
-    </div> 
-   
-     <footer> <a href="https://twitter.com/basketball_gm"> Special Thanks to BballGM </a> |
-        <a href="https://github.com/michaelxpeng/group-project-2"> <i id="github" class="fab fa-github"></i></a>
-    </footer>
-</body>
+        </div>
+
+        <footer> <a href="https://twitter.com/basketball_gm"> Special Thanks to BballGM </a> |
+            <a href="https://github.com/michaelxpeng/group-project-2"> <i id="github" class="fab fa-github"></i></a>
+        </footer>
+    </body>
+
 </html>
