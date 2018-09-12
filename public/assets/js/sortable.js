@@ -150,7 +150,7 @@ sorttable = {
 	        /* If you want a stable sort, uncomment the following line */
 	        //sorttable.shaker_sort(row_array, this.sorttable_sortfunction);
           /* and comment out this one */
-          console.log(this.sorttable_sortfunction);
+          // console.log(this.sorttable_sortfunction);
 	        row_array.sort(this.sorttable_sortfunction);
 
 	        tb = this.sorttable_tbody;
@@ -305,8 +305,8 @@ sorttable = {
 
   //this sort does nothing but test my silly theories
   sort_salary: function(a, b){
-    console.log("this is a: "+a);
-    console.log("this is b: "+b);
+    // console.log("this is a: "+a);
+    // console.log("this is b: "+b);
     var numb1 = parseFloat(a[0].substr(1));
     var numb2 = parseFloat(b[0].substr(1));
     if (numb1 === numb2) return 0;
