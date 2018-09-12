@@ -1,192 +1,212 @@
 var userSalary = 12000;
+var playerCount = 0;
+
 $('#salary-display').text(userSalary);
-// $('#year-select').change(function(){
-//     var year = $(this).val();
-// $.get("/api/players" + year, function (response) {
-$.get("/api/players2017", function (response) {
-    $('#select-instructions').text("Hover Cursor Over Player's Name to See Stats");
-    // console.log(response[0])
-    for (var i = 0; i < response.length; i++) {
-        var ThreePCT = (response[i].threePM / response[i].threePA).toFixed(3);
-        var FTpct = (response[i].ftm / response[i].fta).toFixed(3);
-        if (response[i].gamesPlayed > 58) {
-            var posSelect = $('<select class="position-selector">');
-            if (response[i].position === "C") {
-                posSelect.append("<option value='C'>C</option>")
-            } else if (response[i].position === "F-C" || response[i].position === "C-F") {
-                posSelect.append(
-                    "<option value='C'>C</option>" +
-                    "<option value='PF'>PF</option>"
-                )
-            } else if (response[i].position === "F") {
-                posSelect.append(
-                    "<option value='SF'>SF</option>" +
-                    "<option value='PF'>PF</option>"
-                )
-            } else if (response[i].position === "G-F" || response[i].position === "F-G") {
-                posSelect.append(
-                    "<option value='PF'>PF</option>" +
-                    "<option value='SF'>SF</option>" +
-                    "<option value='SG'>SG</option>"
-                )
-            } else if (response[i].position === "G") {
-                posSelect.append(
-                    "<option value='PG'>PG</option>" +
-                    "<option value='SG'>SG</option>" +
-                    "<option value='SF'>SF</option>"
-                )
-            }
+$('#year-select').change(function(){
+    $('#search-div-id').removeClass('hidden').addClass('search-div');
+    var year = $(this).val();
+    $.get("/api/players" + year, function (response) {
+        $('#select-instructions').text("Hover Cursor Over Player's Name to See Stats");
+        $('#available-players').find('tbody').empty();
+        for (var i = 0; i < response.length; i++) {
+            var ThreePCT = (response[i].threePM / response[i].threePA).toFixed(3);
+            var FTpct = (response[i].ftm / response[i].fta).toFixed(3);
+            if (response[i].gamesPlayed > 58) {
+                var posSelect = $('<select class="position-selector">');
+                if (response[i].position === "C") {
+                    posSelect.append("<option value='C'>C</option>")
+                } else if (response[i].position === "F-C" || response[i].position === "C-F") {
+                    posSelect.append(
+                        "<option value='C'>C</option>" +
+                        "<option value='PF'>PF</option>"
+                    )
+                } else if (response[i].position === "F") {
+                    posSelect.append(
+                        "<option value='SF'>SF</option>" +
+                        "<option value='PF'>PF</option>"
+                    )
+                } else if (response[i].position === "G-F" || response[i].position === "F-G") {
+                    posSelect.append(
+                        "<option value='PF'>PF</option>" +
+                        "<option value='SF'>SF</option>" +
+                        "<option value='SG'>SG</option>"
+                    )
+                } else if (response[i].position === "G") {
+                    posSelect.append(
+                        "<option value='PG'>PG</option>" +
+                        "<option value='SG'>SG</option>" +
+                        "<option value='SF'>SF</option>"
+                    )
+                }
 
-            var salary = response[i].salary;
-            var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
-            statsDiv.html(
-                "<h3 class='stat-div-heading'>" + response[i].playerName + "</h3>" +
-                "<h4>" + response[i].year + "</h4>" +
-                "<h3>Per Game Averages:</h3>" +
-                "<h4>Points: " + (parseInt(response[i].pts) / response[i].gamesPlayed).toFixed(1) + "</h4>" +
-                "<h4>Rebounds: " + (parseInt(response[i].reb) / response[i].gamesPlayed).toFixed(1) + "</h4>" +
-                "<h4>Assists: " + (parseInt(response[i].ast) / response[i].gamesPlayed).toFixed(1) + "</h4>" +
-                "<h4>Steals: " + (parseInt(response[i].stl) / response[i].gamesPlayed).toFixed(1) + "</h4>" +
-                "<h4>Blocks: " + (parseInt(response[i].blk) / response[i].gamesPlayed).toFixed(1) + "</h4>"
-            );
-            $('#stat-holder').append(statsDiv);
+                var salary = parseInt((((((parseFloat(response[i].ppg) + parseFloat(response[i].rpg) + parseFloat(response[i].apg)) + parseFloat(response[i].usgPCT)) / 2) * 100) / 1.2))
+                var statsDiv = $('<div class="hidden stat-display" id="stats' + i + '">');
+                statsDiv.html(
+                    "<h3 class='stat-div-heading'>"+response[i].playerName+"</h3>"+
+                    "<h4>"+response[i].year+"</h4>"+
+                    "<h3>Per Game Averages:</h3>"+
+                    "<h4>Points: "+ (parseInt(response[i].pts)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                    "<h4>Rebounds: "+ (parseInt(response[i].reb)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                    "<h4>Assists: "+ (parseInt(response[i].ast)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                    "<h4>Steals: "+ (parseInt(response[i].stl)/response[i].gamesPlayed).toFixed(2)+"</h4>"+
+                    "<h4>Blocks: "+ (parseInt(response[i].blk)/response[i].gamesPlayed).toFixed(2)+"</h4>"
+                );
+                $('#stat-holder').append(statsDiv);
 
-            $('#available-players').append(
-                $("<tr>").append(
-                    $('<td>').text(response[i].position),
-                    $('<td>').text(response[i].playerName),
-                    $('<td>').text("$" + parseInt(salary)),
-                    $('<td>').html(posSelect),
-                    $('<td>').html('<button class="add-player" value="' + response[i].playerName + salary + '">+</button>'),
-                    // statsDiv
-                ).val(response[i].position).attr('data', i).attr('salary', salary)
-                    .attr('name', response[i].playerName)
-                    .attr('year', response[i].year)
-                    .attr('TSpct', response[i].tsPCT)
-                    .attr('ThreePAr', response[i].threePAR)
-                    .attr('ThreePCT', ThreePCT)
-                    .attr('FTr', response[i].ftR)
-                    .attr('FTpct', FTpct)
-                    .attr('ORBpct', response[i].orbPCT)
-                    .attr('DRBpct', response[i].drbPCT)
-                    .attr('ASTpct', response[i].astPCT)
-                    .attr('STLpct', response[i].stlPCT)
-                    .attr('BLKpct', response[i].blkPCT)
-                    .attr('TOVpct', response[i].tovPCT)
-                    .attr('USGpct', response[i].usgPCT)
+                $('#available-players').append(
+                    $("<tr>").append(
+                        $('<td>').text(response[i].position),
+                        $('<td>').text(response[i].playerName),
+                        $('<td>').text("$" + parseInt(salary)),
+                        $('<td>').html(posSelect),
+                        $('<td>').html('<button class="add-player" value="'+response[i].playerName+salary+'">+</button>'),
+                        // statsDiv
+                    ).val(response[i].position).attr('data', i).attr('salary' , salary)
+                    .attr('name' , response[i].playerName)
+                    .attr('year' , response[i].year)
+                    .attr('TSpct' , response[i].tsPCT)
+                    .attr('ThreePAr' , response[i].threePAR)
+                    .attr('ThreePCT' , ThreePCT)
+                    .attr('FTr' , response[i].ftR)
+                    .attr('FTpct' , FTpct)
+                    .attr('ORBpct' , response[i].orbPCT)
+                    .attr('DRBpct' , response[i].drbPCT)
+                    .attr('ASTpct' , response[i].astPCT)
+                    .attr('STLpct' , response[i].stlPCT)
+                    .attr('BLKpct' , response[i].blkPCT)
+                    .attr('TOVpct' , response[i].tovPCT)
+                    .attr('USGpct' , response[i].usgPCT)
                     .addClass('available-player-row')
                     .hover(
-                        function () {
+                        function (){
                             var rowRefNumb = $(this).attr('data');
                             $('#select-instructions').addClass('hidden');
-                            $('#stats' + rowRefNumb).removeClass('hidden')
-                        },
-                        function () {
+                            $('#stats'+rowRefNumb).removeClass('hidden')
+                        } ,
+                        function (){
                             var rowRefNumb = $(this).attr('data');
-                            $('#stats' + rowRefNumb).addClass('hidden');
+                            $('#stats'+rowRefNumb).addClass('hidden');
                             $('#select-instructions').removeClass('hidden');
                         }
                     )
-            )
+                )
+            }
         }
-    }
 
-    // add player button
-    $('.add-player').on('click', function () {
-        var playerSalaryCheck = parseInt($(this).parents('tr').attr('salary'))
-        var buttonValue = $(this).val();
-        if (buttonValue === $('#C-row').attr("validCheck") || buttonValue === $('#PG-row').attr("validCheck") || buttonValue === $('#SG-row').attr("validCheck") || buttonValue === $('#PF-row').attr("validCheck") || buttonValue === $('#SF-row').attr("validCheck")) {
-            alert("cannot use same player twice");
-        } else if ((userSalary - playerSalaryCheck) < 0) {
-            alert("cannot afford this player with current salary")
-        } else {
-            userSalary -= playerSalaryCheck;
-            $('#salary-display').text(userSalary);
+        // add player button
+        $('.add-player').on('click', function () {
+            var playerSalaryCheck = parseInt($(this).parents('tr').attr('salary'))
+            var buttonValue = $(this).val();
+            if (buttonValue === $('#C-row').attr("validCheck") || buttonValue === $('#PG-row').attr("validCheck") || buttonValue === $('#SG-row').attr("validCheck") || buttonValue === $('#PF-row').attr("validCheck") || buttonValue === $('#SF-row').attr("validCheck")) {
+                alert("cannot use same player twice");
+            } else if ((userSalary - playerSalaryCheck) < 0) {
+                alert("cannot afford this player with current salary")
+            } else {
+                userSalary -= playerSalaryCheck;
+                $('#salary-display').text(userSalary);
 
-            var selPlayerPos = $(this).parents('tr').find('select').val();
-            // console.log(selPlayerPos)
-            var selPlayerSal = $(this).parents('tr').attr('salary');
-            var selPlayerName = $(this).parents('tr').attr('name');
-            var playerYear = $(this).parents('tr').attr('year');
-            var TSpct = $(this).parents('tr').attr('TSpct')
-            var ThreePAr = $(this).parents('tr').attr('ThreePAr')
-            var ThreePCT = $(this).parents('tr').attr('ThreePCT')
-            var FTr = $(this).parents('tr').attr('FTr')
-            var FTpct = $(this).parents('tr').attr('FTpct')
-            var ORBpct = $(this).parents('tr').attr('ORBpct')
-            var DRBpct = $(this).parents('tr').attr('DRBpct')
-            var ASTpct = $(this).parents('tr').attr('ASTpct')
-            var STLpct = $(this).parents('tr').attr('STLpct')
-            var BLKpct = $(this).parents('tr').attr('BLKpct')
-            var TOVpct = $(this).parents('tr').attr('TOVpct')
-            var USGpct = $(this).parents('tr').attr('USGpct')
+                var selPlayerPos = $(this).parents('tr').find('select').val();
+                var selPlayerSal = $(this).parents('tr').attr('salary');
+                var selPlayerName = $(this).parents('tr').attr('name');
+                var playerYear = $(this).parents('tr').attr('year');
+                var TSpct = $(this).parents('tr').attr('TSpct')
+                var ThreePAr = $(this).parents('tr').attr('ThreePAr')
+                var ThreePCT = $(this).parents('tr').attr('ThreePCT')
+                var FTr = $(this).parents('tr').attr('FTr')
+                var FTpct = $(this).parents('tr').attr('FTpct')
+                var ORBpct = $(this).parents('tr').attr('ORBpct')
+                var DRBpct = $(this).parents('tr').attr('DRBpct')
+                var ASTpct = $(this).parents('tr').attr('ASTpct')
+                var STLpct = $(this).parents('tr').attr('STLpct')
+                var BLKpct = $(this).parents('tr').attr('BLKpct')
+                var TOVpct = $(this).parents('tr').attr('TOVpct')
+                var USGpct = $(this).parents('tr').attr('USGpct')
 
-            var rowFunctionality = function (row) {
-                if (($(row).attr("validCheck")) != "") {
-                    userSalary += parseInt($(row).attr("salary"))
-                    $('#salary-display').text(userSalary);
-                }
-                $(row).attr("validCheck", selPlayerName + selPlayerSal).html('').append(
-                    $('<th>').text(selPlayerPos),
-                    $('<td>').text(selPlayerName),
-                    $('<td>').text(playerYear),
-                    $('<td>').text("$" + selPlayerSal),
-                    $('<td>').html("<td><button class='drop-player'>--</button></td>")
-                ).attr('salary', selPlayerSal)
-                    .attr('name', selPlayerName)
-                    .attr('TSpct', TSpct)
-                    .attr('ThreePAr', ThreePAr)
-                    .attr('ThreePCT', ThreePCT)
-                    .attr('FTr', FTr)
-                    .attr('FTpct', FTpct)
-                    .attr('ORBpct', ORBpct)
-                    .attr('DRBpct', DRBpct)
-                    .attr('ASTpct', ASTpct)
-                    .attr('STLpct', STLpct)
-                    .attr('BLKpct', BLKpct)
-                    .attr('TOVpct', TOVpct)
-                    .attr('USGpct', USGpct)
-                    .find("button").on('click', function () {
+                var rowFunctionality = function (row) {
+                    if (($(row).attr("validCheck")) != "") {
+                        userSalary += parseInt($(row).attr("salary"))
+                        $('#salary-display').text(userSalary);
+                    }
+                    $(row).attr("validCheck", selPlayerName + selPlayerSal).html('').append(
+                        $('<th>').text(selPlayerPos),
+                        $('<td>').text(selPlayerName),
+                        $('<td>').text(playerYear),
+                        $('<td>').text("$"+selPlayerSal),
+                        $('<td>').html("<td><button class='drop-player'>--</button></td>")
+                    ).attr('salary' , selPlayerSal)
+                    .attr('name' , selPlayerName)
+                    .attr('TSpct' , TSpct)
+                    .attr('ThreePAr' , ThreePAr)
+                    .attr('ThreePCT' , ThreePCT)
+                    .attr('FTr' , FTr)
+                    .attr('FTpct' , FTpct)
+                    .attr('ORBpct' , ORBpct)
+                    .attr('DRBpct' , DRBpct)
+                    .attr('ASTpct' , ASTpct)
+                    .attr('STLpct' , STLpct)
+                    .attr('BLKpct' , BLKpct)
+                    .attr('TOVpct' , TOVpct)
+                    .attr('USGpct' , USGpct)
+                    .find("button").on('click' , function(){
                         var rowSalary = parseInt($(this).parents('tr').attr("salary"))
                         userSalary += rowSalary;
                         $('#salary-display').text(userSalary);
                         $(this).parents('tr')
-                            .attr("salary", "")
-                            .attr("validCheck", '')
-                            .attr('name', '')
-                            .attr('TSpct', '')
-                            .attr('ThreePAr', '')
-                            .attr('ThreePCT', '')
-                            .attr('FTr', '')
-                            .attr('FTpct', '')
-                            .attr('ORBpct', '')
-                            .attr('DRBpct', '')
-                            .attr('ASTpct', '')
-                            .attr('STLpct', '')
-                            .attr('BLKpct', '')
-                            .attr('TOVpct', '')
-                            .attr('USGpct', '')
-                            .find("td").empty();
+                        .attr("salary", "")
+                        .attr("validCheck", '')
+                        .attr('name' , '')
+                        .attr('TSpct' , '')
+                        .attr('ThreePAr' , '')
+                        .attr('ThreePCT' , '')
+                        .attr('FTr' , '')
+                        .attr('FTpct' , '')
+                        .attr('ORBpct' , '')
+                        .attr('DRBpct' , '')
+                        .attr('ASTpct' , '')
+                        .attr('STLpct' , '')
+                        .attr('BLKpct' , '')
+                        .attr('TOVpct' , '')
+                        .attr('USGpct' , '')
+                        .find("td").empty();
                     })
-            }
+                }
 
-            if (selPlayerPos === 'C') {
-                rowFunctionality('#C-row')
-            } else if (selPlayerPos === 'PG') {
-                rowFunctionality('#PG-row')
-            } else if (selPlayerPos === 'SG') {
-                rowFunctionality('#SG-row')
-            } else if (selPlayerPos === 'PF') {
-                rowFunctionality('#PF-row')
-            } else if (selPlayerPos === 'SF') {
-                rowFunctionality('#SF-row')
+                if (selPlayerPos === 'C') {
+                    rowFunctionality('#C-row')
+                } else if (selPlayerPos === 'PG') {
+                    rowFunctionality('#PG-row')
+                } else if (selPlayerPos === 'SG') {
+                    rowFunctionality('#SG-row')
+                } else if (selPlayerPos === 'PF') {
+                    rowFunctionality('#PF-row')
+                } else if (selPlayerPos === 'SF') {
+                    rowFunctionality('#SF-row')
+                }
             }
+        });
+    })
+
+})
+
+$("#search-player").on("click", function () {
+    $('.available-player-row').removeClass('hidden')
+    $(".tab").removeClass('active');
+    var userSearch = ($("#search").val().trim()).toLowerCase()
+    
+    $('.available-player-row').filter(function () {
+
+        var rowName = $(this).attr('name').toLowerCase();
+        var rowNameArray = rowName.split(' ');
+
+        if(rowName != userSearch && userSearch != rowNameArray[0] && userSearch != rowNameArray[1] && userSearch != rowNameArray[2]){
+            return true
         }
-    });
-});
+        return false;
+        
+    }).addClass('hidden')
+})
 
 $(".tab").on('click', function () {
-    // console.log(this);
     var tabValue = $(this).val();
     if (tabValue === 'all') {
         $('.available-player-row').removeClass('hidden')
@@ -197,9 +217,6 @@ $(".tab").on('click', function () {
         $(".tab").removeClass('active');
         $(this).addClass('active');
         $('.available-player-row').filter(function (index) {
-            if (parseInt($(this).attr("data")) < 10) {
-                // console.log(this);
-            }
             if ($(this).val() != 'G') {
                 return true;
             }
@@ -210,9 +227,6 @@ $(".tab").on('click', function () {
         $(".tab").removeClass('active');
         $(this).addClass('active');
         $('.available-player-row').filter(function (index) {
-            if (parseInt($(this).attr("data")) < 10) {
-                // console.log(this);
-            }
             if (($(this).val() != 'G-F') && ($(this).val() != 'F-G') && ($(this).val() != 'F')) {
                 return true;
             }
@@ -223,9 +237,6 @@ $(".tab").on('click', function () {
         $(".tab").removeClass('active');
         $(this).addClass('active');
         $('.available-player-row').filter(function (index) {
-            if (parseInt($(this).attr("data")) < 10) {
-                // console.log(this);
-            }
             if (($(this).val() != 'C-F') && ($(this).val() != 'F-C') && ($(this).val() != 'C')) {
                 return true;
             }
@@ -234,10 +245,10 @@ $(".tab").on('click', function () {
     }
 });
 
-$('#save-team').on('click', function () {
-    if ($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined) {
+$('#save-team').on('click', function(){
+    if($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined){
         alert("All Positions Need to Be Filled")
-    } else {
+    }else{
         var player0 = {
             position: $('#PG-row').attr('position'),
             name: $('#PG-row').attr('name'),

@@ -305,15 +305,29 @@ sorttable = {
 
   //this sort does nothing but test my silly theories
   sort_salary: function(a, b){
-    // console.log(a);
-    // console.log(parseFloat(b[0].substr(1)));
+    console.log("this is a: "+a);
+    console.log("this is b: "+b);
     var numb1 = parseFloat(a[0].substr(1));
     var numb2 = parseFloat(b[0].substr(1));
     if (numb1 === numb2) return 0;
-    if (numb1 > numb2) return 1;
-    if (numb1 < numb2) return -1;
+    if (numb1 > numb2) return -1;
+    if (numb1 < numb2) return 1;
     return 0;
   },
+
+  // an attempt at last names
+  // sort_lastname: function(a, b){
+  //   var splitA = a[0].split(" ");
+  //   var splitB = b[0].split(" ");
+  //   // console.log("this is splitA: "+splitA[splitA.length-1]);
+  //   a = splitA[splitA.length-1]
+  //   b = splitB[splitB.length-1]
+  //   console.log(a)
+  //   console.log(a[0])
+  //   if (a[0]==b[0]) return 0;
+  //   if (a[0]<b[0]) return -1;
+  //   return 1;
+  // },
 
 
   shaker_sort: function(list, comp_func) {
