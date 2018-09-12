@@ -358,3 +358,25 @@ select:focus {
           padding: 5px\9;
       }
   }
+
+  .search-div{
+      display: inline-block;
+      height: 27px;
+      margin-left: 10px;
+  }
+  .search{
+    height:104%;
+    background-color: rgba(0, 0, 0, 0.678);
+    border: solid 2px #ffffff;
+    color: #ffffff;
+    border-radius: 5px 0 0 5px;
+    margin-right: -6px;
+  }
+  .search-player{
+    /* margin-top: 1px; */
+    height: 129%;
+    color: #ffffff;
+    background-color: rgb(255, 123, 0);
+    border: solid 3px #ffffff;
+    border-radius: 0 5px 5px 0;
+  }
