@@ -24,6 +24,9 @@ h4{
 button:focus{
     outline: none;
 }
+input:focus{
+    outline: none;
+}
 
 
 #select-page-heading{
@@ -274,6 +277,7 @@ select:focus {
     border: solid 8px black;
     border-radius: 20px;
     padding: 10px 30px;
+    margin-top: 20px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -297,7 +301,12 @@ select:focus {
 #team-details input{
     color: #ffffff;
     background-color: #000000;
+    margin: 10px 0;
 }
+#team-name-input{
+    width:50%;
+}
+
 .add-player{
     background-color: #ffffff00;
     border: none;
