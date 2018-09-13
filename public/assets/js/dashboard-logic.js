@@ -45,6 +45,12 @@ $(document).ready(function () {
         // console.log(prevChildKey)
         // console.log("Title: " + newPost.title);
         // console.log("Previous Post ID: " + prevChildKey);
+
+        $('.action-drop').on('click', function () {
+            childKey = $(this).val();
+            ref.child(childKey).remove();
+            $(this).parent('div').parent('div').remove();
+        });
       });
 
     // function gotData(data) {
@@ -79,6 +85,8 @@ $(document).ready(function () {
     //     console.log("Error");
     //     console.log(err);
     // }
+
+    
 });
 
 // var userPlayers = [];
