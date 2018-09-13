@@ -7,6 +7,7 @@ $('#year-select').change(function(){
     var year = $(this).val();
     $.get("/api/players" + year, function (response) {
         $('#select-instructions').text("Hover Cursor Over Player's Name to See Stats");
+        $('#stat-holder').find("div").remove();
         $('#available-players').find('tbody').empty();
         for (var i = 0; i < response.length; i++) {
             var ThreePCT = (response[i].threePM / response[i].threePA).toFixed(3);
@@ -71,6 +72,7 @@ $('#year-select').change(function(){
                     .attr('FTpct' , FTpct)
                     .attr('ORBpct' , response[i].orbPCT)
                     .attr('DRBpct' , response[i].drbPCT)
+                    .attr('TRBpct' , response[i].trbPCT)
                     .attr('ASTpct' , response[i].astPCT)
                     .attr('STLpct' , response[i].stlPCT)
                     .attr('BLKpct' , response[i].blkPCT)
@@ -116,6 +118,7 @@ $('#year-select').change(function(){
                 var FTpct = $(this).parents('tr').attr('FTpct')
                 var ORBpct = $(this).parents('tr').attr('ORBpct')
                 var DRBpct = $(this).parents('tr').attr('DRBpct')
+                var TRBpct = $(this).parents('tr').attr('TRBpct')
                 var ASTpct = $(this).parents('tr').attr('ASTpct')
                 var STLpct = $(this).parents('tr').attr('STLpct')
                 var BLKpct = $(this).parents('tr').attr('BLKpct')
@@ -131,10 +134,11 @@ $('#year-select').change(function(){
                         $('<th>').text(selPlayerPos),
                         $('<td>').text(selPlayerName),
                         $('<td>').text(playerYear),
-                        $('<td>').text("$"+selPlayerSal),
+                        $('<td>').text("$" + selPlayerSal),
                         $('<td>').html("<td><button class='drop-player'>--</button></td>")
                     ).attr('salary' , selPlayerSal)
                     .attr('name' , selPlayerName)
+                    .attr('year' , playerYear)
                     .attr('TSpct' , TSpct)
                     .attr('ThreePAr' , ThreePAr)
                     .attr('ThreePCT' , ThreePCT)
@@ -142,6 +146,7 @@ $('#year-select').change(function(){
                     .attr('FTpct' , FTpct)
                     .attr('ORBpct' , ORBpct)
                     .attr('DRBpct' , DRBpct)
+                    .attr('TRBpct' , TRBpct)
                     .attr('ASTpct' , ASTpct)
                     .attr('STLpct' , STLpct)
                     .attr('BLKpct' , BLKpct)
@@ -155,6 +160,7 @@ $('#year-select').change(function(){
                         .attr("salary", "")
                         .attr("validCheck", '')
                         .attr('name' , '')
+                        .attr('year' , '')
                         .attr('TSpct' , '')
                         .attr('ThreePAr' , '')
                         .attr('ThreePCT' , '')
@@ -162,6 +168,7 @@ $('#year-select').change(function(){
                         .attr('FTpct' , '')
                         .attr('ORBpct' , '')
                         .attr('DRBpct' , '')
+                        .attr('TRBpct' , '')
                         .attr('ASTpct' , '')
                         .attr('STLpct' , '')
                         .attr('BLKpct' , '')
@@ -188,10 +195,10 @@ $('#year-select').change(function(){
 
 })
 
-$("#search-player").on("click", function () {
+$(".search-player").on("click", function () {
     $('.available-player-row').removeClass('hidden')
     $(".tab").removeClass('active');
-    var userSearch = ($("#search").val().trim()).toLowerCase()
+    var userSearch = ($(".search").val().trim()).toLowerCase()
     
     $('.available-player-row').filter(function () {
 
@@ -245,102 +252,134 @@ $(".tab").on('click', function () {
     }
 });
 
-$('#save-team').on('click', function(){
-    if($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined){
-        alert("All positions need to be filled")
-    }else{
-        var pg = {
-            position: $('#PG-row').attr('position'),
-            name: $('#PG-row').attr('name'),
-            TSpct: $('#PG-row').attr('TSpct'),
-            ThreePAr: $('#PG-row').attr('ThreePAr'),
-            ThreePCT: $('#PG-row').attr('ThreePCT'),
-            FTr: $('#PG-row').attr('FTr'),
-            FTpct: $('#PG-row').attr('FTpct'),
-            ORBpct: $('#PG-row').attr('ORBpct'),
-            DRBpct: $('#PG-row').attr('DRBpct'),
-            ASTpct: $('#PG-row').attr('ASTpct'),
-            STLpct: $('#PG-row').attr('STLpct'),
-            BLKpct: $('#PG-row').attr('BLKpct'),
-            TOVpct: $('#PG-row').attr('TOVpct'),
-            USGpct: $('#PG-row').attr('USGpct')
-        };
 
-        var sg = {
-            position: $('#SG-row').attr('position'),
-            name: $('#SG-row').attr('name'),
-            TSpct: $('#SG-row').attr('TSpct'),
-            ThreePAr: $('#SG-row').attr('ThreePAr'),
-            ThreePCT: $('#SG-row').attr('ThreePCT'),
-            FTr: $('#SG-row').attr('FTr'),
-            FTpct: $('#SG-row').attr('FTpct'),
-            ORBpct: $('#SG-row').attr('ORBpct'),
-            DRBpct: $('#SG-row').attr('DRBpct'),
-            ASTpct: $('#SG-row').attr('ASTpct'),
-            STLpct: $('#SG-row').attr('STLpct'),
-            BLKpct: $('#SG-row').attr('BLKpct'),
-            TOVpct: $('#SG-row').attr('TOVpct'),
-            USGpct: $('#SG-row').attr('USGpct')
-        };
 
-        var sf = {
-            position: $('#SF-row').attr('position'),
-            name: $('#SF-row').attr('name'),
-            TSpct: $('#SF-row').attr('TSpct'),
-            ThreePAr: $('#SF-row').attr('ThreePAr'),
-            ThreePCT: $('#SF-row').attr('ThreePCT'),
-            FTr: $('#SF-row').attr('FTr'),
-            FTpct: $('#SF-row').attr('FTpct'),
-            ORBpct: $('#SF-row').attr('ORBpct'),
-            DRBpct: $('#SF-row').attr('DRBpct'),
-            ASTpct: $('#SF-row').attr('ASTpct'),
-            STLpct: $('#SF-row').attr('STLpct'),
-            BLKpct: $('#SF-row').attr('BLKpct'),
-            TOVpct: $('#SF-row').attr('TOVpct'),
-            USGpct: $('#SF-row').attr('USGpct')
-        };
+// $('#save-team').on('click', function(){
 
-        var pf = {
-            position: $('#PF-row').attr('position'),
-            name: $('#PF-row').attr('name'),
-            TSpct: $('#PF-row').attr('TSpct'),
-            ThreePAr: $('#PF-row').attr('ThreePAr'),
-            ThreePCT: $('#PF-row').attr('ThreePCT'),
-            FTr: $('#PF-row').attr('FTr'),
-            FTpct: $('#PF-row').attr('FTpct'),
-            ORBpct: $('#PF-row').attr('ORBpct'),
-            DRBpct: $('#PF-row').attr('DRBpct'),
-            ASTpct: $('#PF-row').attr('ASTpct'),
-            STLpct: $('#PF-row').attr('STLpct'),
-            BLKpct: $('#PF-row').attr('BLKpct'),
-            TOVpct: $('#PF-row').attr('TOVpct'),
-            USGpct: $('#PF-row').attr('USGpct')
-        };
+//     function checkURL(url) {
+//         return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
+//     }
 
-        var c = {
-            position: $('#C-row').attr('position'),
-            name: $('#C-row').attr('name'),
-            TSpct: $('#C-row').attr('TSpct'),
-            ThreePAr: $('#C-row').attr('ThreePAr'),
-            ThreePCT: $('#C-row').attr('ThreePCT'),
-            FTr: $('#C-row').attr('FTr'),
-            FTpct: $('#C-row').attr('FTpct'),
-            ORBpct: $('#C-row').attr('ORBpct'),
-            DRBpct: $('#C-row').attr('DRBpct'),
-            ASTpct: $('#C-row').attr('ASTpct'),
-            STLpct: $('#C-row').attr('STLpct'),
-            BLKpct: $('#C-row').attr('BLKpct'),
-            TOVpct: $('#C-row').attr('TOVpct'),
-            USGpct: $('#C-row').attr('USGpct')
-        };
+//     var teamName = $('#team-name-input').val();
+//     var teamTag = $('#team-tag-input').val();
+//     var teamImageURL = $('#team-image-input').val();
 
-        console.log(pg);
-        console.log(sg);
-        console.log(sf);
-        console.log(pf);
-        console.log(c);
+//     if($('#PG-row').attr('name') === "" || $('#SG-row').attr('name') === "" || $('#PF-row').attr('name') === "" || $('#SF-row').attr('name') === "" || $('#C-row').attr('name') === "" || $('#PG-row').attr('name') === undefined || $('#SG-row').attr('name') === undefined || $('#PF-row').attr('name') === undefined || $('#SF-row').attr('name') === undefined || $('#C-row').attr('name') === undefined){
+//         alert("All Positions Need to Be Filled")
+//     }else if(teamName === ""){
+//         alert('Please Input a Team Name')
+//     }else if(teamTag === ""){
+//         alert('Please Input a Team Tag')
+//     }else if(teamTag.length > 4){
+//         alert('Team Tag Must Be Between 1 and 4 Characters')
+//     }else if(teamImageURL != ""){
+//         if(checkURL(teamImageURL)){}
+//         else{
+//             alert('If Using a Team Image, Please Enter a Valid URL')
+//         }
+//     }else{
+//         var pg = {
+//             position: $('#PG-row').attr('position'),
+//             name: $('#PG-row').attr('name'),
+//             TSpct: $('#PG-row').attr('TSpct'),
+//             ThreePAr: $('#PG-row').attr('ThreePAr'),
+//             ThreePct: $('#PG-row').attr('ThreePCT'),
+//             FTr: $('#PG-row').attr('FTr'),
+//             FTpct: $('#PG-row').attr('FTpct'),
+//             ORBpct: $('#PG-row').attr('ORBpct'),
+//             DRBpct: $('#PG-row').attr('DRBpct'),
+//             TRBpct: $('#PG-row').attr('TRBpct'),
+//             ASTpct: $('#PG-row').attr('ASTpct'),
+//             STLpct: $('#PG-row').attr('STLpct'),
+//             BLKpct: $('#PG-row').attr('BLKpct'),
+//             TOVpct: $('#PG-row').attr('TOVpct'),
+//             USGpct: $('#PG-row').attr('USGpct'),
+//             salary: $('#PG-row').attr('salary')
+//         };
 
-        // location.href = "/dashboard";
-    };
+//         var sg = {
+//             position: $('#SG-row').attr('position'),
+//             name: $('#SG-row').attr('name'),
+//             TSpct: $('#SG-row').attr('TSpct'),
+//             ThreePAr: $('#SG-row').attr('ThreePAr'),
+//             ThreePct: $('#SG-row').attr('ThreePCT'),
+//             FTr: $('#SG-row').attr('FTr'),
+//             FTpct: $('#SG-row').attr('FTpct'),
+//             ORBpct: $('#SG-row').attr('ORBpct'),
+//             DRBpct: $('#SG-row').attr('DRBpct'),
+//             TRBpct: $('#SG-row').attr('TRBpct'),
+//             ASTpct: $('#SG-row').attr('ASTpct'),
+//             STLpct: $('#SG-row').attr('STLpct'),
+//             BLKpct: $('#SG-row').attr('BLKpct'),
+//             TOVpct: $('#SG-row').attr('TOVpct'),
+//             USGpct: $('#SG-row').attr('USGpct'),
+//             salary: $('#SG-row').attr('salary')
+//         };
 
-});
+//         var sf = {
+//             position: $('#SF-row').attr('position'),
+//             name: $('#SF-row').attr('name'),
+//             TSpct: $('#SF-row').attr('TSpct'),
+//             ThreePAr: $('#SF-row').attr('ThreePAr'),
+//             ThreePct: $('#SF-row').attr('ThreePCT'),
+//             FTr: $('#SF-row').attr('FTr'),
+//             FTpct: $('#SF-row').attr('FTpct'),
+//             ORBpct: $('#SF-row').attr('ORBpct'),
+//             DRBpct: $('#SF-row').attr('DRBpct'),
+//             TRBpct: $('#SF-row').attr('TRBpct'),
+//             ASTpct: $('#SF-row').attr('ASTpct'),
+//             STLpct: $('#SF-row').attr('STLpct'),
+//             BLKpct: $('#SF-row').attr('BLKpct'),
+//             TOVpct: $('#SF-row').attr('TOVpct'),
+//             USGpct: $('#SF-row').attr('USGpct'),
+//             salary: $('#SF-row').attr('salary')
+//         };
+
+//         var pf = {
+//             position: $('#PF-row').attr('position'),
+//             name: $('#PF-row').attr('name'),
+//             TSpct: $('#PF-row').attr('TSpct'),
+//             ThreePAr: $('#PF-row').attr('ThreePAr'),
+//             ThreePct: $('#PF-row').attr('ThreePCT'),
+//             FTr: $('#PF-row').attr('FTr'),
+//             FTpct: $('#PF-row').attr('FTpct'),
+//             ORBpct: $('#PF-row').attr('ORBpct'),
+//             DRBpct: $('#PF-row').attr('DRBpct'),
+//             TRBpct: $('#PF-row').attr('TRBpct'),
+//             ASTpct: $('#PF-row').attr('ASTpct'),
+//             STLpct: $('#PF-row').attr('STLpct'),
+//             BLKpct: $('#PF-row').attr('BLKpct'),
+//             TOVpct: $('#PF-row').attr('TOVpct'),
+//             USGpct: $('#PF-row').attr('USGpct'),
+//             salary: $('#PF-row').attr('salary')
+//         };
+
+//         var c = {
+//             position: $('#C-row').attr('position'),
+//             name: $('#C-row').attr('name'),
+//             TSpct: $('#C-row').attr('TSpct'),
+//             ThreePAr: $('#C-row').attr('ThreePAr'),
+//             ThreePct: $('#C-row').attr('ThreePCT'),
+//             FTr: $('#C-row').attr('FTr'),
+//             FTpct: $('#C-row').attr('FTpct'),
+//             ORBpct: $('#C-row').attr('ORBpct'),
+//             DRBpct: $('#C-row').attr('DRBpct'),
+//             TRBpct: $('#C-row').attr('TRBpct'),
+//             ASTpct: $('#C-row').attr('ASTpct'),
+//             STLpct: $('#C-row').attr('STLpct'),
+//             BLKpct: $('#C-row').attr('BLKpct'),
+//             TOVpct: $('#C-row').attr('TOVpct'),
+//             USGpct: $('#C-row').attr('USGpct'),
+//             salary: $('#C-row').attr('salary')
+//         };
+
+//         console.log(pg);
+//         console.log(sg);
+//         console.log(sf);
+//         console.log(pf);
+//         console.log(c);
+
+//         // location.href = "/dashboard";
+//     };
+
+// });

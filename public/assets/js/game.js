@@ -21,8 +21,9 @@ $(document).ready(function () {
     var dataRef = firebase.database();
     console.log(dataRef);
     var ref = dataRef.ref();
-    ref.on('value', gotData, errData);
+    // ref.on('value', gotData, errData);
 
+<<<<<<< HEAD
     function gotData(data){
         var team = data.val();
         var keys = Object.keys(team);
@@ -34,33 +35,79 @@ $(document).ready(function () {
         for (var i = 0; i < keys.length; i++) {
             var k = keys[i];
             var player0 = team[k].pg;
+=======
+    ref.on("child_added", function(snapshot, prevChildKey) {
+        var team = snapshot.val();
+        // console.log(snapshot.key);
+
+        var teamDiv = $('<div>').addClass('saved-team');
+        if(team.selected === true){
+            teamDiv.addClass('selected-team')
+            var player0 = team.pg;
+>>>>>>> d803ebc44b6727570f485569c0d4273cd14dc35a
             console.log(player0);
-            var player1 = team[k].sg;
+            var player1 = team.sg;
             console.log(player1);
-            var player2 = team[k].sf;
+            var player2 = team.sf;
             console.log(player2);
-            var player3 = team[k].pf;
+            var player3 = team.pf;
             console.log(player3);
-            var player4 = team[k].c;
+            var player4 = team.c;
             console.log(player4);
 
+<<<<<<< HEAD
         };
 
     
+=======
+            userPlayers.push(player0);
+            userPlayers.push(player1);
+            userPlayers.push(player2);
+            userPlayers.push(player3);
+            userPlayers.push(player4);
+        }
+
+
+
+
+      });
+
+    // function gotData(data){
+    //     var team = data.val();
+    //     var keys = Object.keys(team);
+    //     // keys will equal to each user team name?
+    //     console.log(keys);
+
+
+    //     for (var i = 0; i < keys.length; i++) {
+    //         var k = keys[i];
+    //         var player0 = team[k].pg;
+    //         console.log(player0);
+    //         var player1 = team[k].sg;
+    //         console.log(player1);
+    //         var player2 = team[k].sf;
+    //         console.log(player2);
+    //         var player3 = team[k].pf;
+    //         console.log(player3);
+    //         var player4 = team[k].c;
+    //         console.log(player4);
+
+    //     };
+>>>>>>> d803ebc44b6727570f485569c0d4273cd14dc35a
      
        
-        userPlayers.push(player0);
-        userPlayers.push(player1);
-        userPlayers.push(player2);
-        userPlayers.push(player3);
-        userPlayers.push(player4);
+    //     userPlayers.push(player0);
+    //     userPlayers.push(player1);
+    //     userPlayers.push(player2);
+    //     userPlayers.push(player3);
+    //     userPlayers.push(player4);
 
 
-    }
-    function errData(err){
-        console.log("Error");
-        console.log(err);
-    }
+    // }
+    // function errData(err){
+    //     console.log("Error");
+    //     console.log(err);
+    // }
 });
 
 
@@ -1379,9 +1426,9 @@ function printStats() {
     $("#TOV-teamA").html(this.teamA.TOV);
     $("#FLS-teamA").html(this.teamA.FLS);
 
-    $("#FG-teamApct").html((((this.teamA.FGM) / (this.teamA.FGA) * 100).toFixed(2)) + "%");
-    $("#3PT-teamApct").html((((this.teamA.ThreePM) / (this.teamA.ThreePA) * 100).toFixed(2)) + "%");
-    $("#FT-teamApct").html((((this.teamA.FTM) / (this.teamA.FTA) * 100).toFixed(2)) + "%");
+    $("#FG-teamApct").html((((this.teamA.FGM) / (this.teamA.FGA) * 100).toFixed(1)) + "%");
+    $("#3PT-teamApct").html((((this.teamA.ThreePM) / (this.teamA.ThreePA) * 100).toFixed(1)) + "%");
+    $("#FT-teamApct").html((((this.teamA.FTM) / (this.teamA.FTA) * 100).toFixed(1)) + "%");
 
     $(".boxscore-headingB").html(this.teamB.name);
 
@@ -1464,9 +1511,9 @@ function printStats() {
     $("#TOV-teamB").html(this.teamB.TOV);
     $("#FLS-teamB").html(this.teamB.FLS);
 
-    $("#FG-teamBpct").html((((this.teamB.FGM) / (this.teamB.FGA) * 100).toFixed(2)) + "%");
-    $("#3PT-teamBpct").html((((this.teamB.ThreePM) / (this.teamB.ThreePA) * 100).toFixed(2)) + "%");
-    $("#FT-teamBpct").html((((this.teamB.FTM) / (this.teamB.FTA) * 100).toFixed(2)) + "%");
+    $("#FG-teamBpct").html((((this.teamB.FGM) / (this.teamB.FGA) * 100).toFixed(1)) + "%");
+    $("#3PT-teamBpct").html((((this.teamB.ThreePM) / (this.teamB.ThreePA) * 100).toFixed(1)) + "%");
+    $("#FT-teamBpct").html((((this.teamB.FTM) / (this.teamB.FTA) * 100).toFixed(1)) + "%");
 
 
 
@@ -1813,7 +1860,7 @@ function doBlk() {
     this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " attempted a " + this.shot + " and was blocked by " + this.selectedPlayerBLK.name + "!");
     this.selectedPlayerOff.FGA += 1;
     this.OFFteam.FGA += 1;
-    this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(2)) + "%   " + this.selectedPlayerBLK.name + "(" + this.DEFteam.tag + ")" + " BLK:" + this.selectedPlayerBLK.BLK);
+    this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%   " + this.selectedPlayerBLK.name + "(" + this.DEFteam.tag + ")" + " BLK:" + this.selectedPlayerBLK.BLK);
 
     if (inbounds != 0) {
         this.gameLog.push("The ball went out of bounds!");
@@ -2249,7 +2296,7 @@ function doFg() {
         this.OFFteam.FGM += 1;
         this.selectedPlayerOff.FGA += 1;
         this.selectedPlayerOff.FGM += 1;
-        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
         //Stat Allocation
         if (this.overtimes <= 0) {
@@ -2345,7 +2392,7 @@ function doFg() {
         this.OFFteam.FGM += 1;
         this.selectedPlayerOff.FGA += 1;
         this.selectedPlayerOff.FGM += 1;
-        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
 
         if (this.overtimes <= 0) {
@@ -2442,7 +2489,7 @@ function doFg() {
         this.OFFteam.FGM += 1;
         this.selectedPlayerOff.FGA += 1;
         this.selectedPlayerOff.FGM += 1;
-        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
         if (this.overtimes <= 0) {
             this.quarterLog.push(this.quarter);
@@ -2629,10 +2676,10 @@ function doFg() {
 
         }
 
-        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(2)) + "%  " + " 3PT%: " + (((this.selectedPlayerOff.ThreePM / this.selectedPlayerOff.ThreePA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + " 3PT%: " + (((this.selectedPlayerOff.ThreePM / this.selectedPlayerOff.ThreePA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
     } else if (this.shot === "andOne") {
-        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+        this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
         //Assisted Player Update for andOnes
         if (this.selectedPlayerAST != "") {
             this.selectedPlayerAST.AST += 1;
@@ -2756,7 +2803,7 @@ function doFt() {
                 this.gameLogAOT.push(0);
 
             }
-            this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FT%: " + (((this.selectedPlayerOff.FTM / this.selectedPlayerOff.FTA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+            this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FT%: " + (((this.selectedPlayerOff.FTM / this.selectedPlayerOff.FTA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
 
             this.liveBall = false
@@ -2768,7 +2815,7 @@ function doFt() {
             this.selectedPlayerOff.FTA += 1;
             this.OFFteam.FTA += 1;
 
-            this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FT%: " + (((this.selectedPlayerOff.FTM / this.selectedPlayerOff.FTA) * 100).toFixed(2)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
+            this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FT%: " + (((this.selectedPlayerOff.FTM / this.selectedPlayerOff.FTA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
 
 

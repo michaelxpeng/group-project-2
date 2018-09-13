@@ -168,12 +168,13 @@ tr:nth-child(even){
 
 
 /* specific styling for user lineup */
-#user-lineup{
+.user-lineup{
     /* float: right; */
     width: 100%;
     /* border: solid 2px red; */
 }
 #user-lineup-div{
+    float: left;
     display: inline-block;
     /* clear: both; */
     margin: 40px 20px 0 80px;
@@ -185,22 +186,89 @@ tr:nth-child(even){
     border-radius: 20px;
     overflow: hidden;
 }
-#user-lineup td,th{
+.user-lineup td,th{
     padding: 5px;
     /* height: 20px; */
 }
 
-#save-team{
+.hidden{
+    display: none;
+}
+
+#salary-heading{
+    float: right;
+    display: inline;
+    font-size: 36px;
+}
+
+.position-selector {
+    font-size: 12px;
+    border: 2px solid rgb(255, 123, 0);
+  }
+#year-select {
+    /* margin: 50px; */
+    width: 150px;
+    padding: 5px 35px 5px 5px;
+    font-size: 16px;
+    border: 2px solid rgb(255, 123, 0);
+    height: 34px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url(https://upload.wikimedia.org/wikipedia/commons/2/21/Ic_arrow_drop_down_48px.svg) 96% / 15% no-repeat rgb(255, 255, 255);
+  }
+  
+select:focus {
+    outline: 0;
+  }
+
+  
+  /* CAUTION: IE hackery ahead */
+  
+  
+  select::-ms-expand { 
+      display: none; /* remove default arrow in IE 10 and 11 */
+  }
+  
+  /* target Internet Explorer 9 to undo the custom arrow */
+  @media screen and (min-width:0\0) {
+      select {
+          background:none\9;
+          padding: 5px\9;
+      }
+  }
+
+  .search-div{
+      display: inline-block;
+      height: 27px;
+      margin-left: 10px;
+  }
+  .search{
+    height:104%;
+    background-color: rgba(0, 0, 0, 0.678);
+    border: solid 2px #ffffff;
+    color: #ffffff;
+    border-radius: 5px 0 0 5px;
+    margin-right: -6px;
+  }
+  .search-player{
+    /* margin-top: 1px; */
+    height: 129%;
+    color: #ffffff;
+    background-color: rgb(255, 123, 0);
+    border: solid 3px #ffffff;
+    border-radius: 0 5px 5px 0;
+  }
+
+  #save-team{
     color: black;
     background-color: rgba(255, 123, 0, 0.699);
-    float: right;
-    display: inline-block;
-    font-size: 50px;
-    margin-right: 30%;
-    margin-top: 50PX;
+    /* float: right; */
+    /* display: inline-block; */
+    font-size: 36px;
     border: solid 8px black;
     border-radius: 20px;
-    padding: 10px 50px;
+    padding: 10px 30px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -211,15 +279,19 @@ tr:nth-child(even){
     box-shadow: 0 0 50px #ffffff;
 }
 
-
-.hidden{
-    display: none;
+#team-details{
+    float: left;
+    margin: 40px 80px 0 20px;
+    padding: 20px;
+    background-color: rgb(255, 123, 0);
+    text-align: center;
+    width: 25%;
+    border: solid 10px rgb(255, 255, 255);
+    border-radius: 20px;
 }
-
-#salary-heading{
-    float: right;
-    display: inline;
-    font-size: 36px;
+#team-details input{
+    color: #ffffff;
+    background-color: #000000;
 }
 
 
@@ -322,61 +394,3 @@ tr:nth-child(even){
     padding: 10px;
 }
 
-.position-selector {
-    font-size: 12px;
-    border: 2px solid rgb(255, 123, 0);
-  }
-#year-select {
-    /* margin: 50px; */
-    width: 150px;
-    padding: 5px 35px 5px 5px;
-    font-size: 16px;
-    border: 2px solid rgb(255, 123, 0);
-    height: 34px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url(https://upload.wikimedia.org/wikipedia/commons/2/21/Ic_arrow_drop_down_48px.svg) 96% / 15% no-repeat rgb(255, 255, 255);
-  }
-  
-select:focus {
-    outline: 0;
-  }
-
-  
-  /* CAUTION: IE hackery ahead */
-  
-  
-  select::-ms-expand { 
-      display: none; /* remove default arrow in IE 10 and 11 */
-  }
-  
-  /* target Internet Explorer 9 to undo the custom arrow */
-  @media screen and (min-width:0\0) {
-      select {
-          background:none\9;
-          padding: 5px\9;
-      }
-  }
-
-  .search-div{
-      display: inline-block;
-      height: 27px;
-      margin-left: 10px;
-  }
-  .search{
-    height:104%;
-    background-color: rgba(0, 0, 0, 0.678);
-    border: solid 2px #ffffff;
-    color: #ffffff;
-    border-radius: 5px 0 0 5px;
-    margin-right: -6px;
-  }
-  .search-player{
-    /* margin-top: 1px; */
-    height: 129%;
-    color: #ffffff;
-    background-color: rgb(255, 123, 0);
-    border: solid 3px #ffffff;
-    border-radius: 0 5px 5px 0;
-  }
