@@ -20,9 +20,6 @@ $(document).ready(function () {
         // console.log(snapshot.key);
 
         var teamDiv = $('<div>').addClass('saved-team');
-        if(team.selected === true){
-            teamDiv.addClass('selected-team')
-        }
         var teamWbuttons = $('<div>').addClass('team');
 
         var teamName = $('<h4>').text(team.name).addClass('team-heading');
@@ -46,6 +43,12 @@ $(document).ready(function () {
         teamWbuttons.append(teamName, teamDiv, actionButtonsDiv)
 
         $('#user-lineups').append(teamWbuttons);
+
+        if(team.selected === true){
+            teamDiv.addClass('selected-team');
+            teamName.addClass('selected-team-heading');
+            selectButton.addClass('hidden')
+        }
         // console.log("position C name: " + team.c.name);
         // console.log(prevChildKey)
         // console.log("Title: " + newPost.title);
@@ -68,10 +71,16 @@ $(document).ready(function () {
 
             childKey = $(this).val();
             $('.selected-team').removeClass('selected-team');
-            $(this).parent('div').parent('div').find('.saved-team').addClass('selected-team')
+            $('.team-heading').removeClass('selected-team-heading');
+            $('.action-select').removeClass('hidden');
+            $(this).parent('div').parent('div').find('.saved-team').addClass('selected-team');
+            $(this).parent('div').parent('div').find('.team-heading').addClass('selected-team-heading');
+            $(this).parent('div').find('.action-select').addClass('hidden');
             ref.child(childKey).update({
                 selected:true
             });
+
+            
         })
       });
 
