@@ -209,6 +209,10 @@ tr:nth-child(even){
     font-size: 36px;
 }
 
+#salary-display{
+    margin-right: 40px;
+}
+
 .position-selector {
     font-size: 12px;
     border: 2px solid rgb(255, 123, 0);
