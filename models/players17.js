@@ -26,7 +26,7 @@ module.exports = function(sequelize, DataTypes) {
       fta: DataTypes.INTEGER,
       pts: DataTypes.INTEGER,
       reb: DataTypes.INTEGER,
-      oreb:DataTypes.INTEGER,
+      oreb: DataTypes.INTEGER,
       ast: DataTypes.INTEGER,
       stl: DataTypes.INTEGER,
       tov: DataTypes.INTEGER,

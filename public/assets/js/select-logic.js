@@ -71,6 +71,7 @@ $('#year-select').change(function(){
                     .attr('FTpct' , FTpct)
                     .attr('ORBpct' , response[i].orbPCT)
                     .attr('DRBpct' , response[i].drbPCT)
+                    .attr('TRBpct' , response[i].trbPCT)
                     .attr('ASTpct' , response[i].astPCT)
                     .attr('STLpct' , response[i].stlPCT)
                     .attr('BLKpct' , response[i].blkPCT)
@@ -116,6 +117,7 @@ $('#year-select').change(function(){
                 var FTpct = $(this).parents('tr').attr('FTpct')
                 var ORBpct = $(this).parents('tr').attr('ORBpct')
                 var DRBpct = $(this).parents('tr').attr('DRBpct')
+                var TRBpct = $(this).parents('tr').attr('TRBpct')
                 var ASTpct = $(this).parents('tr').attr('ASTpct')
                 var STLpct = $(this).parents('tr').attr('STLpct')
                 var BLKpct = $(this).parents('tr').attr('BLKpct')
@@ -131,7 +133,7 @@ $('#year-select').change(function(){
                         $('<th>').text(selPlayerPos),
                         $('<td>').text(selPlayerName),
                         $('<td>').text(playerYear),
-                        $('<td>').text("$"+selPlayerSal),
+                        $('<td>').text("$" + selPlayerSal),
                         $('<td>').html("<td><button class='drop-player'>--</button></td>")
                     ).attr('salary' , selPlayerSal)
                     .attr('name' , selPlayerName)
@@ -142,6 +144,7 @@ $('#year-select').change(function(){
                     .attr('FTpct' , FTpct)
                     .attr('ORBpct' , ORBpct)
                     .attr('DRBpct' , DRBpct)
+                    .attr('TRBpct' , TRBpct)
                     .attr('ASTpct' , ASTpct)
                     .attr('STLpct' , STLpct)
                     .attr('BLKpct' , BLKpct)
@@ -162,6 +165,7 @@ $('#year-select').change(function(){
                         .attr('FTpct' , '')
                         .attr('ORBpct' , '')
                         .attr('DRBpct' , '')
+                        .attr('TRBpct' , '')
                         .attr('ASTpct' , '')
                         .attr('STLpct' , '')
                         .attr('BLKpct' , '')
@@ -259,6 +263,7 @@ $('#save-team').on('click', function(){
             FTpct: $('#PG-row').attr('FTpct'),
             ORBpct: $('#PG-row').attr('ORBpct'),
             DRBpct: $('#PG-row').attr('DRBpct'),
+            TRBpct: $('#PG-row').attr('TRBpct'),
             ASTpct: $('#PG-row').attr('ASTpct'),
             STLpct: $('#PG-row').attr('STLpct'),
             BLKpct: $('#PG-row').attr('BLKpct'),
@@ -277,6 +282,7 @@ $('#save-team').on('click', function(){
             FTpct: $('#SG-row').attr('FTpct'),
             ORBpct: $('#SG-row').attr('ORBpct'),
             DRBpct: $('#SG-row').attr('DRBpct'),
+            TRBpct: $('#SG-row').attr('TRBpct'),
             ASTpct: $('#SG-row').attr('ASTpct'),
             STLpct: $('#SG-row').attr('STLpct'),
             BLKpct: $('#SG-row').attr('BLKpct'),
@@ -295,6 +301,7 @@ $('#save-team').on('click', function(){
             FTpct: $('#SF-row').attr('FTpct'),
             ORBpct: $('#SF-row').attr('ORBpct'),
             DRBpct: $('#SF-row').attr('DRBpct'),
+            TRBpct: $('#SF-row').attr('TRBpct'),
             ASTpct: $('#SF-row').attr('ASTpct'),
             STLpct: $('#SF-row').attr('STLpct'),
             BLKpct: $('#SF-row').attr('BLKpct'),
@@ -313,6 +320,7 @@ $('#save-team').on('click', function(){
             FTpct: $('#PF-row').attr('FTpct'),
             ORBpct: $('#PF-row').attr('ORBpct'),
             DRBpct: $('#PF-row').attr('DRBpct'),
+            TRBpct: $('#PF-row').attr('TRBpct'),
             ASTpct: $('#PF-row').attr('ASTpct'),
             STLpct: $('#PF-row').attr('STLpct'),
             BLKpct: $('#PF-row').attr('BLKpct'),
@@ -331,6 +339,7 @@ $('#save-team').on('click', function(){
             FTpct: $('#C-row').attr('FTpct'),
             ORBpct: $('#C-row').attr('ORBpct'),
             DRBpct: $('#C-row').attr('DRBpct'),
+            TRBpct: $('#C-row').attr('TRBpct'),
             ASTpct: $('#C-row').attr('ASTpct'),
             STLpct: $('#C-row').attr('STLpct'),
             BLKpct: $('#C-row').attr('BLKpct'),
