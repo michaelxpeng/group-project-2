@@ -36,6 +36,7 @@
         var imageUrl;
 
         //Google Sign-In
+        
         var googleUser = {};
         var startApp = function () {
             gapi.load('auth2', function () {
@@ -57,9 +58,17 @@
                     document.getElementById('name').innerText = "GM: " +
                         googleUser.getBasicProfile().getName();
                 }, function (error) {
-                    alert(JSON.stringify(error, undefined, 2));
+                    // alert(JSON.stringify(error, undefined, 2));
+                    // alert("Please Sign In");
+                    noSignIn();
                 });
         }
+
+        // if (googleUser = false){
+        //     noSignIn();
+        // }else{
+        //     noSignIn();
+        // }
 
         //Functionality
 
@@ -67,6 +76,16 @@
             $("#customBtn").fadeOut();
 
             $(".toSelect").fadeIn();
+        }
+
+        function noSignIn(){
+            
+            // $(".toSelect").fadeOut();
+            // $("#customBtn").fadeIn();
+            alert("Please Sign In");
+            googleUser=false;
+            $(".toSelect").hide();
+            $("#customBtn").fadeIn();
         }
 
         function tutorial() {
