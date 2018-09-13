@@ -22,7 +22,36 @@
 </head>
 
 <body>
+    <div class="loadingDiv">
+        <img class="loadSpin" src="assets/images/loading.gif">
+    </div>
 
+  <div class="loadingScreen">
+     
+
+      
+          <div id="portfolioBox">
+
+              <div class="items">
+              <div class="project" value="1" onclick="teamSelect()"><img class="thumbnail" src="https://cdn.freebiesupply.com/logos/thumbs/2x/usa-basketball-logo.png"></div> 
+              <div class="project"value="2" onclick="teamSelect1()"><img class="thumbnail" src="https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png"></div>              
+              <div class="project"value="3"onclick="teamSelect2()"><img class="thumbnail" src="http://gtalogo.com/img/2091.png"></div>              
+              <div class="project"value="4"onclick="teamSelect3()"><img class="thumbnail" src="https://d2w9rnfcy7mm78.cloudfront.net/207396/large_93979ea9f30b49ec1ff7008075e2f076.png"></div>              
+             
+
+              </div>
+
+               <div id="info">
+                  <div class="projTitle">Choose Away Team</div>
+                  <div class="projPic"><img class="projPreview" src="https://theundefeated.com/wp-content/uploads/2017/05/nba-logo.png"></div>
+                  <div class="projDescription"></div>
+                  <a class="projLink"onclick="gameSet()"><button  class="projButton"><i class="fas fa-angle-right"></i></button></a>
+
+               </div>
+      
+  </div>
+  </div>
+  <div class="gameScreen">
   <div class="scoreboard">
     <div class="team B">
       <div class="rank">A</div>
@@ -35,8 +64,8 @@
     </div>
     <div class="team A">
       <div class="rank">H</div>
-      <img class="logo" src="https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png"></img>
-      <div class="name">CLE</div>
+      <img class="logo" src="https://theundefeated.com/wp-content/uploads/2017/05/nba-logo.png"></img>
+      <div class="name">USER</div>
       <span class="scoreA">0</span>
     </div>
   </div>
@@ -336,6 +365,7 @@
   </div>
 
   <button onclick="statReveal()" class="boxScoreButton">View Stats</button>
+</div>
 
   <!-- <script src="assets/js/firebase.js"></script> -->
 </body>
