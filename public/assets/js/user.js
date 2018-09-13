@@ -58,7 +58,8 @@ function teamSelect3 (){
     $(".projButton").fadeIn();
 };
 /** Once the Opponent is selected, this function sets the correct teams/stats/players accordingly 
- * @param {teamB} - and properties are updated accordingly. This is the away team, always. 
+ * @param {teamB} - and properties are updated accordingly. This is the away team, always.
+ * @param {teamA} - and properties are updated after the firebase pull, this is always the home team (user team); 
 */
 function gameSet () {
         console.log(teamChosen);
@@ -93,6 +94,7 @@ function gameSet () {
            
             $(".team.B .name").html(teamB.tag);
             $(".team.B- .name-").html(teamB.tag);            
+            
             $(".team.B .logo").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
             $(".team.B- .logo-").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
 
@@ -113,7 +115,7 @@ function gameSet () {
             teamB.defense = 90;
            
             $(".team.B .name").html(teamB.tag);
-                        $(".team.B- .name-").html(teamB.tag);            
+            $(".team.B- .name-").html(teamB.tag);            
 
             $(".team.B .logo").attr("src", "http://gtalogo.com/img/2091.png");
             $(".team.B- .logo-").attr("src", "http://gtalogo.com/img/2091.png");
