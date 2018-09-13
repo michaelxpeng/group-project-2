@@ -21,6 +21,14 @@ h3{
 h4{
     font-size: 24px;
 }
+button:focus{
+    outline: none;
+}
+input:focus{
+    outline: none;
+}
+
+
 #select-page-heading{
     display: inline;
 }
@@ -201,6 +209,10 @@ tr:nth-child(even){
     font-size: 36px;
 }
 
+#salary-display{
+    margin-right: 40px;
+}
+
 .position-selector {
     font-size: 12px;
     border: 2px solid rgb(255, 123, 0);
@@ -269,6 +281,7 @@ select:focus {
     border: solid 8px black;
     border-radius: 20px;
     padding: 10px 30px;
+    margin-top: 20px;
     -webkit-transition-duration: 0.4s; /* Safari */
     transition-duration: 0.4s;
     cursor: pointer;
@@ -292,61 +305,10 @@ select:focus {
 #team-details input{
     color: #ffffff;
     background-color: #000000;
+    margin: 10px 0;
 }
-
-
-
-/* DASHBOARD */
-.heading-icon{
-    height: 72px;
-    width: auto;
-}
-#user-record{
-    text-align: center;
-    width: 30%;
-    margin: auto;
-    padding: 30px;
-    background-color: rgba(148, 148, 148, 0.651);
-    border-radius: 25px;
-    border: solid 4px rgb(255, 255, 255);
-}
-
-#user-lineups{
-    display: inline-block;
-    width: 60%;
-}
-.saved-team{
-    /* margin: auto; */
-    text-align: center;
-    width: 100%;
-    border: solid 10px rgba(255, 255, 255, 0.658);
-    /* overflow: hidden; */
-}
-
-.actions-div{
-    margin-bottom: 20px;
-}
-.action-button{
-    background-color: rgba(255, 255, 255, 0.658);
-    /* float: left; */
-    /* border: solid 2px black; */
-    border: none;
-    outline: none;
-    cursor: pointer;
-    padding: 7px 16px;
-    margin-right: 4px;
-    font-size: 17px;
-    border-radius: 0 0 5px 5px ;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    /* width: 10%; */
-}
-.action-button:hover{
-    background-color: rgb(255, 255, 255);
-}
-
-.selected-team{
-    border: solid 10px rgb(255, 123, 0);
+#team-name-input{
+    width:50%;
 }
 
 .add-player{
@@ -380,6 +342,63 @@ select:focus {
 }
 
 
+/* DASHBOARD */
+.heading-icon{
+    height: 72px;
+    width: auto;
+}
+#user-record{
+    text-align: center;
+    width: 30%;
+    margin: auto;
+    padding: 30px;
+    background-color: rgba(148, 148, 148, 0.651);
+    border-radius: 25px;
+    border: solid 4px rgb(255, 255, 255);
+}
+
+#user-lineups{
+    margin-left: 40px;
+    display: inline-block;
+    width: 60%;
+}
+.saved-team{
+    /* margin: auto; */
+    text-align: center;
+    width: 100%;
+    border: solid 10px rgba(255, 255, 255, 0.658);
+    border-radius: 0 10px 10px 0;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.445);
+    /* overflow: hidden; */
+}
+
+.actions-div{
+    margin-bottom: 20px;
+}
+.action-button{
+    background-color: rgba(255, 255, 255, 0.658);
+    /* float: left; */
+    /* border: solid 2px black; */
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 7px 16px;
+    margin-right: 4px;
+    font-size: 17px;
+    border-radius: 0 0 5px 5px ;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    /* width: 10%; */
+}
+.action-button:hover{
+    background-color: rgb(255, 255, 255);
+}
+
+.selected-team{
+    border: solid 10px rgb(255, 123, 0);
+}
+
 #dashboard-buttons-div{
     display: inline-block;
     width: 30%;
@@ -392,5 +411,17 @@ select:focus {
     border: solid 4px rgb(255, 255, 255);
     border-radius: 8px;
     padding: 10px;
+}
+.team-heading{
+    display: inline-block;
+    background-color: rgba(255, 255, 255, 0.658);
+    border: none;
+    outline: none;
+    padding: 7px 16px;
+    border-radius: 5px 5px 0 0;
+}
+
+.selected-team-heading{
+    background-color: rgb(255, 123, 0);
 }
 
