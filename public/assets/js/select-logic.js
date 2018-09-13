@@ -7,6 +7,7 @@ $('#year-select').change(function(){
     var year = $(this).val();
     $.get("/api/players" + year, function (response) {
         $('#select-instructions').text("Hover Cursor Over Player's Name to See Stats");
+        $('#stat-holder').find("div").remove();
         $('#available-players').find('tbody').empty();
         for (var i = 0; i < response.length; i++) {
             var ThreePCT = (response[i].threePM / response[i].threePA).toFixed(3);
