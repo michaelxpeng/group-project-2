@@ -12,43 +12,73 @@ $(document).ready(function () {
     var dataRef = firebase.database();
     console.log(dataRef);
     var ref = dataRef.ref();
-    ref.on('value', gotData, errData);
+    // ref.on('value', gotData, errData);
 
-    function gotData(data){
-        var team = data.val();
-        var keys = Object.keys(team);
-        // keys will equal to each user team name?
-        console.log(keys);
+    ref.on("child_added", function(snapshot, prevChildKey) {
+        var team = snapshot.val();
+        // console.log(snapshot.key);
 
-
-        for (var i = 0; i < keys.length; i++) {
-            var k = keys[i];
-            var player0 = team[k].pg;
+        var teamDiv = $('<div>').addClass('saved-team');
+        if(team.selected === true){
+            teamDiv.addClass('selected-team')
+            var player0 = team.pg;
             console.log(player0);
-            var player1 = team[k].sg;
+            var player1 = team.sg;
             console.log(player1);
-            var player2 = team[k].sf;
+            var player2 = team.sf;
             console.log(player2);
-            var player3 = team[k].pf;
+            var player3 = team.pf;
             console.log(player3);
-            var player4 = team[k].c;
+            var player4 = team.c;
             console.log(player4);
 
-        };
+            userPlayers.push(player0);
+            userPlayers.push(player1);
+            userPlayers.push(player2);
+            userPlayers.push(player3);
+            userPlayers.push(player4);
+        }
+
+
+
+
+      });
+
+    // function gotData(data){
+    //     var team = data.val();
+    //     var keys = Object.keys(team);
+    //     // keys will equal to each user team name?
+    //     console.log(keys);
+
+
+    //     for (var i = 0; i < keys.length; i++) {
+    //         var k = keys[i];
+    //         var player0 = team[k].pg;
+    //         console.log(player0);
+    //         var player1 = team[k].sg;
+    //         console.log(player1);
+    //         var player2 = team[k].sf;
+    //         console.log(player2);
+    //         var player3 = team[k].pf;
+    //         console.log(player3);
+    //         var player4 = team[k].c;
+    //         console.log(player4);
+
+    //     };
      
        
-        userPlayers.push(player0);
-        userPlayers.push(player1);
-        userPlayers.push(player2);
-        userPlayers.push(player3);
-        userPlayers.push(player4);
+    //     userPlayers.push(player0);
+    //     userPlayers.push(player1);
+    //     userPlayers.push(player2);
+    //     userPlayers.push(player3);
+    //     userPlayers.push(player4);
 
 
-    }
-    function errData(err){
-        console.log("Error");
-        console.log(err);
-    }
+    // }
+    // function errData(err){
+    //     console.log("Error");
+    //     console.log(err);
+    // }
 });
 
 
