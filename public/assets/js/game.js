@@ -7,6 +7,11 @@
  /** Initial Firebase Information pull
   * The user will see a loading screen and will have to select an opponent
   * Ensures that the game will not have an error due to undefined variables
+  * Pushes all required data to global arrays so the game can access them when ready
+  * @member userPlayers - array of player objects from firebase
+  * @member userTeamName - array that stores the string for user team name
+  * @member userTeamLogo - array that stores the string for  imageURL for the logo
+  * @member userTeamTag - array that stores the string for the user team abbreviation
   */
 $(document).ready(function () {
     var config = {
@@ -102,29 +107,31 @@ $(document).ready(function () {
 
 
 // console.log(player0);
+
 var userPlayers = [];
 var userTeamName = [];
-console.log(userTeamName);
-           var userTeamLogo = [];
-           console.log(userTeamLogo);
-           var userTeamTag = [];
-           console.log(userTeamTag);
+// console.log(userTeamName);
+var userTeamLogo = [];
+// console.log(userTeamLogo);
+var userTeamTag = [];
+// console.log(userTeamTag);
+//Away team variable declarations, will be changed by user.js
 var awayName = "Default";
 var awayTag  = "AWAY";
 var awayPlayers = [];
 var awayOFF = 90;
 var awayDEF = 90;
+/** This function occurs during the loading screen, and allows the game to register the selected team into the game. */
 //timeout gives us time for the async firebase pull
 setTimeout(function(){
-console.log(userPlayers);
-console.log(userPlayers[0]);
+// console.log(userPlayers);
+// console.log(userPlayers[0]);
 this.player0 = userPlayers[0];
 this.player1 = userPlayers[1];
 this.player2 = userPlayers[2];
 this.player3 = userPlayers[3];
 this.player4 = userPlayers[4];
-
-console.log(player0);
+// console.log(player0);
 }, 2000)
 
 
@@ -840,7 +847,7 @@ var player24 = {
     FLS: 0
 };
 
-
+//Other test time
 // var player5 = {
 //     name: "Russell Westbrook",
 //     year: "2016-2017",
@@ -1037,6 +1044,8 @@ var player24 = {
 //     Q4PTS: 0,
 //     OTPTS: 0
 // }
+
+
 //User Team
 var teamA = {
     name: userTeamName,
@@ -1188,10 +1197,11 @@ this.liveBall //To curb blocks/steals/turnovers, sometimes the ball goes out of 
 //On click the game tips off, result is already decided onclick but is presented to the user/console dynamically
 
 //Start the game and set the possession, whichever team wins the jump gets 1st possession 
-//This also starts every OT positioniod
+//This also starts every OT possession
+/** This function begins the game 
+ * variables within are described above
+ */
 function jumpBall() {
-    console.log(teamA);
-    debugger
     var jumpCheck = (Math.floor(Math.random() * 2) == 0);
     if (jumpCheck != 0) {
         //home team gets poss
@@ -2974,8 +2984,6 @@ function doReb() {
 
 //Clock Converter into mm:ss
 function minTommss() {
-    // var sign = this.gameTime < 0 ? "-" : "";
-
     //Also updates differntials and quarter stats
     this.diff = ((this.teamA.PTS) - (this.teamB.PTS));
     this.teamA.DIFF = (this.diff);
@@ -2988,84 +2996,3 @@ function minTommss() {
     }
     return (min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec;
 };
-
-
-    // function updateQTRStats () {
-    //     debugger
-    //     //Update position Quarter Point Totals
-    //     if (this.quarter = 1){
-    //         if (this.shot = "three pointer") {
-    //             this.OFFteam.Q1PTS +=3;
-    //         }
-    //         else {
-    //             this.OFFteam.Q1PTS +=2;
-    //         }
-    //     }
-
-    //     else if (this.quarter = 2){
-    //         if (this.shot = "three pointer") {
-    //             this.OFFteam.Q2PTS +=3;
-    //         }
-    //         else {
-    //             this.OFFteam.Q2PTS +=2;
-    //         }
-    //     }
-
-    //     else if (this.quarter = 3){
-    //         if (this.shot = "three pointer") {
-    //             this.OFFteam.Q3PTS +=3;
-    //         }
-    //         else {
-    //             this.OFFteam.Q3PTS +=2;
-    //         }
-    //     }
-
-    //     else if (this.quarter = 4){
-    //         if (this.shot = "three pointer") {
-    //             this.OFFteam.Q4PTS +=3;
-    //         }
-    //         else {
-    //             this.OFFteam.Q4PTS +=2;
-    //         }
-    //     }
-
-    //     else if (this.overtimes >= 1){
-    //         if (this.shot = "three pointer") {
-    //             this.OFFteam.OTPTS +=3;
-    //         }
-    //         else {
-    //             this.OFFteam.OTPTS +=2;
-    //         }
-    //     }
-    // };
-
-    // var simSpeed = function(){
-
-
-    //     var slider = $('.simSlider'),
-    //         range = $('.simSliderRange'),
-    //         value = $('.simSliderValue');
-
-
-
-
-    //         slider.each(function(){
-    //             alert("hmm");
-    //       value.each(function(){
-    //         var value = $(this).prev().attr('value');
-    //         $(this).html(value);
-    //         // value = userSimSpeed;
-
-    //       });
-
-    //       range.on('input', function(){
-    //         $(this).next(value).html(this.value);
-
-    //         userSimSpeed = $(this).next(value).html(this.value);
-    //         // userSlider = parseInt(userSimSpeed);
-    //         // console.log(userSimSpeed.input);
-
-
-    //       });
-    //     });
-    //   };
