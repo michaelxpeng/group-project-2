@@ -278,7 +278,7 @@ $("#save-team").on("click", function () {
   // var logo = $('#logo').val().trim();
   // var teamName = $('#teamName').val().trim();
   
-
+  location.href="/dashboard"
 });
 
 //clears inputs
