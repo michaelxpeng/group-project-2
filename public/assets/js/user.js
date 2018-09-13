@@ -1,197 +1,177 @@
+/**
+ * user.js
+ * User functions that allow the user to select game speed, opponent
+ */
 
-// // function collectStats () {
-// //     for (let i = 0; i < this.gameLog.length; i++) {
-// //         $(".gameLog").append('<div class="gameEvent">'+this.gameLog[i]+'</div>'); 
-// //     }
-// //     return;
-// // }
+setTimeout(gamePrep, 2000);
 
-//     // function scoreboard () {
+/** Allows the game to pull in firebase data and gives the user a loading screen for a couple seconds and then a team select menu */
+function gamePrep () {
+    $(".loadingDiv").fadeOut();
+    $(".loadingScreen").fadeIn(1000);
 
-//     //     //Push the quarter points into an array individually
-//     //     //Incrementally add the next point until it equals zero
-//     // }
-
-// // var simSpeed = function(){
-
-  
-// //     var slider = $('.simSlider'),
-// //         range = $('.simSliderRange'),
-// //         value = $('.simSliderValue');
-      
-// //     slider.each(function(){
-       
-// //       value.each(function(){
-// //         var value = $(this).prev().attr('value');
-// //         $(this).html(value);
-       
-// //       });
-  
-// //       range.on('input', function(){
-// //         $(this).next(value).html(this.value);
-// //         userSimSpeed = this.ui.value
-// //         // console.log(userSimSpeed);
-     
-// //       });
-// //     });
-// //   };
-  
-// //   simSpeed();
-
-// function updateScroll(){
-//     var realHeight = $(".gameBox").scrollHeight;
-//     $(".gameBox").scrollTop(realHeight);
+};
 
 
-// };
+/** The teamSelect(x) functions allow the user to view their potential opponent with a minor description. Updates the html accordingly
+ * @teamChosen designates which team is selected by the user
+ */
+function teamSelect (){
+    console.log('clicked');
+    $(".projTitle").html("Team USA '92")
+    $(".projPreview").attr("src", "https://cdn.freebiesupply.com/logos/thumbs/2x/usa-basketball-logo.png");
+    $(".projDescription").html("THE Original Dream Team...good luck.");
 
-// updateScroll();
+    teamChosen = 0;
+    $(".projButton").fadeIn();
+};
 
-// var updateScroll = setInterval(function() {
-//         var userLog = $(".gameBox");
+function teamSelect1 (){
+    console.log('clicked');
+    $(".projTitle").html("The Schemers")
+    $(".projPreview").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
+    $(".projDescription").html("Rommel's all-time Cavaliers team.");
+    
 
-//     // allow 1px inaccuracy by adding 1
-//     var isScrolledToBottom = userLog.scrollHeight - userLog.clientHeight <= userLog.scrollTop + 1;
-//     console.log(userLog.scrollHeight - userLog.clientHeight,  userLog.scrollTop + 1);
+    teamChosen = 1;
+    $(".projButton").fadeIn();
+};
 
-//     // scroll to bottom if isScrolledToBotto
-//     if(isScrolledToBottom)
-//       userLog.scrollTop = userLog.scrollHeight - userLog.clientHeight;
-// }, 1);
+function teamSelect2 (){
+    console.log('clicked');
+    $(".projTitle").html("Lloyd Banks Fan Club")
+    $(".projPreview").attr("src", "http://gtalogo.com/img/2091.png");
+    $(".projDescription").html("A blast from the past from the early 00s.");
 
-// // var realHeight = $("#userLog")[0].scrollHeight;
-// // $("#userLog").scrollTop(realHeight);
+    teamChosen = 2;
+    $(".projButton").fadeIn();
 
-// var div = $('.gameBox'),
-//     height = div.height();
+};
 
-// console.log(div.height())
+function teamSelect3 (){
+    console.log('clicked');
+    $(".projTitle").html("Silk Pajamas")
+    $(".projPreview").attr("src", "https://d2w9rnfcy7mm78.cloudfront.net/207396/large_93979ea9f30b49ec1ff7008075e2f076.png");
+    $(".projDescription").html("They swear that they're the smoothest.");
 
-// $('#add').on('click', function(){
-//     div.append('<p>Lorem ipsum dolor sit amet, solet nostrud concludaturque no eam. Ne quod recteque pri. Porro nulla zril mei eu. Eu nibh rebum pri, eu est maiorum menandri, ridens tamquam abhorreant te eum. Ipsum definiebas ad mel.</p>');
-//     div.animate({scrollTop: height}, 500);
-//     height += div.height();
-// });
+    teamChosen = 3;
+    $(".projButton").fadeIn();
+};
+/** Once the Opponent is selected, this function sets the correct teams/stats/players accordingly 
+ * @param {teamB} - and properties are updated accordingly. This is the away team, always. 
+*/
+function gameSet () {
+        console.log(teamChosen);
+        if (teamChosen == 0) {
+            teamB.name = "Team USA '92";
+            teamB.tag = "USA";
+            teamB.players = [player20, player21, player22, player23, player24];
+            teamB.offense = 94;
+            teamB.defense = 92;
+        
+            $(".team.B .name").html(teamB.tag);
+            $(".team.B- .name-").html(teamB.tag);            
 
+            $(".team.B .logo").attr("src", "https://cdn.freebiesupply.com/logos/thumbs/2x/usa-basketball-logo.png");
+            $(".team.B- .logo-").attr("src", "https://cdn.freebiesupply.com/logos/thumbs/2x/usa-basketball-logo.png");
 
-// // function addListItem(){
-// //     var message = document.createElement('li');
-// //   message.innerHTML = 'd';
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
 
-// //   document.getElementById('scroll').scrollTop = message.offsetHeight + message.offsetTop; 
-
-// //   document.getElementById('scroll').appendChild(message);
-// // }
-
-// // window.setInterval(function() {
-// //     var elem = $(".gameLog");
-// //     elem.scrollTop = elem.scrollHeight;
-// //   }, 1);
-
-// //   function scrollSmoothToBottom () {
-// //     var div = $('.gameBox');
-// //     $('.gameBox').animate({
-// //        scrollTop: div.scrollHeight - div.clientHeight
-// //     }, 500);
-// //  }
-
-// var scrolled = false;
-// function updateScroll(){
-//     // if(!scrolled){
-//         var element = $(".gameBox");
-//         element.scrollTop = element.scrollHeight;
-//     // }
-// }
-
-// $(".gameBox").on('scroll', function(){
-//     debugger
-//     scrolled=true;
-// });
-
-// $(document).ready(function(){
-//     $(".gameLog").scroll(function(){
-//         debugger
-//     });
-// });
-
-// updateScroll();
-// setInterval(updateScroll,1);
-
-// $(document).on('click', '#table-test', function(){
-//     console.log('it works');
-// })
-
-setTimeout(function($){
-    $('#table-test').on('click',  function(){
-
-        for(var i = 0; i <  10; i++){
-            $('#name-player'+i).text('player'+i);
-            $('#PTS-player'+i).text(i);
-            $('#FG-player'+i).text(i);
-            $('#3PT-player'+i).text(i);
-            $('#FT-player'+i).text(i);
-            $('#OREB-player'+i).text(i);
-            $('#REB-player'+i).text(i);
-            $('#AST-player'+i).text(i);
-            $('#STL-player'+i).text(i);
-            $('#BLK-player'+i).text(i);
-            $('#TOV-player'+i).text(i);
-            $('#FLS-player'+i).text(i);
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
         }
-    })
-}, 0, $);
+        else if (teamChosen == 1) {
+            
+            teamB.name = "Newark Schemers";
+            teamB.tag = "RCM";
+            teamB.players = [player5, player6, player7, player8, player9];
+            teamB.offense = 93;
+            teamB.defense = 91;
+           
+            $(".team.B .name").html(teamB.tag);
+            $(".team.B- .name-").html(teamB.tag);            
+            $(".team.B .logo").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
+            $(".team.B- .logo-").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
 
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
 
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
+        }
+        else if (teamChosen == 2) {
 
-// function gotoBottom(){
-//     var element = $(".gameBox");
-//     element.scrollTop = element.scrollHeight - element.clientHeight;
+            teamB.name = "Lloyd Banks Fan Club";
+            teamB.tag = "PAT";
+            teamB.players = [player10, player11, player12, player13, player14];
+            teamB.offense = 91;
+            teamB.defense = 90;
+           
+            $(".team.B .name").html(teamB.tag);
+                        $(".team.B- .name-").html(teamB.tag);            
 
+            $(".team.B .logo").attr("src", "http://gtalogo.com/img/2091.png");
+            $(".team.B- .logo-").attr("src", "http://gtalogo.com/img/2091.png");
 
-// }
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
 
-// gotoBottom();
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
 
+        }
 
-// window.setInterval(function() {
-//     // debugger
+        else if (teamChosen == 3) {
+                     
+            teamB.name = "Silk Pajamas";
+            teamB.tag = "DAP";
+            teamB.players = [player15, player16, player17, player18, player19];
+            teamB.offense = 90;
+            teamB.defense = 92;
+        
+            $(".team.B .name").html(teamB.tag);
+            $(".team.B- .name-").html(teamB.tag);            
 
-//     $(".gameBox").scrollTop =  $(".gameBox").scrollHeight;
-//   }, 1);
+            $(".team.B .logo").attr("src", "https://d2w9rnfcy7mm78.cloudfront.net/207396/large_93979ea9f30b49ec1ff7008075e2f076.png");
+            $(".team.B- .logo-").attr("src", "https://d2w9rnfcy7mm78.cloudfront.net/207396/large_93979ea9f30b49ec1ff7008075e2f076.png");
 
-// $('html,body').animate({scrollTop: ($(".gameBox").scrollHeight)},"fast");
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
 
-// var scroll_to_bottom = function(element){
-//     var tries = 0, old_height = new_height = element.height();
-//     var intervalId = setInterval(function() {
-//         if( old_height != new_height ){    
-//             // Env loaded
-//             clearInterval(intervalId);
-//             element.animate({ scrollTop: new_height }, 'slow');
-//         }else if(tries >= 30){
-//             // Give up and scroll anyway
-//             clearInterval(intervalId);
-//             element.animate({ scrollTop: new_height }, 'slow');
-//         }else{
-//             new_height = content.height();
-//             tries++;
-//         }
-//     }, 100);
-// }
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
+        }
+
+    $(".loadingScreen").fadeOut();
+    $(".gameScreen").fadeIn();
+};
+
 
 var userScroll = false;
-
+/** Scrolls the gameLog down according to the user selected scroll speed */
 function scrollDown() {
-    // setTimeout(function() {
-    //   var elem = document.getElementById('miniChat');
-    //   elem.scrollTop = elem.scrollHeight;
-    // }, 400);
     
     $('.gameBox').animate({scrollTop: $('.gameBox').prop("scrollHeight")}, scrollSpeed);
-}
+};
 
+/** The following 3 functions (slowSim, normalSim, fastSim) allow the user to change the speed of the simulation based on milliseconds
+ *  @member scrollSpeed - how fast the gameLog scrolls down
+ *  @member textSpeed - how fast the game events append to the page
+ *  @member logSpeed -  how fast the quarter status appends to the page
+ *  @member appendSpeed - how fast the game events fadeIn to the page
+ *  @member gameTimeEst - how long the game sim will last from ~30seconds to ~1 minute to ~5 minutes 
+ *  @member speedSelected - boolean that tells the game a game speed has been selected
 
-
+ */
 function slowSim () {
 
     scrollSpeed = 80;
@@ -236,17 +216,23 @@ function fastSim () {
 
 };
 
+/** Gives the user information on the state of the game along with the option to see the final stats before the simulation is finished printing to the page */
+
 function notifyUser () {
     $(".statReveal, .boxScoreButton").fadeIn();
-}
+};
 
+/** Reveals the game's final stats and removes the notification */
 function statReveal () {
     $("tr:even, tr:odd").css("color", "whitesmoke");
     $(".statReveal, .boxScoreButton").fadeOut();
     return
-    // $("tr:even").css("background-color", "yellow");
-}
+};
 
+
+/** The simulation will not begin unless the user has selected a simulation speed
+ *  @member speedSelected - boolean that tells the game a game speed has been selected
+ */
 function speedCheck () {
     if (speedSelected == true) {
         jumpBall();
@@ -259,15 +245,12 @@ function speedCheck () {
     else {
         return
     }
-}
+};
 
-// $(document).ready(function(){
-//     if ($(".gameState")) {
-
-//     }
-// });
-
-
+/** If the user does not want to spoil the results of the game before the simulation is finished printing, the game will automatically reveal the stats once when the sim is finished printing.
+*  @member gameTimeEst - variable amount of time for the game to print to the page
+*/
 function gameFinal () {
 setInterval(function(){ statReveal(); }, gameTimeEst);
-}
+};
+
