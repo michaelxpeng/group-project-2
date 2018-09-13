@@ -168,7 +168,7 @@ tr:nth-child(even){
 
 
 /* specific styling for user lineup */
-#user-lineup{
+.user-lineup{
     /* float: right; */
     width: 100%;
     /* border: solid 2px red; */
@@ -185,7 +185,7 @@ tr:nth-child(even){
     border-radius: 20px;
     overflow: hidden;
 }
-#user-lineup td,th{
+.user-lineup td,th{
     padding: 5px;
     /* height: 20px; */
 }
