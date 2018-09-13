@@ -23,7 +23,7 @@ function teamSelect (){
     $(".projDescription").html("THE Original Dream Team...good luck.");
 
     teamChosen = 0;
-    
+    $(".projButton").fadeIn();
 };
 
 function teamSelect1 (){
@@ -34,8 +34,7 @@ function teamSelect1 (){
     
 
     teamChosen = 1;
- 
-
+    $(".projButton").fadeIn();
 };
 
 function teamSelect2 (){
@@ -45,6 +44,7 @@ function teamSelect2 (){
     $(".projDescription").html("A blast from the past from the early 00s.");
 
     teamChosen = 2;
+    $(".projButton").fadeIn();
 
 };
 
@@ -55,14 +55,13 @@ function teamSelect3 (){
     $(".projDescription").html("They swear that they're the smoothest.");
 
     teamChosen = 3;
-
+    $(".projButton").fadeIn();
 };
 /** Once the Opponent is selected, this function sets the correct teams/stats/players accordingly 
  * @param {teamB} - and properties are updated accordingly. This is the away team, always. 
 */
 function gameSet () {
         console.log(teamChosen);
-        debugger
         if (teamChosen == 0) {
             teamB.name = "Team USA '92";
             teamB.tag = "USA";
@@ -75,6 +74,14 @@ function gameSet () {
 
             $(".team.B .logo").attr("src", "https://cdn.freebiesupply.com/logos/thumbs/2x/usa-basketball-logo.png");
             $(".team.B- .logo-").attr("src", "https://cdn.freebiesupply.com/logos/thumbs/2x/usa-basketball-logo.png");
+
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
+
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
         }
         else if (teamChosen == 1) {
             
@@ -89,6 +96,13 @@ function gameSet () {
             $(".team.B .logo").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
             $(".team.B- .logo-").attr("src", "https://s3.amazonaws.com/freebiesupply/large/2x/cleveland-cavaliers-logo-transparent.png");
 
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
+
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
         }
         else if (teamChosen == 2) {
 
@@ -104,6 +118,13 @@ function gameSet () {
             $(".team.B .logo").attr("src", "http://gtalogo.com/img/2091.png");
             $(".team.B- .logo-").attr("src", "http://gtalogo.com/img/2091.png");
 
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
+
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
 
         }
 
@@ -121,6 +142,13 @@ function gameSet () {
             $(".team.B .logo").attr("src", "https://d2w9rnfcy7mm78.cloudfront.net/207396/large_93979ea9f30b49ec1ff7008075e2f076.png");
             $(".team.B- .logo-").attr("src", "https://d2w9rnfcy7mm78.cloudfront.net/207396/large_93979ea9f30b49ec1ff7008075e2f076.png");
 
+            $(".team.A .name").html(teamA.tag);
+            $(".team.A- .name-").html(teamA.tag);            
+
+            if (teamA.logo != ""){
+            $(".team.A .logo").attr("src", teamA.logo);
+            $(".team.A- .logo-").attr("src", teamA.logo);
+            }
         }
 
     $(".loadingScreen").fadeOut();

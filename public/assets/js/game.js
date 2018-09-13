@@ -23,19 +23,6 @@ $(document).ready(function () {
     var ref = dataRef.ref();
     // ref.on('value', gotData, errData);
 
-<<<<<<< HEAD
-    function gotData(data){
-        var team = data.val();
-        var keys = Object.keys(team);
-        // keys will equal to each user team name?
-        console.log(keys);
-        console.log(team);
-
-
-        for (var i = 0; i < keys.length; i++) {
-            var k = keys[i];
-            var player0 = team[k].pg;
-=======
     ref.on("child_added", function(snapshot, prevChildKey) {
         var team = snapshot.val();
         // console.log(snapshot.key);
@@ -44,7 +31,6 @@ $(document).ready(function () {
         if(team.selected === true){
             teamDiv.addClass('selected-team')
             var player0 = team.pg;
->>>>>>> d803ebc44b6727570f485569c0d4273cd14dc35a
             console.log(player0);
             var player1 = team.sg;
             console.log(player1);
@@ -54,17 +40,22 @@ $(document).ready(function () {
             console.log(player3);
             var player4 = team.c;
             console.log(player4);
+            var TeamName = team.name;
+           console.log(TeamName);
+           var TeamLogo = team.image;
+           console.log(TeamLogo);
+           var TeamTag = team.tag;
+           console.log(TeamTag);
 
-<<<<<<< HEAD
-        };
-
-    
-=======
             userPlayers.push(player0);
             userPlayers.push(player1);
             userPlayers.push(player2);
             userPlayers.push(player3);
             userPlayers.push(player4);
+
+            userTeamName.push(TeamName);
+            userTeamLogo.push(TeamLogo);
+            userTeamTag.push(TeamTag);
         }
 
 
@@ -93,7 +84,6 @@ $(document).ready(function () {
     //         console.log(player4);
 
     //     };
->>>>>>> d803ebc44b6727570f485569c0d4273cd14dc35a
      
        
     //     userPlayers.push(player0);
@@ -113,8 +103,14 @@ $(document).ready(function () {
 
 // console.log(player0);
 var userPlayers = [];
-var awayName = "Default"
-var awayTag  = "AWAY"
+var userTeamName = [];
+console.log(userTeamName);
+           var userTeamLogo = [];
+           console.log(userTeamLogo);
+           var userTeamTag = [];
+           console.log(userTeamTag);
+var awayName = "Default";
+var awayTag  = "AWAY";
 var awayPlayers = [];
 var awayOFF = 90;
 var awayDEF = 90;
@@ -1043,9 +1039,9 @@ var player24 = {
 // }
 //User Team
 var teamA = {
-    name:"Cleveland Steamers",
-    tag: "CLE",
-    logo:"image",
+    name: userTeamName,
+    tag: userTeamTag,
+    logo:userTeamLogo,
     players: userPlayers,
     possession: true,
     wonTipOff: false,
@@ -1194,6 +1190,8 @@ this.liveBall //To curb blocks/steals/turnovers, sometimes the ball goes out of 
 //Start the game and set the possession, whichever team wins the jump gets 1st possession 
 //This also starts every OT positioniod
 function jumpBall() {
+    console.log(teamA);
+    debugger
     var jumpCheck = (Math.floor(Math.random() * 2) == 0);
     if (jumpCheck != 0) {
         //home team gets poss
