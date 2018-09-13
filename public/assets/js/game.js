@@ -1,4 +1,13 @@
+/**game.js 
+ * This is the basketball game simulation
+ * Uses user.js to update variables in the game based on user preference
+ * Uses firebase to pull in data for the user team
+ */
 
+ /** Initial Firebase Information pull
+  * The user will see a loading screen and will have to select an opponent
+  * Ensures that the game will not have an error due to undefined variables
+  */
 $(document).ready(function () {
     var config = {
         apiKey: "AIzaSyC_PVkwDiphyNCRdbZ63bDZ95-Lj7cP0r8",
@@ -14,6 +23,19 @@ $(document).ready(function () {
     var ref = dataRef.ref();
     // ref.on('value', gotData, errData);
 
+<<<<<<< HEAD
+    function gotData(data){
+        var team = data.val();
+        var keys = Object.keys(team);
+        // keys will equal to each user team name?
+        console.log(keys);
+        console.log(team);
+
+
+        for (var i = 0; i < keys.length; i++) {
+            var k = keys[i];
+            var player0 = team[k].pg;
+=======
     ref.on("child_added", function(snapshot, prevChildKey) {
         var team = snapshot.val();
         // console.log(snapshot.key);
@@ -22,6 +44,7 @@ $(document).ready(function () {
         if(team.selected === true){
             teamDiv.addClass('selected-team')
             var player0 = team.pg;
+>>>>>>> d803ebc44b6727570f485569c0d4273cd14dc35a
             console.log(player0);
             var player1 = team.sg;
             console.log(player1);
@@ -32,6 +55,11 @@ $(document).ready(function () {
             var player4 = team.c;
             console.log(player4);
 
+<<<<<<< HEAD
+        };
+
+    
+=======
             userPlayers.push(player0);
             userPlayers.push(player1);
             userPlayers.push(player2);
@@ -65,6 +93,7 @@ $(document).ready(function () {
     //         console.log(player4);
 
     //     };
+>>>>>>> d803ebc44b6727570f485569c0d4273cd14dc35a
      
        
     //     userPlayers.push(player0);
@@ -84,7 +113,11 @@ $(document).ready(function () {
 
 // console.log(player0);
 var userPlayers = [];
-
+var awayName = "Default"
+var awayTag  = "AWAY"
+var awayPlayers = [];
+var awayOFF = 90;
+var awayDEF = 90;
 //timeout gives us time for the async firebase pull
 setTimeout(function(){
 console.log(userPlayers);
@@ -103,6 +136,912 @@ console.log(player0);
 //Can replace this.gameLogdotpush with consoledotlog
 
 // Team Template
+// var teamA = {
+//     name:"",
+//     tag: "",
+//     logo:"image",
+//     players: [],
+//     possession: true,
+//     wonTipOff: false,
+//     defense: 90,
+//     offense: 92,
+//     FGM:0,
+//     FGA:0,
+//     ThreePA:0,
+//     ThreePM:0,
+//     FTM:0,
+//     FTA:0,
+//     PTS:0,
+//     REB:0,
+//     OREB:0,
+//     AST:0,
+//     STL:0,
+//     TOV:0,
+//     BLK:0,     
+//     FLS:0,
+//     Q1PTS:0,
+//     Q2PTS:0,
+//     Q3PTS:0,
+//     Q4PTS:0,
+//     OTPTS:0
+// }
+
+
+
+//Rommel Team
+var player5 = {
+    name: "Kyrie Irving",
+    year: "2017-2018",
+    position: 1,
+    TSpct: .610,
+    ThreePAr: .374,
+    ThreePct: .408,
+    FTr: .240,
+    FTpct: .889,
+    ORBpct: 1.9,
+    DRBpct: 10.8,
+    TRBpct: 6.4,
+    ASTpct: 30.7,
+    STLpct: 1.7,
+    BLKpct: 0.7,
+    TOVpct: 10.4,
+    USGpct: 31.0,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+};
+
+var player6 = {
+    name: "Kyle Korver",
+    year: "2014-2015",
+    position: 2,
+    TSpct: .699,
+    ThreePAr: .748,
+    ThreePct: .492,
+    FTr: .197,
+    FTpct: .898,
+    ORBpct: .7,
+    DRBpct: 13.3,
+    TRBpct: 7.2,
+    ASTpct: 12.1,
+    STLpct: 1.1,
+    BLKpct: 1.5,
+    TOVpct: 14.1,
+    USGpct: 14.4,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+
+};
+
+var player7 = {
+    name: "LeBron James",
+    year: "2017-2018",
+    position: 3,
+    TSpct: .621,
+    ThreePAr: .257,
+    ThreePct: .367,
+    FTr: .336,
+    FTpct: .731,
+    ORBpct: 3.7,
+    DRBpct: 22.3,
+    TRBpct: 13.1,
+    ASTpct: 44.4,
+    STLpct: 1.9,
+    BLKpct: 2.0,
+    TOVpct: 16.1,
+    USGpct: 31.6,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+
+};
+
+var player8 = {
+    name: "Kevin Love",
+    year: "2017-2018",
+    position: 4,
+    TSpct: .614,
+    ThreePAr: .453,
+    ThreePct: .415,
+    FTr: .365,
+    FTpct: .880,
+    ORBpct: 7.0,
+    DRBpct: 29.8,
+    TRBpct: 18.6,
+    ASTpct: 9.8,
+    STLpct: 1.3,
+    BLKpct: 1.2,
+    TOVpct: 10.9,
+    USGpct: 25.1,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+
+};
+
+var player9 = {
+    name: "Ben Wallace",
+    year: "2003-04",
+    position: 5,
+    TSpct: .486,
+    ThreePAr: .014,
+    FTr: .432,
+    FTpct: .490,
+    ORBpct: 11.9,
+    DRBpct: 34.9,
+    TRBpct: 23.2,
+    ASTpct: 6.9,
+    STLpct: 2.0,
+    BLKpct: 5.9,
+    TOVpct: 14.5,
+    USGpct: 10.2,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+
+};
+//Pat's Team
+var player10 = {
+    name: "Stephen Curry",
+    year: "2015-16",
+    position: 1,
+    TSpct: .669 ,
+    ThreePAr: .554,
+    ThreePct: .454,
+    FTr: .250,
+    FTpct: .908,
+    ORBpct: 2.9 ,
+    DRBpct: 13.6, 
+    TRBpct: 8.6 ,
+    ASTpct: 33.7 ,
+    STLpct: 3.0,
+    BLKpct: .4,
+    TOVpct: 12.9, 
+    USGpct: 32.6,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player11 = {
+    name: "Dwyane Wade",
+    year: "2008-09",
+    position: 2,
+    TSpct: .574 ,
+    ThreePAr: .160,
+    ThreePct: .300,
+    FTr: .250,
+    FTpct: .761,
+    ORBpct: 3.5 ,
+    DRBpct: 12.2, 
+    TRBpct: 7.8 ,
+    ASTpct: 40.3 ,
+    STLpct: 3.0,
+    BLKpct: 2.8,
+    TOVpct: 11.6, 
+    USGpct: 36.2,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player12 = {
+    name: "Andre Iguodala",
+    year: "2007-2008",
+    position: 3 ,
+    TSpct: .543 ,
+    ThreePAr: .240 ,
+    ThreePct: .307 ,
+    FTr: .396 ,
+    FTpct: .724 ,
+    ORBpct: 3.1 ,
+    DRBpct: 13.4 , 
+    TRBpct: 8.2 ,
+    ASTpct: 20.3 ,
+    STLpct: 2.8 ,
+    BLKpct: 1.2,
+    TOVpct: 12.5, 
+    USGpct: 23.8,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player13 = {
+    name: "Dirk Nowitzki",
+    year:  "2007-08",
+    position: 4,
+    TSpct: .585,
+    ThreePAr: .167,
+    ThreePct: .359 ,
+    FTr: .414 ,
+    FTpct: .879 ,
+    ORBpct: 4.1,
+    DRBpct: 22.8, 
+    TRBpct: 13.8,
+    ASTpct: 17.8,
+    STLpct: 1.0,
+    BLKpct: 1.9,
+    TOVpct: 9.3, 
+    USGpct: 28.8,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player14 = {
+    name: "Marcus Camby" ,
+    year: "2005-06",
+    position: 5,
+    TSpct: .499,
+    ThreePAr: .017,
+    ThreePct: .091,
+    FTr: .240,
+    FTpct: .712,
+    ORBpct: 8.4,
+    DRBpct: 33.3, 
+    TRBpct: 21.0,
+    ASTpct: 10.2,
+    STLpct: 2.2,
+    BLKpct: 7.5,
+    TOVpct: 11.4, 
+    USGpct: 19.5,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+//Dapo Team
+var player15 = {
+    name: "Chris Paul",
+    year: "2008-2009",
+    position: 1,
+    TSpct: .599,
+    ThreePAr: .140,
+    ThreePct: .364 ,
+    FTr: .418,
+    FTpct: .868,
+    ORBpct: 2.8,
+    DRBpct: 14.6, 
+    TRBpct: 8.7,
+    ASTpct: 54.5,
+    STLpct: 3.9,
+    BLKpct: .3,
+    TOVpct: 12.1, 
+    USGpct: 27.5,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player16 = {
+    name: "J.J Redick" ,
+    year: "2015-2016",
+    position: 2 ,
+    TSpct: .632,
+    ThreePAr: .478,
+    ThreePct: .475,
+    FTr: .233,
+    FTpct: .888,
+    ORBpct: .5,
+    DRBpct: 6.6, 
+    TRBpct: 3.6,
+    ASTpct: 8.6,
+    STLpct: 1.0,
+    BLKpct: .2,
+    TOVpct: 7.4, 
+    USGpct: 22.6,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player17 = {
+name: "Kevin Durant",
+    year: "2010-11",
+    position: 3,
+    TSpct: .589,
+    ThreePAr: .269,
+    ThreePct: .350,
+    FTr: .439,
+    FTpct: .880,
+    ORBpct: 2.3,
+    DRBpct: 17.7, 
+    TRBpct: 10.3,
+    ASTpct: 13.2,
+    STLpct: 1.5,
+    BLKpct: 1.8,
+    TOVpct: 10.6, 
+    USGpct: 30.6,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player18 = {
+    name: "Draymond Green",
+    year: "2015-2016",
+    position: 4,
+    TSpct: .587,
+    ThreePAr: .315,
+    ThreePct: .388,
+    FTr: .402,
+    FTpct: .696,
+    ORBpct: 5.5,
+    DRBpct: 23.0, 
+    TRBpct: 14.7,
+    ASTpct: 29.0,
+    STLpct: 2.0,
+    BLKpct: 3.0,
+    TOVpct: 21.2, 
+    USGpct: 18.8,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+var player19 = {
+    name: "Anthony Davis",
+    year: "2017-2018",
+    position: 5 ,
+    TSpct: .612,
+    ThreePAr: .111,
+    ThreePct: .340,
+    FTr: .409,
+    FTpct: .828,
+    ORBpct: 7.7,
+    DRBpct: 24.8, 
+    TRBpct: 16.5,
+    ASTpct: 10.8,
+    STLpct: 1.7,
+    BLKpct: 5.1,
+    TOVpct: 8.6, 
+    USGpct: 30.0 ,
+    FGM:0,
+    FGA:0,
+    ThreePA:0,
+    ThreePM:0,
+    FTM:0,
+    FTA:0,
+    PTS:0,
+    REB:0,
+    OREB:0,
+    AST:0,
+    STL:0,
+    TOV:0,
+    BLK:0,     
+    FLS:0
+
+};
+
+//Team USA
+var player20 = {
+    name: "Magic Johnson",
+    year: "1990-91",
+    position: 1,
+    TSpct: .623,
+    ThreePAr: .055,
+    ThreePct: .320,
+    FTr: .587,
+    FTpct: .906,
+    ORBpct: 4.3,
+    DRBpct: 16.9,
+    TRBpct: 10.9,
+    ASTpct: 49.3,
+    STLpct: 1.8,
+    BLKpct: 0.3,
+    TOVpct: 20.4,
+    USGpct: 22.9,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+};
+
+var player21 = {
+    name: "Michael Jordan",
+    year: "1991-92",
+    position: 2,
+    TSpct: .579,
+    ThreePAr: .055,
+    ThreePct: .270,
+    FTr: .325,
+    FTpct: .832,
+    ORBpct: 3.5,
+    DRBpct: 15.3,
+    TRBpct: 9.5,
+    ASTpct: 25.7,
+    STLpct: 3.0,
+    BLKpct: 1.5,
+    TOVpct: 8.8,
+    USGpct: 31.7,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+};
+
+var player22 = {
+    name: "Larry Bird",
+    year: "1991-92",
+    position: 3,
+    TSpct: .547,
+    ThreePAr: .169,
+    ThreePct: .406,
+    FTr: .214,
+    FTpct: .926,
+    ORBpct: 3.2,
+    DRBpct: 24.6,
+    TRBpct: 14.4,
+    ASTpct: 26.9,
+    STLpct: 1.3,
+    BLKpct: 1.2,
+    TOVpct: 13.1,
+    USGpct: 24.7,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+};
+
+var player23 = {
+    name: "Charles Barkley",
+    year: "1991-92",
+    position: 4,
+    TSpct: .612,
+    ThreePAr: .122,
+    ThreePct: .234,
+    FTr: .580,
+    FTpct: .695,
+    ORBpct: 10.9,
+    DRBpct: 22.0,
+    TRBpct: 16.5,
+    ASTpct: 18.1,
+    STLpct: 2.4,
+    BLKpct: 0.9,
+    TOVpct: 14.3,
+    USGpct: 25.1,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+};
+
+var player24 = {
+    name: "Patrick Ewing",
+    year: "1991-92",
+    position: 5,
+    TSpct: .563,
+    ThreePAr: .004,
+    ThreePct: .167,
+    FTr: .335,
+    FTpct: .738,
+    ORBpct: 8.4,
+    DRBpct: 24.9,
+    TRBpct: 16.8,
+    ASTpct: 8.5,
+    STLpct: 1.4,
+    BLKpct: 5.0,
+    TOVpct: 10.7,
+    USGpct: 27.2,
+    FGM: 0,
+    FGA: 0,
+    ThreePA: 0,
+    ThreePM: 0,
+    FTM: 0,
+    FTA: 0,
+    PTS: 0,
+    REB: 0,
+    OREB: 0,
+    AST: 0,
+    STL: 0,
+    TOV: 0,
+    BLK: 0,
+    FLS: 0
+};
+
+
+// var player5 = {
+//     name: "Russell Westbrook",
+//     year: "2016-2017",
+//     position: 30.6,
+//     TSpct: .554,
+//     ThreePAr: .300,
+//     ThreePct: .343,
+//     FTr: .433,
+//     FTpct: .845,
+//     ORBpct: 5.4,
+//     DRBpct: 28.8,
+//     TRBpct: 17.1,
+//     ASTpct: 57.3,
+//     STLpct: 2.3,
+//     BLKpct: .9,
+//     TOVpct: 15.9,
+//     USGpct: 41.7,
+//     FGM: 0,
+//     FGA: 0,
+//     ThreePA: 0,
+//     ThreePM: 0,
+//     FTM: 0,
+//     FTA: 0,
+//     PTS: 0,
+//     REB: 0,
+//     OREB: 0,
+//     AST: 0,
+//     STL: 0,
+//     TOV: 0,
+//     BLK: 0,
+//     FLS: 0
+// };
+
+// var player6 = {
+//     name: "Klay Thompson",
+//     year: "2014-2015",
+//     position: 20.8,
+//     TSpct: .591,
+//     ThreePAr: .420,
+//     ThreePct: .439,
+//     FTr: .197,
+//     FTpct: .879,
+//     ORBpct: 1.2,
+//     DRBpct: 9.4,
+//     TRBpct: 5.4,
+//     ASTpct: 14.6,
+//     STLpct: 1.7,
+//     BLKpct: 1.8,
+//     TOVpct: 9.5,
+//     USGpct: 27.6,
+//     FGM: 0,
+//     FGA: 0,
+//     ThreePA: 0,
+//     ThreePM: 0,
+//     FTM: 0,
+//     FTA: 0,
+//     PTS: 0,
+//     REB: 0,
+//     OREB: 0,
+//     AST: 0,
+//     STL: 0,
+//     TOV: 0,
+//     BLK: 0,
+//     FLS: 0
+// };
+
+// var player7 = {
+//     name: "Carmelo Anthony",
+//     year: "2012-13",
+//     position: 24.8,
+//     TSpct: .560,
+//     ThreePAr: .278,
+//     ThreePct: .379,
+//     FTr: .344,
+//     FTpct: .830,
+//     ORBpct: 6.1,
+//     DRBpct: 15.9,
+//     TRBpct: 10.8,
+//     ASTpct: 14.1,
+//     STLpct: 1.1,
+//     BLKpct: 1.1,
+//     TOVpct: 9.3,
+//     USGpct: 35.6,
+//     FGM: 0,
+//     FGA: 0,
+//     ThreePA: 0,
+//     ThreePM: 0,
+//     FTM: 0,
+//     FTA: 0,
+//     PTS: 0,
+//     REB: 0,
+//     OREB: 0,
+//     AST: 0,
+//     STL: 0,
+//     TOV: 0,
+//     BLK: 0,
+//     FLS: 0
+
+// };
+
+// var player8 = {
+//     name: "Al Horford",
+//     year: "2016-2017",
+//     position: 17.7,
+//     TSpct: .553,
+//     ThreePAr: .302,
+//     ThreePct: .355,
+//     FTr: .169,
+//     FTpct: .800,
+//     ORBpct: 6.3,
+//     DRBpct: 18.6,
+//     TRBpct: 11.8,
+//     ASTpct: 24.4,
+//     STLpct: 1.2,
+//     BLKpct: 3.2,
+//     TOVpct: 11.8,
+//     USGpct: 19.7,
+//     FGM: 0,
+//     FGA: 0,
+//     ThreePA: 0,
+//     ThreePM: 0,
+//     FTM: 0,
+//     FTA: 0,
+//     PTS: 0,
+//     REB: 0,
+//     OREB: 0,
+//     AST: 0,
+//     STL: 0,
+//     TOV: 0,
+//     BLK: 0,
+//     FLS: 0
+// };
+
+// var player9 = {
+//     name: "Steven Adams",
+//     year: "2016-2017",
+//     position: 16.5,
+//     TSpct: .589,
+//     ThreePAr: .002,
+//     ThreePct: .000,
+//     FTr: .392,
+//     FTpct: .611,
+//     ORBpct: 13.0,
+//     DRBpct: 15.4,
+//     TRBpct: 14.2,
+//     ASTpct: 5.4,
+//     STLpct: 1.8,
+//     BLKpct: 2.6,
+//     TOVpct: 16.0,
+//     USGpct: 16.2,
+//     FGM: 0,
+//     FGA: 0,
+//     ThreePA: 0,
+//     ThreePM: 0,
+//     FTM: 0,
+//     FTA: 0,
+//     PTS: 0,
+//     REB: 0,
+//     OREB: 0,
+//     AST: 0,
+//     STL: 0,
+//     TOV: 0,
+//     BLK: 0,
+//     FLS: 0
+
+// };
+
+//Rommel's Test Team
+// var teamA = {
+//     name: "Cleveland Steamers",
+//     tag: "CLE",
+//     players: [player0, player1, player2, player3, player4],
+//     possession: true,
+//     wonTipOff: false,
+//     defense: 90,
+//     offense: 92,
+//     FGM: 0,
+//     FGA: 0,
+//     ThreePA: 0,
+//     ThreePM: 0,
+//     FTM: 0,
+//     FTA: 0,
+//     PTS: 0,
+//     REB: 0,
+//     OREB: 0,
+//     AST: 0,
+//     STL: 0,
+//     TOV: 0,
+//     BLK: 0,
+//     FLS: 0,
+//     Q1PTS: 0,
+//     Q2PTS: 0,
+//     Q3PTS: 0,
+//     Q4PTS: 0,
+//     OTPTS: 0
+// }
+//User Team
 var teamA = {
     name:"Cleveland Steamers",
     tag: "CLE",
@@ -134,217 +1073,15 @@ var teamA = {
 }
 
 
-//Players and teams go accordingly:
-//Every 1st iteration of player[i] is Rommel
-//2nd Pat
-//3rd Dapo
-
-var player5 = {
-    name: "Russell Westbrook",
-    year: "2016-2017",
-    PER: 30.6,
-    TSpct: .554,
-    ThreePAr: .300,
-    ThreePct: .343,
-    FTr: .433,
-    FTpct: .845,
-    ORBpct: 5.4,
-    DRBpct: 28.8,
-    TRBpct: 17.1,
-    ASTpct: 57.3,
-    STLpct: 2.3,
-    BLKpct: .9,
-    TOVpct: 15.9,
-    USGpct: 41.7,
-    FGM: 0,
-    FGA: 0,
-    ThreePA: 0,
-    ThreePM: 0,
-    FTM: 0,
-    FTA: 0,
-    PTS: 0,
-    REB: 0,
-    OREB: 0,
-    AST: 0,
-    STL: 0,
-    TOV: 0,
-    BLK: 0,
-    FLS: 0
-};
-
-var player6 = {
-    name: "Klay Thompson",
-    year: "2014-2015",
-    PER: 20.8,
-    TSpct: .591,
-    ThreePAr: .420,
-    ThreePct: .439,
-    FTr: .197,
-    FTpct: .879,
-    ORBpct: 1.2,
-    DRBpct: 9.4,
-    TRBpct: 5.4,
-    ASTpct: 14.6,
-    STLpct: 1.7,
-    BLKpct: 1.8,
-    TOVpct: 9.5,
-    USGpct: 27.6,
-    FGM: 0,
-    FGA: 0,
-    ThreePA: 0,
-    ThreePM: 0,
-    FTM: 0,
-    FTA: 0,
-    PTS: 0,
-    REB: 0,
-    OREB: 0,
-    AST: 0,
-    STL: 0,
-    TOV: 0,
-    BLK: 0,
-    FLS: 0
-};
-
-var player7 = {
-    name: "Carmelo Anthony",
-    year: "2012-13",
-    PER: 24.8,
-    TSpct: .560,
-    ThreePAr: .278,
-    ThreePct: .379,
-    FTr: .344,
-    FTpct: .830,
-    ORBpct: 6.1,
-    DRBpct: 15.9,
-    TRBpct: 10.8,
-    ASTpct: 14.1,
-    STLpct: 1.1,
-    BLKpct: 1.1,
-    TOVpct: 9.3,
-    USGpct: 35.6,
-    FGM: 0,
-    FGA: 0,
-    ThreePA: 0,
-    ThreePM: 0,
-    FTM: 0,
-    FTA: 0,
-    PTS: 0,
-    REB: 0,
-    OREB: 0,
-    AST: 0,
-    STL: 0,
-    TOV: 0,
-    BLK: 0,
-    FLS: 0
-
-};
-
-var player8 = {
-    name: "Al Horford",
-    year: "2016-2017",
-    PER: 17.7,
-    TSpct: .553,
-    ThreePAr: .302,
-    ThreePct: .355,
-    FTr: .169,
-    FTpct: .800,
-    ORBpct: 6.3,
-    DRBpct: 18.6,
-    TRBpct: 11.8,
-    ASTpct: 24.4,
-    STLpct: 1.2,
-    BLKpct: 3.2,
-    TOVpct: 11.8,
-    USGpct: 19.7,
-    FGM: 0,
-    FGA: 0,
-    ThreePA: 0,
-    ThreePM: 0,
-    FTM: 0,
-    FTA: 0,
-    PTS: 0,
-    REB: 0,
-    OREB: 0,
-    AST: 0,
-    STL: 0,
-    TOV: 0,
-    BLK: 0,
-    FLS: 0
-};
-
-var player9 = {
-    name: "Steven Adams",
-    year: "2016-2017",
-    PER: 16.5,
-    TSpct: .589,
-    ThreePAr: .002,
-    ThreePct: .000,
-    FTr: .392,
-    FTpct: .611,
-    ORBpct: 13.0,
-    DRBpct: 15.4,
-    TRBpct: 14.2,
-    ASTpct: 5.4,
-    STLpct: 1.8,
-    BLKpct: 2.6,
-    TOVpct: 16.0,
-    USGpct: 16.2,
-    FGM: 0,
-    FGA: 0,
-    ThreePA: 0,
-    ThreePM: 0,
-    FTM: 0,
-    FTA: 0,
-    PTS: 0,
-    REB: 0,
-    OREB: 0,
-    AST: 0,
-    STL: 0,
-    TOV: 0,
-    BLK: 0,
-    FLS: 0
-
-};
-
-//Rommel's Test Team
-// var teamA = {
-//     name: "Cleveland Steamers",
-//     tag: "CLE",
-//     players: [player0, player1, player2, player3, player4],
-//     possession: true,
-//     wonTipOff: false,
-//     defense: 90,
-//     offense: 92,
-//     FGM: 0,
-//     FGA: 0,
-//     ThreePA: 0,
-//     ThreePM: 0,
-//     FTM: 0,
-//     FTA: 0,
-//     PTS: 0,
-//     REB: 0,
-//     OREB: 0,
-//     AST: 0,
-//     STL: 0,
-//     TOV: 0,
-//     BLK: 0,
-//     FLS: 0,
-//     Q1PTS: 0,
-//     Q2PTS: 0,
-//     Q3PTS: 0,
-//     Q4PTS: 0,
-//     OTPTS: 0
-// }
-
-//Dapo Team
+//Away Team
 var teamB = {
-    name: "Tel-Aviv Silk Pajamas",
-    tag: "SPJ",
-    players: [player5, player6, player7, player8, player9],
+    name: awayName,
+    tag: awayTag,
+    players: awayPlayers,
     possession: false,
     wonTipOff: false,
-    defense: 92,
-    offense: 90,
+    defense: awayDEF,
+    offense: awayOFF,
     FGM: 0,
     FGA: 0,
     ThreePA: 0,
@@ -366,7 +1103,7 @@ var teamB = {
     OTPTS: 0
 }
 
-//Game Properties 
+//Game Propositionties 
 //Teams
 this.teams = [teamA, teamB];
 //Team array allows the sim to switch posessions while recording stats for each team
@@ -412,12 +1149,12 @@ this.teamB.DIFF = (-(this.diff));
 
 
 //Clock
-this.pace = 48 / (240); // Time elapsed per possession
+this.pace = 48 / (240); // Time elapsed position possession
 this.gameTime = (48); // Game clock, in minutes
 this.gameTime = moment.duration(.0008, 'minutes'); //moment.js allows printing of mm:ss timestamps for each event
 this.quarterLength = (12); //in minutes
 this.quarter = 1; //which quarter
-this.overtimes = 0; // Number of overtime periods that have taken place
+this.overtimes = 0; // Number of overtime positioniods that have taken place
 
 //Default sim speed
 // var simSpeed; 
@@ -431,6 +1168,7 @@ var scrollSpeed
 var gameTimeEst
 var speedSelected = false;
 
+var teamChosen
 
 
 
@@ -454,7 +1192,7 @@ this.liveBall //To curb blocks/steals/turnovers, sometimes the ball goes out of 
 //On click the game tips off, result is already decided onclick but is presented to the user/console dynamically
 
 //Start the game and set the possession, whichever team wins the jump gets 1st possession 
-//This also starts every OT period
+//This also starts every OT positioniod
 function jumpBall() {
     var jumpCheck = (Math.floor(Math.random() * 2) == 0);
     if (jumpCheck != 0) {
@@ -492,14 +1230,14 @@ function checkWinner() {
     }
     else if (((this.teamA.PTS = this.teamB.PTS)) && (this.overtimes <= 0)) {
         this.gameLog.push("End of Regulation " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
-        this.gameLog.push("Begin OT Period");
+        this.gameLog.push("Begin OT positioniod");
         this.overtimes += 1;
         simOvertime();
     }
     else {
         this.gameLog.push("End of OT " + this.overtimes + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
         this.overtimes += 1;
-        this.gameLog.push("Begin OT Period" + this.overtimes);
+        this.gameLog.push("Begin OT positioniod" + this.overtimes);
         simOvertime();
 
     }
@@ -590,20 +1328,22 @@ function gameEnd() {
 
 
 function printStats() {
-    console.log(this.gameLog);
-    console.log(this.gameLogA);
-    console.log(this.gameLogB);
-    console.log(this.teams);
-    console.log(this.gameLogAQ1);
-    console.log(this.gameLogAQ2);
-    console.log(this.gameLogAQ3);
-    console.log(this.gameLogAQ4);
-    console.log(this.gameLogAOT);
-    console.log(this.quarterLog);
+    // console.log(this.gameLog);
+    // console.log(this.gameLogA);
+    // console.log(this.gameLogB);
+    // console.log(this.teams);
+    // console.log(this.gameLogAQ1);
+    // console.log(this.gameLogAQ2);
+    // console.log(this.gameLogAQ3);
+    // console.log(this.gameLogAQ4);
+    // console.log(this.gameLogAOT);
+    // console.log(this.quarterLog);
 
-    // simSpeed();
 
-    setTimeout(function () {/* Look mah! No name! */ }, 2000);
+        this.teamB.players.sort(function (a, b) {
+            return a.position - b.position
+        });
+
 
     $(".boxscore-headingA").html(this.teamA.name);
 
@@ -692,70 +1432,71 @@ function printStats() {
 
     $(".boxscore-headingB").html(this.teamB.name);
 
-    $("#name-player5").html(this.player5.name).css("color", "whitesmoke");
-    $("#PTS-player5").html(this.player5.PTS);
-    $("#FG-player5").html((this.player5.FGM) + "-" + (this.player5.FGA));
-    $("#3PT-player5").html((this.player5.ThreePM) + "-" + (this.player5.ThreePA));
-    $("#FT-player5").html((this.player5.FTM) + "-" + (this.player5.FTA));
-    $("#OREB-player5").html(this.player5.OREB);
-    $("#REB-player5").html(this.player5.REB);
-    $("#AST-player5").html(this.player5.AST);
-    $("#STL-player5").html(this.player5.STL);
-    $("#BLK-player5").html(this.player5.BLK);
-    $("#TOV-player5").html(this.player5.TOV);
-    $("#FLS-player5").html(this.player5.FLS);
+    
+    $("#name-player5").html(teamB.players[0].name).css("color", "whitesmoke");
+    $("#PTS-player5").html(teamB.players[0].PTS);
+    $("#FG-player5").html((teamB.players[0].FGM) + "-" + (teamB.players[0].FGA));
+    $("#3PT-player5").html((teamB.players[0].ThreePM) + "-" + (teamB.players[0].ThreePA));
+    $("#FT-player5").html((teamB.players[0].FTM) + "-" + (teamB.players[0].FTA));
+    $("#OREB-player5").html(teamB.players[0].OREB);
+    $("#REB-player5").html(teamB.players[0].REB);
+    $("#AST-player5").html(teamB.players[0].AST);
+    $("#STL-player5").html(teamB.players[0].STL);
+    $("#BLK-player5").html(teamB.players[0].BLK);
+    $("#TOV-player5").html(teamB.players[0].TOV);
+    $("#FLS-player5").html(teamB.players[0].FLS);
 
-    $("#name-player6").html(this.player6.name).css("color", "whitesmoke");
-    $("#PTS-player6").html(this.player6.PTS);
-    $("#FG-player6").html((this.player6.FGM) + "-" + (this.player6.FGA));
-    $("#3PT-player6").html((this.player6.ThreePM) + "-" + (this.player6.ThreePA));
-    $("#FT-player6").html((this.player6.FTM) + "-" + (this.player6.FTA));
-    $("#OREB-player6").html(this.player6.OREB);
-    $("#REB-player6").html(this.player6.REB);
-    $("#AST-player6").html(this.player6.AST);
-    $("#STL-player6").html(this.player6.STL);
-    $("#BLK-player6").html(this.player6.BLK);
-    $("#TOV-player6").html(this.player6.TOV);
-    $("#FLS-player6").html(this.player6.FLS);
+    $("#name-player6").html(teamB.players[1].name).css("color", "whitesmoke");
+    $("#PTS-player6").html(teamB.players[1].PTS);
+    $("#FG-player6").html((teamB.players[1].FGM) + "-" + (teamB.players[1].FGA));
+    $("#3PT-player6").html((teamB.players[1].ThreePM) + "-" + (teamB.players[1].ThreePA));
+    $("#FT-player6").html((teamB.players[1].FTM) + "-" + (teamB.players[1].FTA));
+    $("#OREB-player6").html(teamB.players[1].OREB);
+    $("#REB-player6").html(teamB.players[1].REB);
+    $("#AST-player6").html(teamB.players[1].AST);
+    $("#STL-player6").html(teamB.players[1].STL);
+    $("#BLK-player6").html(teamB.players[1].BLK);
+    $("#TOV-player6").html(teamB.players[1].TOV);
+    $("#FLS-player6").html(teamB.players[1].FLS);
 
-    $("#name-player7").html(this.player7.name).css("color", "whitesmoke");
-    $("#PTS-player7").html(this.player7.PTS);
-    $("#FG-player7").html((this.player7.FGM) + "-" + (this.player7.FGA));
-    $("#3PT-player7").html((this.player7.ThreePM) + "-" + (this.player7.ThreePA));
-    $("#FT-player7").html((this.player7.FTM) + "-" + (this.player7.FTA));
-    $("#OREB-player7").html(this.player7.OREB);
-    $("#REB-player7").html(this.player7.REB);
-    $("#AST-player7").html(this.player7.AST);
-    $("#STL-player7").html(this.player7.STL);
-    $("#BLK-player7").html(this.player7.BLK);
-    $("#TOV-player7").html(this.player7.TOV);
-    $("#FLS-player7").html(this.player7.FLS);
+    $("#name-player7").html(teamB.players[2].name).css("color", "whitesmoke");
+    $("#PTS-player7").html(teamB.players[2].PTS);
+    $("#FG-player7").html((teamB.players[2].FGM) + "-" + (teamB.players[2].FGA));
+    $("#3PT-player7").html((teamB.players[2].ThreePM) + "-" + (teamB.players[2].ThreePA));
+    $("#FT-player7").html((teamB.players[2].FTM) + "-" + (teamB.players[2].FTA));
+    $("#OREB-player7").html(teamB.players[2].OREB);
+    $("#REB-player7").html(teamB.players[2].REB);
+    $("#AST-player7").html(teamB.players[2].AST);
+    $("#STL-player7").html(teamB.players[2].STL);
+    $("#BLK-player7").html(teamB.players[2].BLK);
+    $("#TOV-player7").html(teamB.players[2].TOV);
+    $("#FLS-player7").html(teamB.players[2].FLS);
 
-    $("#name-player8").html(this.player8.name).css("color", "whitesmoke");
-    $("#PTS-player8").html(this.player8.PTS);
-    $("#FG-player8").html((this.player8.FGM) + "-" + (this.player8.FGA));
-    $("#3PT-player8").html((this.player8.ThreePM) + "-" + (this.player8.ThreePA));
-    $("#FT-player8").html((this.player8.FTM) + "-" + (this.player8.FTA));
-    $("#OREB-player8").html(this.player8.OREB);
-    $("#REB-player8").html(this.player8.REB);
-    $("#AST-player8").html(this.player8.AST);
-    $("#STL-player8").html(this.player8.STL);
-    $("#BLK-player8").html(this.player8.BLK);
-    $("#TOV-player8").html(this.player8.TOV);
-    $("#FLS-player8").html(this.player8.FLS);
+    $("#name-player8").html(teamB.players[3].name).css("color", "whitesmoke");
+    $("#PTS-player8").html(teamB.players[3].PTS);
+    $("#FG-player8").html((teamB.players[3].FGM) + "-" + (teamB.players[3].FGA));
+    $("#3PT-player8").html((teamB.players[3].ThreePM) + "-" + (teamB.players[3].ThreePA));
+    $("#FT-player8").html((teamB.players[3].FTM) + "-" + (teamB.players[3].FTA));
+    $("#OREB-player8").html(teamB.players[3].OREB);
+    $("#REB-player8").html(teamB.players[3].REB);
+    $("#AST-player8").html(teamB.players[3].AST);
+    $("#STL-player8").html(teamB.players[3].STL);
+    $("#BLK-player8").html(teamB.players[3].BLK);
+    $("#TOV-player8").html(teamB.players[3].TOV);
+    $("#FLS-player8").html(teamB.players[3].FLS);
 
-    $("#name-player9").html(this.player9.name).css("color", "whitesmoke");
-    $("#PTS-player9").html(this.player9.PTS);
-    $("#FG-player9").html((this.player9.FGM) + "-" + (this.player9.FGA));
-    $("#3PT-player9").html((this.player9.ThreePM) + "-" + (this.player9.ThreePA));
-    $("#FT-player9").html((this.player9.FTM) + "-" + (this.player9.FTA));
-    $("#OREB-player9").html(this.player9.OREB);
-    $("#REB-player9").html(this.player9.REB);
-    $("#AST-player9").html(this.player9.AST);
-    $("#STL-player9").html(this.player9.STL);
-    $("#BLK-player9").html(this.player9.BLK);
-    $("#TOV-player9").html(this.player9.TOV);
-    $("#FLS-player9").html(this.player9.FLS);
+    $("#name-player9").html(teamB.players[4].name).css("color", "whitesmoke");
+    $("#PTS-player9").html(teamB.players[4].PTS);
+    $("#FG-player9").html((teamB.players[4].FGM) + "-" + (teamB.players[4].FGA));
+    $("#3PT-player9").html((teamB.players[4].ThreePM) + "-" + (teamB.players[4].ThreePA));
+    $("#FT-player9").html((teamB.players[4].FTM) + "-" + (teamB.players[4].FTA));
+    $("#OREB-player9").html(teamB.players[4].OREB);
+    $("#REB-player9").html(teamB.players[4].REB);
+    $("#AST-player9").html(teamB.players[4].AST);
+    $("#STL-player9").html(teamB.players[4].STL);
+    $("#BLK-player9").html(teamB.players[4].BLK);
+    $("#TOV-player9").html(teamB.players[4].TOV);
+    $("#FLS-player9").html(teamB.players[4].FLS);
 
     $("#total-teamB").html("Team");
     $("#PTS-teamB").html(this.teamB.PTS);
@@ -848,7 +1589,7 @@ function printStats() {
         })(i);
     }
 
-    for (let i = 0; i < (this.gameLog.length - 1); i++) {
+    for (let i = 0; i < (this.gameLog.length ); i++) {
         (function (i) {
             setTimeout(function () {
                 // var div = $('.gameBox'),
@@ -947,7 +1688,7 @@ function changePossession() {
 function probTov() {
     //First Checker - Utilizes player's TOV% and matchup's STLpct along with boosts from team OVR rating; //Max is ~20, 11.5 seems to be lowest
     //on my last check
-    //OVR Team rating gives a boost so each iteration of teams can change how a player generally performs
+    //OVR Team rating gives a boost so each iteration of teams can change how a player generally positionforms
     return (((this.selectedPlayerOff.TOVpct - ((this.OFFteam.offense) / 10))) + ((this.selectedPlayerDef.STLpct) + ((this.DEFteam.defense) / 10)));
 };
 
@@ -960,7 +1701,7 @@ function doTov() {
 
 
     // $(".gameLog").append('<li>'+ this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " lost the ball!" +'</li>');
-    // console.log((selectedPlayerOff.PER/10) - (selectedPlayerDef.PER/10) );
+    // console.log((selectedPlayerOff.position/10) - (selectedPlayerDef.position/10) );
     if (offensiveFoul > .200) {
         this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " lost the ball!");
         this.selectedPlayerOff.TOV += 1;
@@ -1206,6 +1947,8 @@ function doShot() {
         this.shot = "three pointer";
         probMissAndFoul = 0.05;
         probMake = ((this.selectedPlayerOff.ThreePct + (this.OFFteam.offense / 100)) - (this.DEFteam.defense / 100)) * 0.7 + 0.30;
+        console.log(selectedPlayerOff);
+        console.log(probMake);
         probAndOne = 0.01;
     } else {
         const r1 =
@@ -1224,8 +1967,8 @@ function doShot() {
         //Most attempts are at the rim
         //Mid-range and low-post shots less so
         if (r1 > r2 && r1 > r3) {
-            // Two point jumper
-            this.shot = "mid-range jumper";
+            // Two point jumposition
+            this.shot = "mid-range jumposition";
             probMissAndFoul = 0.05;
             probMake = ((this.selectedPlayerOff.TSpct + (this.OFFteam.offense / 100)) - (this.DEFteam.defense / 100)) * 0.25 + 0.25;
             probAndOne = 0.05;
@@ -1289,7 +2032,7 @@ function doShot() {
             this.OFFteam.ThreePM += 1;
             this.amount = 1;
 
-            //Ensures that points are added to proper team/quarter array
+            //Ensures that points are added to proposition team/quarter array
             if (this.overtimes <= 0) {
                 this.quarterLog.push(this.quarter);
             }
@@ -1394,7 +2137,7 @@ function doShot() {
             this.OFFteam.PTS += 2;
             this.OFFteam.FGA += 1;
             this.OFFteam.FGM += 1;
-            //Ensures that points are added to proper team/quarter array
+            //Ensures that points are added to proposition team/quarter array
             if (this.overtimes <= 0) {
                 this.quarterLog.push(this.quarter);
             }
@@ -1525,7 +2268,7 @@ function doShot() {
         this.selectedPlayerOff.FGA += 1;
         this.OFFteam.FGA += 1;
 
-    } else if (this.shot === "mid-range jumper") {
+    } else if (this.shot === "mid-range jumposition") {
         this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " missed from mid-range.");
         this.selectedPlayerOff.FGA += 1;
         this.OFFteam.FGA += 1;
@@ -1737,9 +2480,9 @@ function doFg() {
             this.gameLogAOT.push(0);
 
         }
-    } else if (this.shot === "mid-range jumper") {
+    } else if (this.shot === "mid-range jumposition") {
 
-        this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " pulls up for a mid-range jumper.")
+        this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " pulls up for a mid-range jumposition.")
         this.selectedPlayerOff.PTS += 2;
         this.OFFteam.PTS += 2;
         this.OFFteam.FGA += 1;
@@ -1975,7 +2718,7 @@ function doFt() {
             this.OFFteam.PTS += 1;
             this.OFFteam.FTA += 1;
             this.OFFteam.FTM += 1;
-            // Proper Allocation
+            // Proposition Allocation
             if (this.overtimes <= 0) {
                 this.quarterLog.push(this.quarter);
             }
@@ -2251,7 +2994,7 @@ function minTommss() {
 
     // function updateQTRStats () {
     //     debugger
-    //     //Update Per Quarter Point Totals
+    //     //Update position Quarter Point Totals
     //     if (this.quarter = 1){
     //         if (this.shot = "three pointer") {
     //             this.OFFteam.Q1PTS +=3;
