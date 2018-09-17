@@ -1,9 +1,9 @@
 {
     "development": {
-      "username": "root",
-      "password": "!Mp920506",
-      "database": "fantasy",
-      "host": "127.0.0.1",
+      "username": "x5wvmrzxagrtdggc",
+      "password": "jhhmsqig8u94vtcr",
+      "database": "cxy8zo5vwqszym88",
+      "host": "cig4l2op6r0fxymw.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
       "port": 3306,
       "dialect": "mysql"
     }
