@@ -1975,8 +1975,8 @@ function doShot() {
         //Most attempts are at the rim
         //Mid-range and low-post shots less so
         if (r1 > r2 && r1 > r3) {
-            // Two point jumposition
-            this.shot = "mid-range jumposition";
+            // Two point jumper
+            this.shot = "mid-range jumper";
             probMissAndFoul = 0.05;
             probMake = ((this.selectedPlayerOff.TSpct + (this.OFFteam.offense / 100)) - (this.DEFteam.defense / 100)) * 0.25 + 0.25;
             probAndOne = 0.05;
