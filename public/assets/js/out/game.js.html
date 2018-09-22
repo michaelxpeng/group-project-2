@@ -1,4 +1,32 @@
-/**game.js 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: game.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: game.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**game.js 
  * This is the basketball game simulation
  * Uses user.js to update variables in the game based on user preference
  * Uses firebase to pull in data for the user team
@@ -34,7 +62,7 @@ $(document).ready(function () {
             var team = snapshot.val();
             // console.log(snapshot.key);
 
-            var teamDiv = $('<div>').addClass('saved-team');
+            var teamDiv = $('&lt;div>').addClass('saved-team');
             if (team.selected === true) {
                 teamDiv.addClass('selected-team')
                 var player0 = team.pg;
@@ -1199,7 +1227,7 @@ function checkWinner() {
     else if (this.teamB.PTS > this.teamA.PTS) {
         this.gameLog.push("0:00 " + this.teamB.name + " won the game " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
     }
-    else if (((this.teamA.PTS = this.teamB.PTS)) && (this.overtimes <= 0)) {
+    else if (((this.teamA.PTS = this.teamB.PTS)) &amp;&amp; (this.overtimes &lt;= 0)) {
         this.gameLog.push("End of Regulation " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
         this.gameLog.push("Begin OT positioniod");
         this.overtimes += 1;
@@ -1236,7 +1264,7 @@ function simPossession() {
     minTommss();
 
     //Checks to see if the game is over
-    if ((this.gameTime <= 0)) {
+    if ((this.gameTime &lt;= 0)) {
         checkWinner();
         // boxScore();    
     }
@@ -1250,7 +1278,7 @@ function simPossession() {
 
         //Sets the quarters depending on time left remaining in the game
         //OT ignores these
-        if (this.gameTime <= 36.00 && this.overtimes == 0) {
+        if (this.gameTime &lt;= 36.00 &amp;&amp; this.overtimes == 0) {
 
             if (this.quarter === 1) {
                 this.quarter = 2;
@@ -1258,7 +1286,7 @@ function simPossession() {
                 gameLog.push("Start of 2nd Quarter");
             }
         }
-        if (this.gameTime <= 24.00 && this.overtimes == 0) {
+        if (this.gameTime &lt;= 24.00 &amp;&amp; this.overtimes == 0) {
             if (this.quarter === 2) {
                 this.quarter = 3;
                 gameLog.push("End of 2nd Quarter " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
@@ -1266,7 +1294,7 @@ function simPossession() {
             }
 
         }
-        if (this.gameTime <= 12.00 && this.overtimes == 0) {
+        if (this.gameTime &lt;= 12.00 &amp;&amp; this.overtimes == 0) {
             if (this.quarter === 3) {
                 this.quarter = 4;
                 gameLog.push("End of 3rd Quarter " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
@@ -1489,7 +1517,7 @@ function printStats() {
 
 
 
-    for (let i = 0; i < this.quarterLog.length; i++) {
+    for (let i = 0; i &lt; this.quarterLog.length; i++) {
 
         if (this.quarterLog[i] === 1) {
             // $(".gameState").css({"top": "-31px", "left": "200px", "font-size": "1.5em"})
@@ -1532,7 +1560,7 @@ function printStats() {
 
 
 
-    for (let i = 0; i < this.gameLogA.length; i++) {
+    for (let i = 0; i &lt; this.gameLogA.length; i++) {
 
 
         (function (i) {
@@ -1546,7 +1574,7 @@ function printStats() {
         })(i);
     }
 
-    for (let i = 0; i < this.gameLogB.length; i++) {
+    for (let i = 0; i &lt; this.gameLogB.length; i++) {
 
 
         (function (i) {
@@ -1560,12 +1588,12 @@ function printStats() {
         })(i);
     }
 
-    for (let i = 0; i < (this.gameLog.length); i++) {
+    for (let i = 0; i &lt; (this.gameLog.length); i++) {
         (function (i) {
             setTimeout(function () {
                 // var div = $('.gameBox'),
                 // height = div.height();
-                $(".gameLog").append('<div class="gameEvent">' + this.gameLog[i] + '</div>')
+                $(".gameLog").append('&lt;div class="gameEvent">' + this.gameLog[i] + '&lt;/div>')
                     .fadeIn({
                         duration: appendSpeed,
                         start: scrollDown
@@ -1628,7 +1656,7 @@ function qtrCheck() {
 function getPossessionOutcome() {
 
     //Makes sure the quarter is correct
-    if (this.quarterLength <= .200) {
+    if (this.quarterLength &lt;= .200) {
         qtrCheck();
     };
 
@@ -1638,7 +1666,7 @@ function getPossessionOutcome() {
 
 
     // Each matchup begins with a check if the offensive player will turn it over, if not, a shot goes up. Shots go up more than not.
-    if (Math.floor(Math.random() * 101) < (this.probTov())) {
+    if (Math.floor(Math.random() * 101) &lt; (this.probTov())) {
         return probStl(); // tov
     }
     else {
@@ -1671,7 +1699,7 @@ function doTov() {
     var offensiveFoul = Math.random();
 
 
-    // $(".gameLog").append('<li>'+ this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " lost the ball!" +'</li>');
+    // $(".gameLog").append('&lt;li>'+ this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " lost the ball!" +'&lt;/li>');
     // console.log((selectedPlayerOff.position/10) - (selectedPlayerDef.position/10) );
     if (offensiveFoul > .200) {
         this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " lost the ball!");
@@ -1680,7 +1708,7 @@ function doTov() {
         this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " TOV:" + this.selectedPlayerOff.TOV);
     }
 
-    else if (offensiveFoul <= .200) {
+    else if (offensiveFoul &lt;= .200) {
         // console.log("offensive foul");
         this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " committed an offensive foul.");
         this.selectedPlayerOff.TOV += 1;
@@ -1721,7 +1749,7 @@ function probStl() {
     var inbounds = Math.random();
 
     //Chooses random player on defensive team based on STL%, different than defensive matchup to stat distrubution (help defense)
-    for (let i = 0; i < possPlayersSTL.length; i++) {
+    for (let i = 0; i &lt; possPlayersSTL.length; i++) {
         var defenderSTL = possPlayersSTL.sort(function (a, b) {
             return b.STLpct - a.STLpct
         });
@@ -1737,7 +1765,7 @@ function probStl() {
         //If the defensive player gets the ball loose, they'll get it 80% of the time, otherwise, it goes out of bounds and the offensive
         //team gets another chance to score
 
-        if (inbounds <= .80) {
+        if (inbounds &lt;= .80) {
             // return .3 * (this.selectedPlayerBLK.BLKpct/10) + (this.DEFteam.defense/10000);
             doSteal();
         }
@@ -1765,7 +1793,7 @@ function probAst() {
 
     var assisted = Math.random();
 
-    for (let i = 0; i < possPlayersAST.length; i++) {
+    for (let i = 0; i &lt; possPlayersAST.length; i++) {
         var teamMate = possPlayersAST.sort(function (a, b) {
             return b.USGpct - a.USGpct
         });
@@ -1775,13 +1803,13 @@ function probAst() {
 
     // console.log(.3 *(((this.selectedPlayerAST.ASTpct/100 + ((this.OFFteam.offense)/100)))));
 
-    // if (inbounds <= .80){
+    // if (inbounds &lt;= .80){
     //     // return .3 * (this.selectedPlayerBLK.BLKpct/10) + (this.DEFteam.defense/10000);
     //            doSteal();
     //     }
 
     //AST Check - Has to be a different player to get the assist
-    if ((assisted <= (((2.57 * (this.selectedPlayerAST.ASTpct + ((this.OFFteam.offense) / 10)))) / 100)) && (this.selectedPlayerAST.name != this.selectedPlayerOff.name)) {
+    if ((assisted &lt;= (((2.57 * (this.selectedPlayerAST.ASTpct + ((this.OFFteam.offense) / 10)))) / 100)) &amp;&amp; (this.selectedPlayerAST.name != this.selectedPlayerOff.name)) {
         // console.log(this.selectedPlayerAST);
         return
     }
@@ -1811,7 +1839,7 @@ function probAst() {
 function probBlk() {
     var possPlayersBLK = this.DEFteam.players;
 
-    for (let i = 0; i < possPlayersBLK.length; i++) {
+    for (let i = 0; i &lt; possPlayersBLK.length; i++) {
         var defenderBLK = possPlayersBLK.sort(function (a, b) {
             return b.BLKpct - a.BLKpct
         });
@@ -1851,7 +1879,7 @@ function pickPlayer() {
     //OFFensive player Selection
     // Sorts team array by usage % and selects the player 
 
-    for (let i = 0; i < this.teams.length; i++) {
+    for (let i = 0; i &lt; this.teams.length; i++) {
         if (this.teams[i].possession == this.possessionArrow) {
             this.OFFteam = this.teams[i];
             var availablePlayersOff = this.teams[i].players;
@@ -1866,7 +1894,7 @@ function pickPlayer() {
         }
     }
 
-    for (let j = 0; j < availablePlayersOff.length; j++) {
+    for (let j = 0; j &lt; availablePlayersOff.length; j++) {
 
         // this.gameLog.push(availablePlayersOff[1].USGpct);
 
@@ -1878,7 +1906,7 @@ function pickPlayer() {
 
     }
 
-    for (let i = 0; i < availablePlayersDef.length; i++) {
+    for (let i = 0; i &lt; availablePlayersDef.length; i++) {
 
         // this.gameLog.push(availablePlayersOff[1].USGpct);
 
@@ -1937,9 +1965,9 @@ function doShot() {
         //Of the 2PT FGAs, distributed based on how often such plays typically happen in the NBA
         //Most attempts are at the rim
         //Mid-range and low-post shots less so
-        if (r1 > r2 && r1 > r3) {
-            // Two point jumper
-            this.shot = "mid-range jumper";
+        if (r1 > r2 &amp;&amp; r1 > r3) {
+            // Two point jumposition
+            this.shot = "mid-range jumposition";
             probMissAndFoul = 0.05;
             probMake = ((this.selectedPlayerOff.TSpct + (this.OFFteam.offense / 100)) - (this.DEFteam.defense / 100)) * 0.25 + 0.25;
             probAndOne = 0.05;
@@ -1987,7 +2015,7 @@ function doShot() {
     // Make
     if (probMake > Math.random()) {
         // And 1
-        if (probAndOne > Math.random() && this.shot === "three pointer") {
+        if (probAndOne > Math.random() &amp;&amp; this.shot === "three pointer") {
 
             this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " attempts a " + this.shot + ", gets hit on the release by " + this.selectedPlayerDef.name + "...and still nails it! A four point play opportunity!");
             //Stat updates
@@ -2004,14 +2032,14 @@ function doShot() {
             this.amount = 1;
 
             //Ensures that points are added to proposition team/quarter array
-            if (this.overtimes <= 0) {
+            if (this.overtimes &lt;= 0) {
                 this.quarterLog.push(this.quarter);
             }
             else if (this.overtimes >= 1) {
                 this.quarterLog.push("OT");
             }
 
-            if (this.quarter === 1 && (this.possessionArrow == this.teamA.possession)) {
+            if (this.quarter === 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
                 this.OFFteam.Q1PTS += 3;
                 this.gameLogA.push(3);
@@ -2019,7 +2047,7 @@ function doShot() {
                 this.gameLogAQ1.push(3);
                 this.gameLogBQ1.push(0);
             }
-            else if (this.quarter === 1 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
                 this.OFFteam.Q1PTS += 3;
                 this.gameLogB.push(3);
@@ -2027,7 +2055,7 @@ function doShot() {
                 this.gameLogAQ1.push(0);
                 this.gameLogBQ1.push(3);
             }
-            else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q2PTS += 3;
                 this.gameLogA.push(3);
                 this.gameLogB.push(0);
@@ -2035,42 +2063,42 @@ function doShot() {
                 this.gameLogBQ2.push(0);
 
             }
-            else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q2PTS += 3;
                 this.gameLogB.push(3);
                 this.gameLogA.push(0);
                 this.gameLogAQ2.push(0);
                 this.gameLogBQ2.push(3);
             }
-            else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q3PTS += 3;
                 this.gameLogA.push(3);
                 this.gameLogB.push(0);
                 this.gameLogAQ3.push(3);
                 this.gameLogBQ3.push(0);
             }
-            else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q3PTS += 3;
                 this.gameLogB.push(3);
                 this.gameLogA.push(0);
                 this.gameLogBQ3.push(3);
                 this.gameLogAQ3.push(0);
             }
-            else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q4PTS += 3;
                 this.gameLogA.push(3);
                 this.gameLogB.push(0);
                 this.gameLogAQ4.push(3);
                 this.gameLogBQ4.push(0);
             }
-            else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q4PTS += 3;
                 this.gameLogB.push(3);
                 this.gameLogA.push(0);
                 this.gameLogBQ4.push(3);
                 this.gameLogAQ4.push(0);
             }
-            else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.OTPTS += 3;
                 this.gameLogA.push(3);
                 this.gameLogB.push(0);
@@ -2078,7 +2106,7 @@ function doShot() {
                 this.gameLogBOT.push(0);
 
             }
-            else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.OTPTS += 3;
                 this.gameLogB.push(3);
                 this.gameLogA.push(0);
@@ -2094,7 +2122,7 @@ function doShot() {
             // return doFg(); // fg, orb, or drb
         }
 
-        else if (probAndOne > Math.random() && this.shot != "three pointer") {
+        else if (probAndOne > Math.random() &amp;&amp; this.shot != "three pointer") {
 
             this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " attempts a " + this.shot + ", takes the contact from " + this.selectedPlayerDef.name + "...and gets the and-1!");
             //Amount of FTS awarded
@@ -2109,13 +2137,13 @@ function doShot() {
             this.OFFteam.FGA += 1;
             this.OFFteam.FGM += 1;
             //Ensures that points are added to proposition team/quarter array
-            if (this.overtimes <= 0) {
+            if (this.overtimes &lt;= 0) {
                 this.quarterLog.push(this.quarter);
             }
             else if (this.overtimes >= 1) {
                 this.quarterLog.push("OT");
             }
-            if ((this.quarter === 1) && (this.possessionArrow == this.teamA.possession)) {
+            if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
                 this.OFFteam.Q1PTS += 2;
                 this.gameLogA.push(2);
@@ -2124,7 +2152,7 @@ function doShot() {
                 this.gameLogBQ1.push(0);
 
             }
-            else if ((this.quarter === 1) && (this.possessionArrow == this.teamB.possession)) {
+            else if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
                 this.OFFteam.Q1PTS += 2;
                 this.gameLogB.push(2);
@@ -2133,7 +2161,7 @@ function doShot() {
                 this.gameLogAQ1.push(0);
 
             }
-            else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q2PTS += 2;
                 this.gameLogA.push(2);
                 this.gameLogB.push(0);
@@ -2141,42 +2169,42 @@ function doShot() {
                 this.gameLogBQ2.push(0);
 
             }
-            else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q2PTS += 2;
                 this.gameLogB.push(2);
                 this.gameLogA.push(0);
                 this.gameLogBQ2.push(2);
                 this.gameLogAQ2.push(0);
             }
-            else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q3PTS += 2;
                 this.gameLogA.push(2);
                 this.gameLogB.push(0);
                 this.gameLogAQ3.push(2);
                 this.gameLogBQ3.push(0);
             }
-            else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q3PTS += 2;
                 this.gameLogB.push(2);
                 this.gameLogA.push(0);
                 this.gameLogBQ3.push(2);
                 this.gameLogAQ3.push(0);
             }
-            else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q4PTS += 2;
                 this.gameLogA.push(2);
                 this.gameLogB.push(0);
                 this.gameLogAQ4.push(2);
                 this.gameLogBQ4.push(0);
             }
-            else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q4PTS += 2;
                 this.gameLogB.push(2);
                 this.gameLogA.push(0);
                 this.gameLogBQ4.push(2);
                 this.gameLogAQ4.push(0);
             }
-            else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.OTPTS += 2;
                 this.gameLogA.push(2);
                 this.gameLogB.push(0);
@@ -2185,7 +2213,7 @@ function doShot() {
 
 
             }
-            else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.OTPTS += 2;
                 this.gameLogB.push(2);
                 this.gameLogA.push(0);
@@ -2270,13 +2298,13 @@ function doFg() {
         this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
         //Stat Allocation
-        if (this.overtimes <= 0) {
+        if (this.overtimes &lt;= 0) {
             this.quarterLog.push(this.quarter);
         }
         else if (this.overtimes >= 1) {
             this.quarterLog.push("OT");
         }
-        if ((this.quarter === 1) && (this.possessionArrow == this.teamA.possession)) {
+        if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
             this.OFFteam.Q1PTS += 2;
             this.gameLogA.push(2);
@@ -2285,7 +2313,7 @@ function doFg() {
             this.gameLogBQ1.push(0);
 
         }
-        else if ((this.quarter === 1) && (this.possessionArrow == this.teamB.possession)) {
+        else if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
             this.OFFteam.Q1PTS += 2;
             this.gameLogB.push(2);
@@ -2294,7 +2322,7 @@ function doFg() {
             this.gameLogAQ1.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q2PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
@@ -2302,42 +2330,42 @@ function doFg() {
             this.gameLogBQ2.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q2PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ2.push(2);
             this.gameLogAQ2.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q3PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
             this.gameLogAQ3.push(2);
             this.gameLogBQ3.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q3PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ3.push(2);
             this.gameLogAQ3.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q4PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
             this.gameLogAQ4.push(2);
             this.gameLogBQ4.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q4PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ4.push(2);
             this.gameLogAQ4.push(0);
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.OTPTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
@@ -2346,7 +2374,7 @@ function doFg() {
 
 
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.OTPTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
@@ -2366,14 +2394,14 @@ function doFg() {
         this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
 
-        if (this.overtimes <= 0) {
+        if (this.overtimes &lt;= 0) {
             this.quarterLog.push(this.quarter);
         }
         else if (this.overtimes >= 1) {
             this.quarterLog.push("OT");
         }
 
-        if ((this.quarter === 1) && (this.possessionArrow == this.teamA.possession)) {
+        if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
             this.OFFteam.Q1PTS += 2;
             this.gameLogA.push(2);
@@ -2382,7 +2410,7 @@ function doFg() {
             this.gameLogBQ1.push(0);
 
         }
-        else if ((this.quarter === 1) && (this.possessionArrow == this.teamB.possession)) {
+        else if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
             this.OFFteam.Q1PTS += 2;
             this.gameLogB.push(2);
@@ -2391,7 +2419,7 @@ function doFg() {
             this.gameLogAQ1.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q2PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
@@ -2399,42 +2427,42 @@ function doFg() {
             this.gameLogBQ2.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q2PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ2.push(2);
             this.gameLogAQ2.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q3PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
             this.gameLogAQ3.push(2);
             this.gameLogBQ3.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q3PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ3.push(2);
             this.gameLogAQ3.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q4PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
             this.gameLogAQ4.push(2);
             this.gameLogBQ4.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q4PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ4.push(2);
             this.gameLogAQ4.push(0);
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.OTPTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
@@ -2443,7 +2471,7 @@ function doFg() {
 
 
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.OTPTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
@@ -2462,14 +2490,14 @@ function doFg() {
         this.selectedPlayerOff.FGM += 1;
         this.gameLog.push(this.selectedPlayerOff.name + "(" + this.OFFteam.tag + ")" + " PTS: " + (this.selectedPlayerOff.PTS) + " FG%: " + (((this.selectedPlayerOff.FGM / this.selectedPlayerOff.FGA) * 100).toFixed(1)) + "%  " + "(" + this.teamA.tag + ")" + " " + this.teamA.PTS + "-" + this.teamB.PTS + " " + "(" + this.teamB.tag + ")");
 
-        if (this.overtimes <= 0) {
+        if (this.overtimes &lt;= 0) {
             this.quarterLog.push(this.quarter);
         }
         else if (this.overtimes >= 1) {
             this.quarterLog.push("OT");
         }
 
-        if ((this.quarter === 1) && (this.possessionArrow == this.teamA.possession)) {
+        if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
             this.OFFteam.Q1PTS += 2;
             this.gameLogA.push(2);
@@ -2478,7 +2506,7 @@ function doFg() {
             this.gameLogBQ1.push(0);
 
         }
-        else if ((this.quarter === 1) && (this.possessionArrow == this.teamB.possession)) {
+        else if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
             this.OFFteam.Q1PTS += 2;
             this.gameLogB.push(2);
@@ -2487,7 +2515,7 @@ function doFg() {
             this.gameLogAQ1.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q2PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
@@ -2495,42 +2523,42 @@ function doFg() {
             this.gameLogBQ2.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q2PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ2.push(2);
             this.gameLogAQ2.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q3PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
             this.gameLogAQ3.push(2);
             this.gameLogBQ3.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q3PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ3.push(2);
             this.gameLogAQ3.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q4PTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
             this.gameLogAQ4.push(2);
             this.gameLogBQ4.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q4PTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
             this.gameLogBQ4.push(2);
             this.gameLogAQ4.push(0);
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.OTPTS += 2;
             this.gameLogA.push(2);
             this.gameLogB.push(0);
@@ -2539,7 +2567,7 @@ function doFg() {
 
 
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.OTPTS += 2;
             this.gameLogB.push(2);
             this.gameLogA.push(0);
@@ -2564,14 +2592,14 @@ function doFg() {
         this.selectedPlayerOff.FGM += 1;
 
         //Allocation
-        if (this.overtimes <= 0) {
+        if (this.overtimes &lt;= 0) {
             this.quarterLog.push(this.quarter);
         }
         else if (this.overtimes >= 1) {
             this.quarterLog.push("OT");
         }
 
-        if (this.quarter === 1 && (this.possessionArrow == this.teamA.possession)) {
+        if (this.quarter === 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
             this.OFFteam.Q1PTS += 3;
             this.gameLogA.push(3);
@@ -2579,7 +2607,7 @@ function doFg() {
             this.gameLogAQ1.push(3);
             this.gameLogBQ1.push(0);
         }
-        else if (this.quarter === 1 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
             this.OFFteam.Q1PTS += 3;
             this.gameLogB.push(3);
@@ -2587,7 +2615,7 @@ function doFg() {
             this.gameLogAQ1.push(0);
             this.gameLogBQ1.push(3);
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q2PTS += 3;
             this.gameLogA.push(3);
             this.gameLogB.push(0);
@@ -2595,42 +2623,42 @@ function doFg() {
             this.gameLogBQ2.push(0);
 
         }
-        else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q2PTS += 3;
             this.gameLogB.push(3);
             this.gameLogA.push(0);
             this.gameLogAQ2.push(0);
             this.gameLogBQ2.push(3);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q3PTS += 3;
             this.gameLogA.push(3);
             this.gameLogB.push(0);
             this.gameLogAQ3.push(3);
             this.gameLogBQ3.push(0);
         }
-        else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q3PTS += 3;
             this.gameLogB.push(3);
             this.gameLogA.push(0);
             this.gameLogBQ3.push(3);
             this.gameLogAQ3.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.Q4PTS += 3;
             this.gameLogA.push(3);
             this.gameLogB.push(0);
             this.gameLogAQ4.push(3);
             this.gameLogBQ4.push(0);
         }
-        else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.Q4PTS += 3;
             this.gameLogB.push(3);
             this.gameLogA.push(0);
             this.gameLogBQ4.push(3);
             this.gameLogAQ4.push(0);
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
             this.OFFteam.OTPTS += 3;
             this.gameLogA.push(3);
             this.gameLogB.push(0);
@@ -2638,7 +2666,7 @@ function doFg() {
             this.gameLogBOT.push(0);
 
         }
-        else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+        else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
             this.OFFteam.OTPTS += 3;
             this.gameLogB.push(3);
             this.gameLogA.push(0);
@@ -2660,7 +2688,7 @@ function doFg() {
         doFt(); // fg, orb, or drb
         return
     }
-    if (this.shot != "andOne" && this.selectedPlayerAST != "") {
+    if (this.shot != "andOne" &amp;&amp; this.selectedPlayerAST != "") {
 
         this.selectedPlayerAST.AST += 1;
         this.OFFteam.AST += 1;
@@ -2678,9 +2706,9 @@ function doFt() {
     // this.doPf(this.d);
 
 
-    for (let i = 0; i < this.amount; i++) {
+    for (let i = 0; i &lt; this.amount; i++) {
 
-        if (Math.random() < this.selectedPlayerOff.FTpct) {
+        if (Math.random() &lt; this.selectedPlayerOff.FTpct) {
             this.gameLog.push(minTommss(this.quarterLength) + " " + this.OFFteam.tag + " - " + this.selectedPlayerOff.name + " makes free throw " + (i + 1) + " of " + this.amount);
 
             this.selectedPlayerOff.PTS += 1;
@@ -2690,13 +2718,13 @@ function doFt() {
             this.OFFteam.FTA += 1;
             this.OFFteam.FTM += 1;
             // Proposition Allocation
-            if (this.overtimes <= 0) {
+            if (this.overtimes &lt;= 0) {
                 this.quarterLog.push(this.quarter);
             }
             else if (this.overtimes >= 1) {
                 this.quarterLog.push("OT");
             }
-            if ((this.quarter === 1) && (this.possessionArrow == this.teamA.possession)) {
+            if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
 
                 this.OFFteam.Q1PTS += 1;
                 this.gameLogA.push(1);
@@ -2705,7 +2733,7 @@ function doFt() {
                 this.gameLogBQ1.push(0);
 
             }
-            else if ((this.quarter === 1) && (this.possessionArrow == this.teamB.possession)) {
+            else if ((this.quarter === 1) &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
 
                 this.OFFteam.Q1PTS += 1;
                 this.gameLogB.push(1);
@@ -2714,7 +2742,7 @@ function doFt() {
                 this.gameLogAQ1.push(0);
 
             }
-            else if (this.quarter === 2 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q2PTS += 1;
                 this.gameLogA.push(1);
                 this.gameLogB.push(0);
@@ -2722,42 +2750,42 @@ function doFt() {
                 this.gameLogBQ2.push(0);
 
             }
-            else if (this.quarter === 2 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 2 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q2PTS += 1;
                 this.gameLogB.push(1);
                 this.gameLogA.push(0);
                 this.gameLogBQ2.push(1);
                 this.gameLogAQ2.push(0);
             }
-            else if (this.quarter === 3 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q3PTS += 1;
                 this.gameLogA.push(1);
                 this.gameLogB.push(0);
                 this.gameLogAQ3.push(1);
                 this.gameLogBQ3.push(0);
             }
-            else if (this.quarter === 3 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 3 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q3PTS += 1;
                 this.gameLogB.push(1);
                 this.gameLogA.push(0);
                 this.gameLogBQ3.push(1);
                 this.gameLogAQ3.push(0);
             }
-            else if (this.quarter === 4 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.Q4PTS += 1;
                 this.gameLogA.push(1);
                 this.gameLogB.push(0);
                 this.gameLogAQ4.push(1);
                 this.gameLogBQ4.push(0);
             }
-            else if (this.quarter === 4 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.quarter === 4 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.Q4PTS += 1;
                 this.gameLogB.push(1);
                 this.gameLogA.push(0);
                 this.gameLogBQ4.push(1);
                 this.gameLogAQ4.push(0);
             }
-            else if (this.overtimes >= 1 && (this.possessionArrow == this.teamA.possession)) {
+            else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamA.possession)) {
                 this.OFFteam.OTPTS += 1;
                 this.gameLogA.push(1);
                 this.gameLogB.push(0);
@@ -2766,7 +2794,7 @@ function doFt() {
 
 
             }
-            else if (this.overtimes >= 1 && (this.possessionArrow == this.teamB.possession)) {
+            else if (this.overtimes >= 1 &amp;&amp; (this.possessionArrow == this.teamB.possession)) {
                 this.OFFteam.OTPTS += 1;
                 this.gameLogB.push(1);
                 this.gameLogA.push(0);
@@ -2822,14 +2850,14 @@ function doReb() {
     var glassCleaner = Math.random();
 
     //Defensive Rebunders
-    for (let i = 0; i < possPlayersDREB.length; i++) {
+    for (let i = 0; i &lt; possPlayersDREB.length; i++) {
         var defenderREB = possPlayersDREB.sort(function (a, b) {
             return a.TRBpct - b.TRBpct
         });
         this.selectedPlayerDREB = defenderREB[Math.floor(Math.random() * defenderREB.length)];
     }
     //Offensive Rebounders
-    for (let i = 0; i < possPlayersOREB.length; i++) {
+    for (let i = 0; i &lt; possPlayersOREB.length; i++) {
         var teamMateREB = possPlayersOREB.sort(function (a, b) {
             return b.TRBpct - a.TRBpct
         });
@@ -2868,14 +2896,14 @@ function doReb() {
             return "drb";
         }
         //If it's less than a random number, another player gets a chance at the rebound
-        else if (this.selectedPlayerDREB.DRBpct / 100 < glassCleaner) {
+        else if (this.selectedPlayerDREB.DRBpct / 100 &lt; glassCleaner) {
 
             //If they are different, the one with the higher TRB% will get the rebound
             //Some players just concede rebounds to their teammates who are known for rebounding.
             if (this.selectedPlayerDREB != this.selectedPlayerDef) {
 
 
-                if (this.selectedPlayerDREB.TRBpct < this.selectedPlayerDef.TRBpct) {
+                if (this.selectedPlayerDREB.TRBpct &lt; this.selectedPlayerDef.TRBpct) {
                     this.selectedPlayerDef.REB += 1;
                     this.DEFteam.REB += 1;
                     this.gameLog.push(minTommss(this.quarterLength) + " " + this.DEFteam.tag + " - " + this.selectedPlayerDef.name + " grabbed the defensive rebound.");
@@ -2903,7 +2931,7 @@ function doReb() {
             //Few PGs will get rebounds in this scenario, if any
             else if (this.selectedPlayerDREB = this.selectedPlayerDef) {
 
-                for (let i = 0; i < possPlayersDREB.length; i++) {
+                for (let i = 0; i &lt; possPlayersDREB.length; i++) {
                     var defenderREB = possPlayersDREB.sort(function (a, b) {
                         return b.DRBpct - a.DRBpct
                     });
@@ -2954,8 +2982,31 @@ function minTommss() {
 
     var min = Math.floor(Math.abs(this.quarterLength))
     var sec = Math.floor((Math.abs(this.quarterLength) * 60) % 60);
-    if (this.quarter === 4 && this.gameTime <= 0) {
+    if (this.quarter === 4 &amp;&amp; this.gameTime &lt;= 0) {
         var sec = 3
     }
-    return (min < 10 ? "0" : "") + min + ":" + (sec < 10 ? "0" : "") + sec;
+    return (min &lt; 10 ? "0" : "") + min + ":" + (sec &lt; 10 ? "0" : "") + sec;
 };
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#jumpBall">jumpBall</a></li><li><a href="global.html#userTeamTag">userTeamTag</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.5.5</a> on Sat Sep 15 2018 15:20:40 GMT-0400 (EDT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
