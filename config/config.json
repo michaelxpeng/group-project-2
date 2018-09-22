@@ -1,10 +1,11 @@
 {
     "development": {
-      "username": "root",
-      "password": "root",
-      "database": "fantasy",
-      "host": "127.0.0.1",
+      "username": "nba8lbx2bywmb4hr",
+      "password": "wsv6wqm2dacar6tl",
+      "database": "tp12vfxjgmfc7v3j",
+      "host": "m7nj9dclezfq7ax1.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
       "port": 3306,
-      "dialect": "mysql"
+      "dialect": "mysql",
+      "use_env_variable": "JAWSDB_URL"
     }
 }
