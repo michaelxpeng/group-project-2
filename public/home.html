@@ -15,6 +15,9 @@
     <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
     <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet"> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
+
+
 </head>
 
 <body>
@@ -31,38 +34,119 @@
     </header>
 
     <script>
-
         var tutorialView = false;
         var imageUrl;
 
-        //Google Sign-In
-        
-        var googleUser = {};
-        var startApp = function () {
-            gapi.load('auth2', function () {
-                // Retrieve the singleton for the GoogleAuth library and set up the client.
-                auth2 = gapi.auth2.init({
-                    client_id: '323125251924-5pike3iev4sf586lt7ue2l22c2re7jgq.apps.googleusercontent.com',
-                    cookiepolicy: 'single_host_origin',
-                    // Request scopes in addition to 'profile' and 'email'
-                    //scope: 'additional_scope'
-                });
-                attachSignin(document.getElementById('customBtn'));
-            });
-        };
+         function callGoogleSignIn() {
+            console.log("clicked");
+            
 
-        function attachSignin(element) {
-            console.log(element.id);
-            auth2.attachClickHandler(element, {},
-                function (googleUser) {
-                    document.getElementById('name').innerText = "GM: " +
-                        googleUser.getBasicProfile().getName();
-                }, function (error) {
-                    // alert(JSON.stringify(error, undefined, 2));
-                    // alert("Please Sign In");
-                    noSignIn();
-                });
+            var provider = new firebase.auth.GoogleAuthProvider();
+            var firebaseauth = firebase.auth();
+            firebaseauth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+            firebaseauth.signInWithPopup(provider).then(function (result) {
+
+
+                // This gives you a Google Access Token. You can use it to access the Google API.
+                var token = result.credential.accessToken;
+                console.log(result);
+                console.log(result.user.displayName);
+                console.log(result.user.email);
+                console.log(result.user.uid);
+                // The signed-in user info.
+                var user = result.user;
+                console.log(user);
+                console.log(token);
+
+                $('#name').text('GM: '+ result.user.displayName);
+
+                sessionStorage.setItem("displayName", JSON.stringify(result.user.displayName));
+                sessionStorage.setItem("email", JSON.stringify(result.user.email));
+                sessionStorage.setItem("uid", JSON.stringify(result.user.uid));
+
+                playGame();
+                // ...
+            }).catch(function (error) {
+                // Handle Errors here.
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+
+            });
         }
+    //     $(document).ready(function () {
+    //     //     dataRef.ref().orderByChild().limitToLast(1).on("child_added", function(snapshot) {
+    //     //   // Change the HTML to reflect
+    //     //   $("#playerPG").append(pgSnap + '<br>');
+    //     //     console.log(pgSnap);
+    //     function callGoogleSignIn() {
+    //         console.log("clicked");
+
+    //         var provider = new firebase.auth.GoogleAuthProvider();
+    //         var firebaseauth = firebase.auth();
+    //         firebaseauth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+    //         firebaseauth.signInWithPopup(provider).then(function (result) {
+
+
+    //             // This gives you a Google Access Token. You can use it to access the Google API.
+    //             var token = result.credential.accessToken;
+    //             console.log(result);
+    //             console.log(result.user.displayName);
+    //             // The signed-in user info.
+    //             var user = result.user;
+    //             console.log(user);
+    //             // ...
+    //         }).catch(function (error) {
+    //             // Handle Errors here.
+    //             var errorCode = error.code;
+    //             var errorMessage = error.message;
+    //             // The email of the user's account used.
+    //             var email = error.email;
+    //             // The firebase.auth.AuthCredential type that was used.
+    //             var credential = error.credential;
+
+    //         });
+    //     }
+    //     // callGoogleSignIn();
+    //     // console.log(result.user.displayName);
+    // });
+        // var provider = new firebase.auth.GoogleAuthProvider();
+
+        //   function hmm () {
+        //     firebase.auth().signInWithRedirect(provider);
+
+        // }
+        // //Google Sign-In
+        
+        // var googleUser = {};
+        // var startApp = function () {
+        //     gapi.load('auth2', function () {
+        //         // Retrieve the singleton for the GoogleAuth library and set up the client.
+        //         auth2 = gapi.auth2.init({
+        //             client_id: '323125251924-5pike3iev4sf586lt7ue2l22c2re7jgq.apps.googleusercontent.com',
+        //             cookiepolicy: 'single_host_origin',
+        //             // Request scopes in addition to 'profile' and 'email'
+        //             //scope: 'additional_scope'
+        //         });
+        //         attachSignin(document.getElementById('customBtn'));
+        //     });
+        // };
+
+        // function attachSignin(element) {
+        //     console.log(element.id);
+        //     auth2.attachClickHandler(element, {},
+        //         function (googleUser) {
+        //             document.getElementById('name').innerText = "GM: " +
+        //                 googleUser.getBasicProfile().getName();
+        //         }, function (error) {
+        //             // alert(JSON.stringify(error, undefined, 2));
+        //             // alert("Please Sign In");
+        //             noSignIn();
+        //         });
+        // }
 
         //Functionality
 
@@ -202,6 +286,7 @@
                 $(".homeDiv").fadeIn();
             }, 1000);
         }
+
     </script>
     </head>
 
@@ -215,7 +300,7 @@
         <div class='bg'>
 
         </div>
-        <script>startApp();</script>
+        <!-- <script>startApp();</script> -->
 
         <div class="tutorialDiv">
             <h1>Tutorial</h1>
@@ -229,8 +314,8 @@
             <h1>Draft Sim</h1>
             <p>Can you build the best team ever?</p>
             <p>Now's your time to call the shots.</p>
-            <a href="/selection"><button class="toSelect">Play</button></a>
-            <a><div id="customBtn" onclick="playGame()" class="customGPlusSignIn">
+            <a href="/dashboard"><button class="toSelect">Play</button></a>
+            <a><div id="customBtn" onclick="callGoogleSignIn()" class="customGPlusSignIn">
                     <span class="icon"></span>
                     <span class="buttonText">Sign in with Google</span>
                 </div></a>
@@ -240,6 +325,8 @@
         <footer> <a href="https://twitter.com/basketball_gm"> Special Thanks to BballGM </a> |
             <a href="https://github.com/michaelxpeng/group-project-2"> <i id="github" class="fab fa-github"></i></a>
         </footer>
+
+        <script src="assets/js/firebase.js"></script>
     </body>
 
 </html>

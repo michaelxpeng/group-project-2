@@ -15,10 +15,20 @@ $(document).ready(function () {
         var ref = dataRef.ref();
         // ref.on('value', gotData, errData);
 
+        
 
-        ref.on("child_added", function (snapshot, prevChildKey) {
+    //    ref.orderByChild("userID").equalTo(sessionStorage.getItem("uid")).on("child_added", function(snapshot) {
+    //         var sv = snapshot.val();
+    //       console.log(sv);
+    //       });
+
+
+        // ref.on("child_added", function (snapshot, prevChildKey) {
+            ref.orderByChild("userID").equalTo(sessionStorage.getItem("uid")).on("child_added", function(snapshot, prevChildKey) {
+
             var team = snapshot.val();
-            // console.log(snapshot.key);
+            // console.log(snapshot);
+           
 
             var teamDiv = $('<div>').addClass('saved-team');
             if (team.selected === true) {
@@ -47,6 +57,8 @@ $(document).ready(function () {
             teamWbuttons.append(teamName, teamDiv, actionButtonsDiv)
 
             $('#user-lineups').append(teamWbuttons);
+
+            
             // console.log("position C name: " + team.c.name);
             // console.log(prevChildKey)
             // console.log("Title: " + newPost.title);
@@ -58,21 +70,26 @@ $(document).ready(function () {
                 $(this).parent('div').parent('div').remove();
             });
             $('.action-select').on('click', function () {
-
+                childKey = $(this).val();
                 ref.once("value", function (snapshot) {
+                    console.log(childKey);
                     snapshot.forEach(function (child) {
                         child.ref.update({
                             selected: false
                         });
                     });
+                    ref.child(childKey).update({
+                        selected: true
+                    });
+                    $('#play-game').fadeIn();
                 });
 
-                childKey = $(this).val();
+               
                 $('.selected-team').removeClass('selected-team');
                 $(this).parent('div').parent('div').find('.saved-team').addClass('selected-team')
-                ref.child(childKey).update({
-                    selected: true
-                });
+                // ref.child(childKey).update({
+                //     selected: true
+                // });
             })
         });
     });
@@ -86,3 +103,7 @@ $('#new-team').on('click', function () {
 $('#play-game').on('click', function () {
     location.href = "/game";
 });
+
+console.log(sessionStorage.getItem("displayName"));
+console.log(sessionStorage.getItem("email"));
+console.log(sessionStorage.getItem("uid"));

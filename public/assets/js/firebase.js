@@ -1,6 +1,6 @@
 // Initialize Firebase
 $.get('/api/credentials', function (response) {
-
+  
   var config = {
     apiKey: response.apiKey,
     authDomain: response.authDomain,
@@ -22,6 +22,9 @@ $.get('/api/credentials', function (response) {
       return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
     }
 
+
+    
+
     var teamName = $('#team-name-input').val().trim();
     var teamTag = $('#team-tag-input').val().trim().toUpperCase();
     var teamImageURL = $('#team-image-input').val().trim();
@@ -42,6 +45,8 @@ $.get('/api/credentials', function (response) {
     } else if (teamTag.length > 4) {
       alert('Team Tag Must Be Between 1 and 4 Characters')
     } else {
+
+     
       var pg = {
         position: $('#PG-row').attr('position'),
         name: $('#PG-row').attr('name'),
@@ -212,6 +217,8 @@ $.get('/api/credentials', function (response) {
         FLS: 0
       };
 
+      
+
       var roster = {
         // logo: logo,
         // teamName: teamName,
@@ -224,15 +231,36 @@ $.get('/api/credentials', function (response) {
         tag: teamTag,
         image: teamImageURL,
         selected: false,
+        userID: sessionStorage.getItem("uid"),
+        userName: sessionStorage.getItem("displayName"),
+        userEmail: sessionStorage.getItem("email")
       }
 
+      if (roster.pg.ThreePct = isNaN){
+        roster.pg.ThreePct = 0.00;
+      }
+      if (roster.sg.ThreePct = isNaN){
+        roster.sg.ThreePct = 0.00;
+      }
+      if (roster.sf.ThreePct = isNaN){
+        roster.sf.ThreePct = 0.00;
+      }
+      if (roster.pf.ThreePct = isNaN){
+        roster.pf.ThreePct = 0.00;
+      }
+      if (roster.c.ThreePct = isNaN){
+        roster.c.ThreePct = 0.00;
+      }
+
+  
       dataRef.ref().push(roster);
 
-      console.log(roster.pg);
-      console.log(roster.sg);
-      console.log(roster.sf);
-      console.log(roster.pf);
-      console.log(roster.c);
+      // console.log(roster.pg);
+      // console.log(roster.sg);
+      // console.log(roster.sf);
+      // console.log(roster.pf);
+      // console.log(roster.c);
+      console.log(roster);
     }
 
     location.href = "/dashboard"

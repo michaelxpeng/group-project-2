@@ -8,50 +8,58 @@
     <title>Player Select</title>
     <link rel="stylesheet" href="assets/css/reset.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/style.css" type="text/css" />
+    <link rel="icon" href="https://www.nba.com/assets/icons/favicon16.ico">
     <script src="https://code.jquery.com/jquery.js"></script>
     <script src="assets/js/sortable.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Noto+Serif" rel="stylesheet">
     <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
 </head>
 
-<script>
+<script>  
 
-    $(document).ready(function () {
-        //     dataRef.ref().orderByChild().limitToLast(1).on("child_added", function(snapshot) {
-        //   // Change the HTML to reflect
-        //   $("#playerPG").append(pgSnap + '<br>');
-        //     console.log(pgSnap);
-        function callGoogleSignIn() {
-            console.log("clicked");
+    console.log(sessionStorage);
+    console.log(sessionStorage.getItem("displayName"));
+    console.log(sessionStorage.getItem("email"));
+    console.log(sessionStorage.getItem("uid"));
+    
 
-            var provider = new firebase.auth.GoogleAuthProvider();
-            var firebaseauth = firebase.auth();
-            firebaseauth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
-            firebaseauth.signInWithPopup(provider).then(function (result) {
+    // $(document).ready(function () {
+    //     //     dataRef.ref().orderByChild().limitToLast(1).on("child_added", function(snapshot) {
+    //     //   // Change the HTML to reflect
+    //     //   $("#playerPG").append(pgSnap + '<br>');
+    //     //     console.log(pgSnap);
+    //     function callGoogleSignIn() {
+    //         console.log("clicked");
+
+    //         var provider = new firebase.auth.GoogleAuthProvider();
+    //         var firebaseauth = firebase.auth();
+    //         firebaseauth.setPersistence(firebase.auth.Auth.Persistence.SESSION);
+    //         firebaseauth.signInWithPopup(provider).then(function (result) {
 
 
-                // This gives you a Google Access Token. You can use it to access the Google API.
-                var token = result.credential.accessToken;
-                console.log(result);
-                console.log(result.user.displayName);
-                // The signed-in user info.
-                var user = result.user;
-                console.log(user);
-                // ...
-            }).catch(function (error) {
-                // Handle Errors here.
-                var errorCode = error.code;
-                var errorMessage = error.message;
-                // The email of the user's account used.
-                var email = error.email;
-                // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
+    //             // This gives you a Google Access Token. You can use it to access the Google API.
+    //             var token = result.credential.accessToken;
+    //             console.log(result);
+    //             console.log(result.user.displayName);
+    //             // The signed-in user info.
+    //             var user = result.user;
+    //             console.log(user);
+    //             console.log(token);
+    //             // ...
+    //         }).catch(function (error) {
+    //             // Handle Errors here.
+    //             var errorCode = error.code;
+    //             var errorMessage = error.message;
+    //             // The email of the user's account used.
+    //             var email = error.email;
+    //             // The firebase.auth.AuthCredential type that was used.
+    //             var credential = error.credential;
 
-            });
-        }
-        // callGoogleSignIn();
-        // console.log(result.user.displayName);
-    });
+    //         });
+    //     }
+    //     callGoogleSignIn();
+    //     console.log(result.user.displayName);
+    // });
 </script>
 
 <body>
